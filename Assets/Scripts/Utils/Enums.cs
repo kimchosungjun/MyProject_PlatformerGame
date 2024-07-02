@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Enums { }
 
+public enum LobbyUIType
+{
+    Start,
+    Exit
+}
+
 public enum PlayerType
 {
     Normal,
