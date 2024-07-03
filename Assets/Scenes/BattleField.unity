@@ -312,6 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 584983851}
   - component: {fileID: 584983852}
+  - component: {fileID: 584983853}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -379,6 +380,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &584983853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584983850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94aaab6277e70c5479145c713944753c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 1431014403}
 --- !u!1 &1098940501
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +407,7 @@ GameObject:
   - component: {fileID: 1098940502}
   m_Layer: 6
   m_Name: TempGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 1098940501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.25, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 60, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -614,9 +629,9 @@ GameObject:
   - component: {fileID: 1431014403}
   - component: {fileID: 1431014402}
   - component: {fileID: 1431014401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -712,8 +727,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2b84402928cbc469289ec1d4c26188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xInput: 0
-  yInput: 0
+  isGround: 0
+  anim: {fileID: 466114164}
+  rb: {fileID: 1431014402}
+  horizontal: 0
+  xSpeed: 1
+  ySpeed: 1
+  dashSpeed: 2
+  dashTime: 3
+  dashCoolTime: 10
 --- !u!114 &1431014404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,3 +748,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4588becd48ece2448d373fadd87ed59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalPlayer: {fileID: 1431014403}
