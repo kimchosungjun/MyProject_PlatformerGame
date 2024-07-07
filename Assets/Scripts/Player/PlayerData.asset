@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d225ff93822c216478bb162c242257b8, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  curHp: 0
-  maxHp: 100
-  normalDamage: 3
-  skillDamage: 10
-  buffValue: 1.5
+  playerType: 0
+  xSpeed: 5
+  ySpeed: 5
+  rollSpeed: 10
+  rollTimer: 0.5
+  rollCoolTime: 10
+  curhp: 10
+  maxhp: 10
+  defenceValue: 2
+  attackValue: 5
+  buffSkillValue: 1
+  attackSkilldamage: 20

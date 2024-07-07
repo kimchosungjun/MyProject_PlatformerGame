@@ -4,31 +4,82 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    PlayerType currentType;
+    #region SerializeField 
+    [SerializeField] Transform attackTransform;
+    public Transform AttackTransform { get { return attackTransform; } }
+    [SerializeField] PlayerType currentType;
+    public PlayerType CurrentType { get { return currentType; } }
+    #endregion
 
-    [SerializeField] NormalPlayer normalPlayer;
+    Player[] player;
+    public PlayerGroundCheck GroundChecker { get; set; }
 
     #region Unity Cycle
     private void Awake()
     {
-        currentType = PlayerType.Normal;
-        if (normalPlayer != null)
-            normalPlayer.Init(this);
+        InitPlayerInformation();
+    }
+
+    public void InitPlayerInformation()
+    {
+        player = GetComponentsInChildren<Player>();
+        int playerCnt = player.Length;
+        for (int idx = 0; idx < playerCnt; idx++)
+        {
+            player[idx].Init(this);
+        }
+        GroundChecker = GetComponentInChildren<PlayerGroundCheck>();
+        GroundChecker.Init(currentType);
     }
 
     private void Update()
     {
-        if (normalPlayer != null)
+        InputPlayer();
+        InputChangeType();
+    }
+
+    public void InputPlayer()
+    {
+        switch (currentType)
         {
-            // 추후에 다른 원소 타입 추가 시, Switch문으로 분기 만들어서 실행시키기
-            normalPlayer.Execute();
-            return;
+            case PlayerType.Normal:
+                player[0].Execute();
+                break;
+            default:
+                break;
         }
+    }
+
+    public void InputChangeType()
+    {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            // 추후에 원소 변경 시, 코드 작성
-            // 땅에 닿아 있을때만 호출 가능
+            if (player[(int)currentType].IsGround)
+            {
+                // 추후에 원소 변경 시, 코드 작성
+                // 땅에 닿아 있을때만 호출 가능
+                //ChangeType();
+            }
         }
     }
     #endregion
+
+
+
+    public void ChangeType(PlayerType _playerType)
+    {
+        currentType = _playerType;
+        GroundChecker.ChangeType(currentType);
+        switch (_playerType)
+        {
+            case PlayerType.Normal:
+                break;
+            case PlayerType.Wind:
+                break;
+            case PlayerType.Water:
+                break;
+            default:
+                break;
+        }
+    }
 }
