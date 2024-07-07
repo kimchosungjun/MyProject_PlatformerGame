@@ -5,9 +5,8 @@ using PlayerNormalStateSpace;
 
 public class NormalPlayer : Player
 {
-    [SerializeField] float hitTimer = 0.2f;
-    float horizontal;
-
+    [SerializeField] GameObject buffSkillObject;
+    [SerializeField] Transform attackSkillPosition;
     #region Life Cycle
     public override void Init(PlayerController _playerController) // = Awake
     {
@@ -30,8 +29,8 @@ public class NormalPlayer : Player
             stateMachine.Execute();
             Flip();
             Attack();
-            BuffSkil();
-            AttackSkil();
+            BuffSkill();
+            AttackSkill();
         }
         else
         {
@@ -53,39 +52,56 @@ public class NormalPlayer : Player
 
     public void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log($"{attackTransform.position.x},{attackTransform.position.y}에서 공격 발동!");
+            if (!CanAttack())
+                return;
+            GameObject go = PoolManager.Instace.GetObjectPool(data.attackFabName);
+            if(go==null)
+                return;
+            go.transform.position = attackTransform.position;
+            NormalSkills normalSkills = go.GetComponent<NormalSkills>();
+            normalSkills.InitAttackData(data, transform.localScale.x);
         }
     }
 
-    public void BuffSkil()
+    public void BuffSkill()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("버프스킬 발동!");
+            if (!CanBuffSkill())
+                return;
+            if (buffSkillObject == null)
+                return;
+            buffSkillObject.SetActive(true);
+            NormalSkills normalSkills = buffSkillObject.GetComponent<NormalSkills>();
+            normalSkills.InitBuffData(data);
         }
     }
 
-    public void AttackSkil()
+    public void AttackSkill()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log($"{attackTransform.position.x},{attackTransform.position.y}에서 공격스킬 발동!");
+            if (!CanAttackSkill())
+                return;
+            GameObject go = PoolManager.Instace.GetObjectPool(data.attackSkillFabName);
+            if (go == null)
+                return;
+            go.transform.position = attackSkillPosition.position;
+            NormalSkills normalSkills = go.GetComponent<NormalSkills>();
+            normalSkills.InitAttackData(data, transform.localScale.x);
         }
     }
     #endregion
 
     #region Collision Call Method
 
-    public void HitByEnemy(Collision2D _collision)
+    public void HitByEnemy(Collider2D _collision)
     {
-        if (_collision.transform.position.x > transform.position.x) // 오른쪽에서 때림
-            rigid.AddForce(Vector2.up*3f, ForceMode2D.Impulse);
-        else // 왼쪽에서 때림
-            rigid.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
+        rigid.velocity = Vector2.up*3f;
         StartCoroutine(HitByEnemyCor());
-        Invinsibility(hitTimer);
+        Invinsibility(1f);
     }
 
     public IEnumerator HitByEnemyCor()
@@ -93,12 +109,12 @@ public class NormalPlayer : Player
         Color color = sprite.color;
         color.a = 0.5f;
         sprite.color = color;
-        yield return new WaitForSeconds(hitTimer);
+        yield return hitTimer;
         color.a = 1f;
         sprite.color = color;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemyAttack") && !isInvincibility)
         {

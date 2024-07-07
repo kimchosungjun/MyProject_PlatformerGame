@@ -11,7 +11,12 @@ public class PlayerController : MonoBehaviour
     public PlayerType CurrentType { get { return currentType; } }
     #endregion
 
-    Player[] player;
+    Player[] players;
+    public Player[] Players { get { return players; } }
+    List<PlayerData> dataList = new List<PlayerData>();
+    public List<PlayerData> DataList { get { return dataList; } }
+    public float CurHP { get; set; }
+    public float MaxHp { get; set; }
     public PlayerGroundCheck GroundChecker { get; set; }
 
     #region Unity Cycle
@@ -22,14 +27,20 @@ public class PlayerController : MonoBehaviour
 
     public void InitPlayerInformation()
     {
-        player = GetComponentsInChildren<Player>();
-        int playerCnt = player.Length;
+        players = GetComponentsInChildren<Player>();
+        int playerCnt = players.Length;
         for (int idx = 0; idx < playerCnt; idx++)
         {
-            player[idx].Init(this);
+            players[idx].Init(this);
+            PlayerData data = players[idx].Data;
+            dataList.Add(data);
         }
+        
         GroundChecker = GetComponentInChildren<PlayerGroundCheck>();
         GroundChecker.Init(currentType);
+
+        MaxHp = dataList[0].maxHp;
+        CurHP = MaxHp;
     }
 
     private void Update()
@@ -43,7 +54,7 @@ public class PlayerController : MonoBehaviour
         switch (currentType)
         {
             case PlayerType.Normal:
-                player[0].Execute();
+                players[0].Execute();
                 break;
             default:
                 break;
@@ -54,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (player[(int)currentType].IsGround)
+            if (players[(int)currentType].IsGround)
             {
                 // 추후에 원소 변경 시, 코드 작성
                 // 땅에 닿아 있을때만 호출 가능

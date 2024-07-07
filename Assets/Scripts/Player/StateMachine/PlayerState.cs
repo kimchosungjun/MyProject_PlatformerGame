@@ -4,11 +4,7 @@ using UnityEngine;
 
 public abstract class PlayerState
 {
-    protected Player player;
-    public PlayerState(Player _player)
-    {
-        player = _player;
-    }
+    public PlayerState(Player _player) { }
 
     public abstract void Enter();
     public abstract void Execute();

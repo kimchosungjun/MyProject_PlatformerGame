@@ -44,3 +44,10 @@ public enum PaltformType
     Ground,
     JumpPlatform
 }
+
+public enum SkillType
+{
+    Attack,
+    Buff,
+    AttackSkill
+}

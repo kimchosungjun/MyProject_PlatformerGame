@@ -9,10 +9,12 @@ namespace PlayerNormalStateSpace
     #region Idle
     public class NormalIdle : PlayerState
     {
+        NormalPlayer player;
+        PlayerData data;
+
         string currentAnimName = "";
         float horizontal;
-        PlayerData data;
-        public NormalIdle(Player _player) :base(_player)
+        public NormalIdle(NormalPlayer _player) :base(_player)
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Idle);
@@ -70,10 +72,12 @@ namespace PlayerNormalStateSpace
     #region Move
     public class NormalMove : PlayerState
     {
+        NormalPlayer player;
+        PlayerData data;
+
         string currentAnimName = "";
         float horizontal;
-        PlayerData data;
-        public NormalMove(Player _player) : base(_player)
+        public NormalMove(NormalPlayer _player) : base(_player)
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Move);
@@ -132,11 +136,13 @@ namespace PlayerNormalStateSpace
     #region Jump
     public class NormalJump : PlayerState
     {
-        string currentAnimName = "";
-        float horizontal;
+        NormalPlayer player;
         PlayerData data;
 
-        public NormalJump(Player _player) : base(_player)
+        string currentAnimName = "";
+        float horizontal;
+
+        public NormalJump(NormalPlayer _player) : base(_player)
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Jump);
@@ -185,11 +191,13 @@ namespace PlayerNormalStateSpace
     #region Fall
     public class NormalFall: PlayerState
     {
+        NormalPlayer player;
+        PlayerData data;
+
         string currentAnimName = "";
         float horizontal;
-        PlayerData data;
         
-        public NormalFall(Player _player) : base(_player)
+        public NormalFall(NormalPlayer _player) : base(_player)
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Fall);
@@ -237,11 +245,13 @@ namespace PlayerNormalStateSpace
     #region Roll
     public class NormalRoll : PlayerState
     {
-        string currentAnimName = "";
-        float timer = 0f;
+        NormalPlayer player;
         PlayerData playerData;
 
-        public NormalRoll(Player _player) : base(_player)
+        string currentAnimName = "";
+        float timer = 0f;
+
+        public NormalRoll(NormalPlayer _player) : base(_player)
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Roll);

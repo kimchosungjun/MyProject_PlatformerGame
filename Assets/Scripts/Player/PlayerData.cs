@@ -5,35 +5,31 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="PlayerData", menuName ="Player/PlayerData", order = int.MinValue)]
 public class PlayerData : ScriptableObject
 {
-    public PlayerType playerType;
+    public string attackFabName;
+    public string attackSkillFabName;
 
     public float xSpeed;
     public float ySpeed;
     public float rollSpeed;
-    public float rollTimer;
-    public float rollCoolTime;
+    public float attackSpeed;
+    public float attackSkillSpeed;
 
-    public float curhp;
-    public float maxhp;
+    public float rollTimer; // 구르는 시간
+    public float rollCoolTime; // 구르고 난 뒤에 다시 구르기까지 걸리는 시간
+    public float attackCoolTime;
+    public float buffSkillCoolTime;
+    public float attackSkillCoolTime;
+    public float buffMaintainTime; // 버프 지속시간
+
+    public float maxHp;
+    public int curMana;
+    public int maxMana;
+
     public float defenceValue;
-    public float attackValue;
+    public float attackDamageValue;
     public float buffSkillValue;
-    public float attackSkilldamage;
 
-
-
-    public void Init()
-    {
-        switch (playerType)
-        {
-            case PlayerType.Normal:
-                break;
-            case PlayerType.Wind:
-                break;
-            case PlayerType.Water:
-                break;
-            default:
-                break;
-        }
-    }
+    public int attackDecreaseMana;
+    public int buffSkillDecreaseMana;
+    public int attackSkillDecreaseMana;
 }

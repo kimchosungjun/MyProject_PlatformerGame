@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - JumpPlatform
   - EnemyAttack
+  - PlayerAttack
+  - Enemy
   layers:
   - Default
   - TransparentFX

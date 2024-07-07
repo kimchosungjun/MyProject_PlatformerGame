@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     private LoadSceneManager loadScene_Manager = new LoadSceneManager();
     public static LoadSceneManager LoadScene_Manager { get { return Instance.loadScene_Manager; } }
     #endregion
-   
+
+    #region Controllers
+    [SerializeField] PlayerController controller;
+    public PlayerController Controller{ get { return controller; } }
+    #endregion
     public void Awake()
     {
         #region Set GameManager

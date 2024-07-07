@@ -4,10 +4,12 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
+    #region Player Data
+    [Header("Data")]
     [SerializeField] protected PlayerActionType currentActionType = PlayerActionType.Idle;
-    [SerializeField] PlayerData data;
+    [SerializeField] protected PlayerData data;
     public PlayerData Data { get { return data; } }
-    protected Transform attackTransform;
+    #endregion
 
     #region Bool Val
     protected bool isGround;
@@ -16,16 +18,18 @@ public abstract class Player : MonoBehaviour
     protected bool canRoll = true;
     public bool CanRoll { get { return canRoll; } }
 
-    private bool isRoll;
+    protected bool isRoll;
     public bool IsRoll { get { return isRoll; } set { isRoll = value; } }
 
     protected bool isInvincibility = false;
     public bool IsInvincibility { get { return isInvincibility; }}
+
     protected bool canControll =true;
     public bool CanControll { get { return canControll; } set { canControll = value; } }
     #endregion
 
     #region Component
+    [Header("Component")]
     [SerializeField] protected Animator anim;
     [SerializeField] protected Rigidbody2D rigid;
     [SerializeField] protected SpriteRenderer sprite;
@@ -38,6 +42,17 @@ public abstract class Player : MonoBehaviour
     public PlayerController Controller { get { return controller; } }
     public PlayerState[] PlayerStates { get { return playerStates; } }
     public PlayerStateMachine StateMachine { get { return stateMachine; } }
+    #endregion
+
+    #region Common Value
+    protected WaitForSeconds hitTimer = new WaitForSeconds(1f);
+    protected Transform attackTransform;
+    protected float horizontal;
+
+    // Normal Attack, Skill CoolTime Check
+    protected bool isCoolDownAttack = true;
+    protected bool isCoolDownBuffSkill= true;
+    protected bool isCoolDownAttackSkill = true;
     #endregion
 
     #region Unity Life Cycle (Init : Awake, Execute : Update)
@@ -75,5 +90,74 @@ public abstract class Player : MonoBehaviour
         yield return new WaitForSeconds(_timer);
         canRoll = true;
     }
+    #endregion
+
+    #region Timer (공격, 버프스킬, 공격스킬)
+    public bool CanAttack()
+    {
+        if (isCoolDownAttack)
+        {
+            data.curMana -= data.attackDecreaseMana;
+            if (data.curMana <= 0)
+                controller.ChangeType(PlayerType.Normal);
+            isCoolDownAttack = false;
+            Invoke("AttackCoolTime", data.attackCoolTime);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public void AttackCoolTime()
+    {
+        isCoolDownAttack = true;
+    }
+
+    public bool CanBuffSkill()
+    {
+        if (isCoolDownBuffSkill)
+        {
+            int curMana = data.curMana - data.buffSkillDecreaseMana;
+            if (curMana < 0)
+                return false;
+            data.curMana -= data.buffSkillDecreaseMana;
+            if(data.curMana<=0)
+                controller.ChangeType(PlayerType.Normal);
+            isCoolDownBuffSkill = false;
+            Invoke("BuffSkillCoolTime", data.buffSkillCoolTime);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public void BuffSkillCoolTime()
+    {
+        isCoolDownBuffSkill = true;
+    }
+
+    public bool CanAttackSkill()
+    {
+        if (isCoolDownAttackSkill)
+        {
+            int curMana = data.curMana - data.attackSkillDecreaseMana;
+            if (curMana < 0)
+                return false;
+            data.curMana -= data.attackSkillDecreaseMana;
+            if (data.curMana <= 0)
+                controller.ChangeType(PlayerType.Normal);
+            isCoolDownAttackSkill = false;
+            Invoke("AttackSkillCoolTime", data.attackSkillCoolTime);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public void AttackSkillCoolTime()
+    {
+        isCoolDownAttackSkill = true;
+    }
+
     #endregion
 }
