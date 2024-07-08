@@ -16,12 +16,15 @@ public class ConvertEnum
     }
 }
 
+#region UI
 public enum LobbyUIType
 {
     Start,
     Exit
 }
+#endregion
 
+#region Player
 public enum PlayerType
 {
     Normal,
@@ -39,15 +42,27 @@ public enum PlayerActionType
     Roll,
 }
 
-public enum PaltformType
-{
-    Ground,
-    JumpPlatform
-}
-
 public enum SkillType
 {
     Attack,
     Buff,
     AttackSkill
 }
+#endregion
+
+#region Environment(Tag)
+public enum PaltformType
+{
+    Ground,
+    JumpPlatform
+}
+#endregion
+
+#region Enemy
+public enum EnemyActionType
+{
+    Idle,
+    Move,
+    Find
+}
+#endregion
