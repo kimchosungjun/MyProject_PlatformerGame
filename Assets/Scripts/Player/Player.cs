@@ -160,4 +160,45 @@ public abstract class Player : MonoBehaviour
     }
 
     #endregion
+
+    #region Hitting
+    public virtual void Hit(float _damamge)
+    {
+        if (isInvincibility)
+            return;
+        rigid.velocity = Vector2.up * 3f;
+        StartCoroutine(HitByEnemyCor());
+        Invinsibility(1f);
+
+        float trueDamage = _damamge-data.defenceValue;
+        if (trueDamage <= 0)
+            trueDamage = 1f;
+        controller.CurHP -= _damamge;
+        if (controller.CurHP <= 0)
+        {
+            canControll = false;
+            anim.SetBool("Death", true);
+            anim.SetBool("Idle", false);
+            anim.SetBool("Move", false);
+            anim.SetBool("Jump", false);
+            anim.SetBool("Fall", false);
+            // Death UI
+        }
+        else
+        {
+            anim.SetTrigger("Hurt");
+        }
+    }
+
+    public IEnumerator HitByEnemyCor()
+    {
+        Color color = sprite.color;
+        color.a = 0.5f;
+        sprite.color = color;
+        yield return hitTimer;
+        color.a = 1f;
+        sprite.color = color;
+    }
+
+    #endregion
 }

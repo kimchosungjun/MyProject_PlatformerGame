@@ -14,6 +14,7 @@ public class EnemyTriggerChecker : MonoBehaviour
     {
         IsGround,
         IsFrontGround,
+        IsFrontDownGround,
         IsNearPlayer
     }
 
@@ -28,8 +29,12 @@ public class EnemyTriggerChecker : MonoBehaviour
                     enemy.IsGround = true;
                 break;
             case EnemyCheckType.IsFrontGround:
+                if (collision.CompareTag("Ground")|| collision.CompareTag("JumpPlatform"))
+                    enemy.IsFrontGroud = true;
+                break;
+            case EnemyCheckType.IsFrontDownGround:
                 if (collision.CompareTag("Ground"))
-                    enemy.IsFrontGround = true;
+                    enemy.IsFrontDownGround = true;
                 break;
             case EnemyCheckType.IsNearPlayer:
                 if (collision.CompareTag("Player"))
@@ -47,8 +52,12 @@ public class EnemyTriggerChecker : MonoBehaviour
                     enemy.IsGround = false;
                 break;
             case EnemyCheckType.IsFrontGround:
+                if (collision.CompareTag("Ground") || collision.CompareTag("JumpPlatform"))
+                    enemy.IsFrontGroud = false;
+                break;
+            case EnemyCheckType.IsFrontDownGround:
                 if (collision.CompareTag("Ground"))
-                    enemy.IsFrontGround = false;
+                    enemy.IsFrontDownGround = false;
                 break;
             case EnemyCheckType.IsNearPlayer:
                 if (collision.CompareTag("Player"))

@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("적 데이터")]
+    [Header("Enemy Data")]
     [SerializeField] EnemyData data;
     protected CurrentEnemyData curData;
     public CurrentEnemyData CurData { get { return curData; } set { curData = value; } }
+   
     #region Bool Val
-    protected bool isFrontGround = false;
-    public bool IsFrontGround { get { return isFrontGround; } set { isFrontGround = value; } }
+    [Header("Bool Value Check")]
+    [SerializeField] protected bool isFrontGround = false;
+    public bool IsFrontGroud { get { return isFrontDownGround; } set{ isFrontGround = value; } }
 
-    protected bool isGround = false;
+    [SerializeField] protected bool isFrontDownGround = false;
+    public bool IsFrontDownGround { get { return isFrontDownGround; } set { isFrontDownGround = value; } }
+
+    [SerializeField] protected bool isGround = false;
     public bool IsGround { get { return isGround; } set { isGround = value; } }
 
-    protected bool isNearPlayer = false;
+    [SerializeField] protected bool isNearPlayer = false;
     public bool IsNearPlayer { get { return isNearPlayer; } set { isNearPlayer = value; } }
 
-    protected bool canMove = true;
+    [SerializeField] protected bool canMove = true;
     public bool CanMove { get { return canMove; } set { canMove = value; } }
 
-    protected bool canAttack = true;
+    [SerializeField] protected bool canAttack = true;
     public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
     #endregion
 
@@ -54,8 +59,24 @@ public class Enemy : MonoBehaviour
             curData.hp = curData.maxHp;
     }
 
-    public void Hit()
+    public virtual void Hit(float _damage)
     {
+        float trueDamage = _damage - curData.defence;
+        if (trueDamage <= 0)
+            trueDamage = 1;
+        curData.hp -= trueDamage;
+        if (curData.hp <= 0)
+            anim.SetBool("Dead", true);
+    }
 
+    public virtual void Death()
+    {
+        Invoke("InvokeDeath", 0.5f);
+    }
+
+    public void InvokeDeath()
+    {
+        gameObject.SetActive(false);
+        anim.SetBool("Dead", false);
     }
 }

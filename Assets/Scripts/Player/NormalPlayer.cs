@@ -56,6 +56,7 @@ public class NormalPlayer : Player
         {
             if (!CanAttack())
                 return;
+            anim.SetTrigger("Attack");
             GameObject go = PoolManager.Instace.GetObjectPool(data.attackFabName);
             if(go==null)
                 return;
@@ -85,40 +86,13 @@ public class NormalPlayer : Player
         {
             if (!CanAttackSkill())
                 return;
+            anim.SetTrigger("Attack");
             GameObject go = PoolManager.Instace.GetObjectPool(data.attackSkillFabName);
             if (go == null)
                 return;
             go.transform.position = attackSkillPosition.position;
             NormalSkills normalSkills = go.GetComponent<NormalSkills>();
             normalSkills.InitAttackData(data, transform.localScale.x);
-        }
-    }
-    #endregion
-
-    #region Collision Call Method
-
-    public void HitByEnemy(Collider2D _collision)
-    {
-        rigid.velocity = Vector2.up*3f;
-        StartCoroutine(HitByEnemyCor());
-        Invinsibility(1f);
-    }
-
-    public IEnumerator HitByEnemyCor()
-    {
-        Color color = sprite.color;
-        color.a = 0.5f;
-        sprite.color = color;
-        yield return hitTimer;
-        color.a = 1f;
-        sprite.color = color;
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("EnemyAttack") && !isInvincibility)
-        {
-            HitByEnemy(collision);
         }
     }
     #endregion

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   maxHp: 10
-  damage: 3
+  damage: 200
   defence: 1
   moveSpeed: 3
-  attackCoolTime: 0.5
+  attackCoolTime: 2
