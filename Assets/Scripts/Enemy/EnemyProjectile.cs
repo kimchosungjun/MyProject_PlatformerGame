@@ -9,6 +9,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] Animator anim;
     CurrentEnemyData data;
+    PlayerController controller;
 
     public void SetDir(Vector2 _dir, CurrentEnemyData _data)
     {
@@ -23,7 +24,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerController controller = collision.GetComponent<PlayerController>();
+            if(controller==null)
+                controller = collision.GetComponent<PlayerController>();
             controller.Hit(data.damage);
             rigid.velocity = Vector2.zero;
             anim.Play("MagicFireEx");
@@ -31,7 +33,8 @@ public class EnemyProjectile : MonoBehaviour
 
         if(collision.CompareTag("Ground") || collision.CompareTag("JumpPlatform"))
         {
-            gameObject.SetActive(false);
+            rigid.velocity = Vector2.zero;
+            anim.Play("MagicFireEx");
         }
     }
 

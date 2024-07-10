@@ -11,8 +11,6 @@ public class PlayerData : ScriptableObject
     public float xSpeed;
     public float ySpeed;
     public float rollSpeed;
-    public float attackSpeed;
-    public float attackSkillSpeed;
 
     public float rollTimer; // 구르는 시간
     public float rollCoolTime; // 구르고 난 뒤에 다시 구르기까지 걸리는 시간

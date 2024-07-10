@@ -5,6 +5,8 @@ using UnityEngine;
 public class NormalSkills : MonoBehaviour
 {
     [SerializeField] SkillType skillType;
+    [SerializeField] float attackSpeed;
+    //[SerializeField] float attackSkillSpeed;
     Rigidbody2D rigid;
     PlayerData data;
 
@@ -50,9 +52,9 @@ public class NormalSkills : MonoBehaviour
     public void ProjectileAttack()
     {
         if (isRight)
-            rigid.velocity = new Vector2(data.attackSpeed, 0);
+            rigid.velocity = new Vector2(attackSpeed, 0);
         else
-            rigid.velocity = new Vector2(-data.attackSpeed, 0);
+            rigid.velocity = new Vector2(-attackSpeed, 0);
     }
 
     public void Buff()
@@ -72,10 +74,19 @@ public class NormalSkills : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && skillType==SkillType.Attack)
         {
             // 데미지 주기
-            this.gameObject.SetActive(false);
+            Enemy enemy = collision.GetComponent<Enemy>();
+            enemy.Hit(attackDamage);
+            switch (skillType)
+            {
+                case SkillType.Attack:
+                    this.gameObject.SetActive(false);
+                    break;
+                case SkillType.AttackSkill:
+                    break;
+            }
         }
     }
 

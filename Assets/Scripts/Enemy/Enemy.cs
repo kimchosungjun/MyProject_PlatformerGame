@@ -6,7 +6,10 @@ public class Enemy : MonoBehaviour
 {
     [Header("Enemy Data")]
     [SerializeField] EnemyData data;
+    protected Color hitColor = new Color();
+    protected SpriteRenderer sprite;
     protected CurrentEnemyData curData;
+    protected WaitForSeconds hitTime = new WaitForSeconds(0.2f);
     public CurrentEnemyData CurData { get { return curData; } set { curData = value; } }
    
     #region Bool Val
@@ -30,7 +33,6 @@ public class Enemy : MonoBehaviour
     public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
 
     [SerializeField] protected bool isAttack = false;
-    
     #endregion
 
     #region Common Component
@@ -53,7 +55,9 @@ public class Enemy : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
         curData = new CurrentEnemyData(data);
+        hitColor = sprite.color;
     }
 
     protected void OnEnable()
@@ -68,18 +72,29 @@ public class Enemy : MonoBehaviour
         if (trueDamage <= 0)
             trueDamage = 1;
         curData.hp -= trueDamage;
+        StartCoroutine(HitCor());
         if (curData.hp <= 0)
-            anim.SetBool("Dead", true);
+        {
+            anim.SetBool("Death", true);
+            gameObject.tag = "Death";
+            canMove = false;
+        }
     }
 
     public virtual void Death()
     {
-        Invoke("InvokeDeath", 0.5f);
+        gameObject.SetActive(false);
+        anim.SetBool("Death", false);
+        gameObject.tag = "Enemy";
+        canMove = true;
     }
 
-    public void InvokeDeath()
+    public IEnumerator HitCor()
     {
-        gameObject.SetActive(false);
-        anim.SetBool("Dead", false);
+        hitColor.a = 0.5f;
+        sprite.color = hitColor;
+        yield return hitTime;
+        hitColor.a = 1f;
+        sprite.color = hitColor;
     }
 }

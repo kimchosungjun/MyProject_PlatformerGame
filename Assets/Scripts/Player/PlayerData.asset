@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d225ff93822c216478bb162c242257b8, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  attackFabName: 1
+  attackFabName: NoramlAttack
   attackSkillFabName: 3
-  xSpeed: 5
+  xSpeed: 6
   ySpeed: 10
   rollSpeed: 10
-  attackSpeed: 5
-  attackSkillSpeed: 5
   rollTimer: 0.5
   rollCoolTime: 10
   attackCoolTime: 0.5

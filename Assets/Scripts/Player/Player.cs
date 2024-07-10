@@ -182,6 +182,7 @@ public abstract class Player : MonoBehaviour
             anim.SetBool("Move", false);
             anim.SetBool("Jump", false);
             anim.SetBool("Fall", false);
+            gameObject.tag = "Death";
             // Death UI
         }
         else
