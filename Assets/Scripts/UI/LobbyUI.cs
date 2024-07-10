@@ -6,11 +6,24 @@ using UnityEngine.UI;
 public class LobbyUI : MonoBehaviour
 {
     [SerializeField] string nextSceneName;
-    [SerializeField, Tooltip("0:시작, 1:나가기")] Button[] lobbyBtns;
+    [SerializeField, Tooltip("0:새로하기,1: 이어하기,  2:나가기")] Button[] lobbyBtns;
 
-    private void Awake()
+    private void Start()
     {
-        lobbyBtns[(int)LobbyUIType.Start].onClick.AddListener(()=> { GameManager.LoadScene_Manager.LoadScene(nextSceneName); });
+        BlockBtn();
+
+        lobbyBtns[(int)LobbyUIType.Start].onClick.AddListener(()=> 
+        { GameManager.LoadScene_Manager.LoadScene(nextSceneName);  GameManager.Instance.PDataManager.StartNew(); });
+       
+        lobbyBtns[(int)LobbyUIType.Continue].onClick.AddListener(()=> 
+        { GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PDataManager.StartContinue(); });
+
         lobbyBtns[(int)LobbyUIType.Exit].onClick.AddListener(()=> { Application.Quit(); });
+    }
+
+    public void BlockBtn()
+    {
+        if (!GameManager.Instance.PDataManager.CheckDataPath())
+            lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
     }
 }

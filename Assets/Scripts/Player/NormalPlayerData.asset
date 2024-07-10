@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d225ff93822c216478bb162c242257b8, type: 3}
+  m_Name: NormalPlayerData
+  m_EditorClassIdentifier: 
+  currentType: 0
+  attackFabName: NoramlAttack
+  attackSkillFabName: 3
+  attackDecreaseMana: 0
+  buffSkillDecreaseMana: 0
+  attackSkillDecreaseMana: 0
+  xSpeed: 6
+  ySpeed: 10
+  rollSpeed: 10
+  curMana: 1
+  maxMana: 1
+  defenceValue: 1
+  maxHp: 100
+  attackDamageValue: 5
+  buffSkillValue: 1.1
+  rollTimer: 0.5
+  rollCoolTime: 8
+  attackCoolTime: 0.5
+  buffSkillCoolTime: 30
+  attackSkillCoolTime: 10
+  buffMaintainTime: 15

@@ -20,8 +20,19 @@ public class ConvertEnum
 public enum LobbyUIType
 {
     Start,
+    Continue,
     Exit
 }
+
+public enum EnhanceBtnType
+{
+    HP,
+    Roll,
+    Attack,
+    Buff,
+    None
+}
+
 #endregion
 
 #region Player
