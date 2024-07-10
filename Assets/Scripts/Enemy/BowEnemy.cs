@@ -130,8 +130,10 @@ public class BowEnemy : Enemy
     public void FindAI()
     {
         if (canMove)
-        {
-            if(!isFrontGround)
+        {   
+            if(isAttack)
+                rigid.velocity = new Vector2(0, rigid.velocity.y);
+            else if(!isFrontGround)
                 rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
             else
                 rigid.velocity = new Vector2(0, rigid.velocity.y);
@@ -148,7 +150,7 @@ public class BowEnemy : Enemy
             LookDirX = -1f;
         else if (controller.transform.position.x > transform.position.x)
             LookDirX = 1f;
-
+   
         if (isNearPlayer)
         {
             timer = 0f;
@@ -161,15 +163,17 @@ public class BowEnemy : Enemy
                 // Attack : ∂•ø° ¥Íæ∆¿÷¿ª∂ß∏∏
                 if (CanAttack)
                 {
-                    if (isGround)
+                    if (isGround && !isAttack)
                     {
+                        isAttack = true;
                         canAttack = false;
                         anim.SetTrigger("Attack");
                     }
                 }
                 else
                 {
-                    rigid.velocity = new Vector2(0, rigid.velocity.y);
+                    if(!isAttack)
+                        rigid.velocity = new Vector2(0, rigid.velocity.y);
                 }
             }
             else
@@ -219,5 +223,6 @@ public class BowEnemy : Enemy
     {
         yield return new WaitForSeconds(curData.attackCoolTime);
         canAttack = true;
+        isAttack = false;
     }
 }

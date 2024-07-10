@@ -8,6 +8,7 @@ public class SwordEnemy : Enemy
     float lookDirX = 1f;
     public float LookDirX { get { return lookDirX; } set { lookDirX = value; FlipX(value); } }
     EnemyActionType currentType = EnemyActionType.Idle;
+    EnemySword sword = null;
 
     [Header("Sword Enemy Information")]
     [SerializeField] GameObject swordObject;
@@ -51,6 +52,9 @@ public class SwordEnemy : Enemy
 
     public void IdleAI()
     {
+        if (!canMove)
+            return;
+
         if (isNearPlayer)
         {
             currentType = EnemyActionType.Find;
@@ -80,6 +84,13 @@ public class SwordEnemy : Enemy
 
     public void MoveAI()
     {
+        if (!canMove)
+        {
+            currentType = EnemyActionType.Idle;
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
+            return;
+        }
+
         if (isFrontGround || !isFrontDownGround)
         {
             LookDirX *= -1f;
@@ -119,17 +130,11 @@ public class SwordEnemy : Enemy
 
     public void FindAI()
     {
-
-        if (controller == null)
-            controller = GameManager.Instance.Controller;
-        if (controller.transform.position.x < transform.position.x) // 플레이어가 왼쪽에 있음
-            LookDirX = -1f;
-        else if (controller.transform.position.x > transform.position.x)
-            LookDirX = 1f;
-
         if (canMove)
         {
-            if (!isFrontGround)
+            if (isAttack)
+                rigid.velocity = new Vector2(0, rigid.velocity.y);
+            else if (!isFrontGround)
                 rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
             else
                 rigid.velocity = new Vector2(0, rigid.velocity.y);
@@ -138,6 +143,17 @@ public class SwordEnemy : Enemy
         {
             rigid.velocity = new Vector2(0, rigid.velocity.y);
             return;
+        }
+
+        if (controller == null)
+            controller = GameManager.Instance.Controller;
+
+        if (!isAttack)
+        {
+            if (controller.transform.position.x < transform.position.x) // 플레이어가 왼쪽에 있음
+                LookDirX = -1f;
+            else if (controller.transform.position.x > transform.position.x)
+                LookDirX = 1f;
         }
 
         if (isNearPlayer)
@@ -152,8 +168,9 @@ public class SwordEnemy : Enemy
                 // Attack : 땅에 닿아있을때만
                 if (CanAttack)
                 {
-                    if (isGround)
+                    if (isGround && !isAttack)
                     {
+                        isAttack = true;
                         canAttack = false;
                         anim.SetTrigger("Attack");
                     }
@@ -166,7 +183,8 @@ public class SwordEnemy : Enemy
             else
             {
                 // Follow Player
-                rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
+                if(!isAttack)
+                    rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
             }
         }
         else // 주변에 플레이어가 없을 때
@@ -200,11 +218,16 @@ public class SwordEnemy : Enemy
 
     public void SwingSword()
     {
+        if (sword == null)
+            sword = swordObject.GetComponent<EnemySword>();
+        sword.SetInformation(CurData);
         swordObject.SetActive(true);
     }
 
-    public void DoneSwingSword()
+    public void DoneSwing()
     {
+        swordObject.SetActive(false);
+        isAttack = false;
         StartCoroutine(AttackCoolDownCor());
     }
 

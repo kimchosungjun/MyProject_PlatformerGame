@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected bool canAttack = true;
     public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
+
+    [SerializeField] protected bool isAttack = false;
+    
     #endregion
 
     #region Common Component

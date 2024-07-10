@@ -23,15 +23,24 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player player = collision.GetComponent<Player>();
-            player.Hit(data.damage);
+            PlayerController controller = collision.GetComponent<PlayerController>();
+            controller.Hit(data.damage);
             rigid.velocity = Vector2.zero;
             anim.Play("MagicFireEx");
         }
+
+        if(collision.CompareTag("Ground") || collision.CompareTag("JumpPlatform"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-
     public void OffThis()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void OnBecameInvisible()
     {
         gameObject.SetActive(false);
     }

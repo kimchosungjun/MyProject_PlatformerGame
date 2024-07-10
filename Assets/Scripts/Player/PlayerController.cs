@@ -93,4 +93,9 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    public void Hit(float _damage)
+    {
+        players[(int)currentType].Hit(_damage);
+    }
 }

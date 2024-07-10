@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 5
   defence: 2
   moveSpeed: 3
-  attackCoolTime: 0.2
+  attackCoolTime: 1

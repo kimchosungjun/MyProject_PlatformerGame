@@ -954,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5374762483054659198, guid: 2238c8f966aa0514b85d4e4227221b5b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5756875645306982034, guid: 2238c8f966aa0514b85d4e4227221b5b, type: 3}
       propertyPath: m_RootOrder
@@ -1075,6 +1075,10 @@ PrefabInstance:
     - target: {fileID: 4996141512080171618, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
       propertyPath: m_Name
       value: DarkSwordEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996141512080171618, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7151588906751063200, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
       propertyPath: attackRange
