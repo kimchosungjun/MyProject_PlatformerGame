@@ -9,17 +9,20 @@ public class GameManager : MonoBehaviour
     #region Not refer Managers
     private LoadSceneManager loadScene_Manager = new LoadSceneManager();
     public static LoadSceneManager LoadScene_Manager { get { return Instance.loadScene_Manager; } }
+
+    private AumManager aum_Manager = new AumManager();
+    public static AumManager Aum_Manager { get { return Instance.aum_Manager; } }
     #endregion
 
     #region Refer Managers
-    [SerializeField] PlayerDataManager pDataManager;
-    public PlayerDataManager PDataManager
+    [SerializeField] PlayerDataManager playerData_Manager;
+    public PlayerDataManager PlayerData_Manager
     { 
         get
         {
-            if (pDataManager == null)
-                pDataManager = GetComponent<PlayerDataManager>();
-            return pDataManager; 
+            if (playerData_Manager == null)
+                playerData_Manager = GetComponent<PlayerDataManager>();
+            return playerData_Manager; 
         }
     }
     #endregion

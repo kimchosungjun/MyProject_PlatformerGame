@@ -13,17 +13,17 @@ public class LobbyUI : MonoBehaviour
         BlockBtn();
 
         lobbyBtns[(int)LobbyUIType.Start].onClick.AddListener(()=> 
-        { GameManager.LoadScene_Manager.LoadScene(nextSceneName);  GameManager.Instance.PDataManager.StartNew(); });
+        { GameManager.LoadScene_Manager.LoadScene(nextSceneName);  GameManager.Instance.PlayerData_Manager.StartNew(); });
        
         lobbyBtns[(int)LobbyUIType.Continue].onClick.AddListener(()=> 
-        { GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PDataManager.StartContinue(); });
+        { GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartContinue(); });
 
         lobbyBtns[(int)LobbyUIType.Exit].onClick.AddListener(()=> { Application.Quit(); });
     }
 
     public void BlockBtn()
     {
-        if (!GameManager.Instance.PDataManager.CheckDataPath())
+        if (!GameManager.Instance.PlayerData_Manager.CheckDataPath())
             lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
     }
 }

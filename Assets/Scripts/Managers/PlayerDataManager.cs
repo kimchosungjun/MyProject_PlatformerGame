@@ -11,35 +11,34 @@ public class PlayerDataManager : MonoBehaviour
     public EnhanceValueData EnhanceData { get { return enhanceData; } }
 
     // Application 경로를 읽지 못하는 버그 => 다른걸로 수정 필요!
-    string dataPath = "qwer"; /* Application.persistentDataPath;*/
-    string dataName = "/playerData";
+    string dataPath = Application.dataPath + "/Resources/PlayerData/playerData";
 
-    public void ApplyEnhanceData(EnhanceBtnType _enhanceType)
+    public void ApplyEnhanceData(EnhanceType _enhanceType)
     {
         switch (_enhanceType)
         {
-            case EnhanceBtnType.HP:
+            case EnhanceType.HP:
                 for (int i = 0; i < 3; i++)
                 {
                     datas[i].maxHp += enhanceData.increaseHpValue[enhanceData.hpDegree];
                 }
                 enhanceData.hpDegree += 1;
                 break;
-            case EnhanceBtnType.Roll:
+            case EnhanceType.Roll:
                 for (int i = 0; i < 3; i++)
                 {
                     datas[i].rollCoolTime -= enhanceData.increaseRollValue[enhanceData.rollDegree];
                 }
                 enhanceData.rollDegree += 1;
                 break;
-            case EnhanceBtnType.Attack:
+            case EnhanceType.Attack:
                 for (int i = 0; i < 3; i++)
                 {
                     datas[i].attackDamageValue += enhanceData.increaseHpValue[enhanceData.attackDegree];
                 }
                 enhanceData.attackDegree += 1;
                 break;
-            case EnhanceBtnType.Buff:
+            case EnhanceType.Buff:
                 for (int i = 0; i < 3; i++)
                 {
                     datas[i].buffSkillValue += enhanceData.increaseHpValue[enhanceData.buffDegree];
@@ -51,11 +50,9 @@ public class PlayerDataManager : MonoBehaviour
 
     public bool CheckDataPath()
     {
-        // 이것도 안됨 에러생김
-        string loadData = File.ReadAllText(dataPath+dataName);
-        if (loadData == string.Empty)
-            return false;
-        return true;
+        if (File.Exists(dataPath))
+            return true;
+        return false;
     }
 
     public void StartNew()
@@ -72,7 +69,8 @@ public class PlayerDataManager : MonoBehaviour
 
     public void StartContinue()
     {
-        string loadData = File.ReadAllText(dataPath + dataName);
+        enhanceData = new EnhanceValueData();
+        string loadData = File.ReadAllText(dataPath);
         enhanceData = JsonUtility.FromJson<EnhanceValueData>(loadData);
         int datasCnt = datas.Length;
         for (int idx = 0; idx < datasCnt; idx++)
@@ -80,10 +78,83 @@ public class PlayerDataManager : MonoBehaviour
             datas[idx].Continue();
         }
     }
+
+    public void SaveData()
+    {
+        string toStringData = JsonUtility.ToJson(enhanceData);
+        File.WriteAllText(dataPath, toStringData);
+    }
+
+    public bool CanEnhance(EnhanceType _type)
+    {
+        switch (_type)
+        {
+            case EnhanceType.HP:
+                if (enhanceData.hpDegree < enhanceData.enhanceHpDegree)
+                    return true;
+                else
+                    return false;
+            case EnhanceType.Roll:
+                if (enhanceData.rollDegree < enhanceData.enhanceRollDegree)
+                    return true;
+                else
+                    return false;
+            case EnhanceType.Attack:
+                if (enhanceData.attackDegree < enhanceData.enhanceAttackDegree)
+                    return true;
+                else
+                    return false;
+            case EnhanceType.Buff:
+                if (enhanceData.buffDegree < enhanceData.enhanceBuffDegree)
+                    return true;
+                else
+                    return false;
+            default:
+                return false;
+        }
+    }
+
+    public void ApplyEnhanceStat(EnhanceType _type)
+    {
+        int datasCnt = datas.Length;
+
+        switch (_type)
+        {
+            case EnhanceType.HP:
+                for (int idx = 0; idx < datasCnt; idx++)
+                {
+                    datas[idx].maxHp += enhanceData.increaseHpValue[enhanceData.hpDegree];
+                }
+                enhanceData.hpDegree += 1;
+                break;
+            case EnhanceType.Roll:
+                for (int idx = 0; idx < datasCnt; idx++)
+                {
+                    datas[idx].rollCoolTime -= enhanceData.increaseRollValue[enhanceData.rollDegree];
+                }
+                enhanceData.rollDegree += 1;
+                break;
+            case EnhanceType.Attack:
+                for (int idx = 0; idx < datasCnt; idx++)
+                {
+                    datas[idx].attackDamageValue += enhanceData.increaseAttackValue[enhanceData.attackDegree];
+                }
+                enhanceData.attackDegree += 1;
+                break;
+            case EnhanceType.Buff:
+                for (int idx = 0; idx < datasCnt; idx++)
+                {
+                    datas[idx].buffSkillValue += enhanceData.increaseBuffValue[enhanceData.buffDegree];
+                }
+                enhanceData.buffDegree += 1;
+                break;
+        }
+    }
 }
 
 public class EnhanceValueData
 {
+    // current
     public int hpDegree = 0;
     public int rollDegree = 0;
     public int attackDegree = 0;
@@ -96,8 +167,9 @@ public class EnhanceValueData
 
     public float[] costs = { 3f, 4f, 5f };
 
-    public int enhanceHpDegree = 0;
-    public int enhanceRollDegree = 0;
-    public int enhanceAttackDegree = 0;
-    public int enhanceBuffDegree = 0;
+    // max
+    public int enhanceHpDegree = 3;
+    public int enhanceRollDegree = 3;
+    public int enhanceAttackDegree = 3;
+    public int enhanceBuffDegree = 3;
 }

@@ -157,7 +157,7 @@ TextureImporter:
         width: 91
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +178,7 @@ TextureImporter:
         width: 958
         height: 459
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,6 +186,27 @@ TextureImporter:
       bones: []
       spriteID: 8a61b3aa0a533604dac3ac398b536f2a
       internalID: 776693081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StatEnhanceUI_1
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 921
+        width: 110
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3729f0ecd9911ac46ada9b494c87abf6
+      internalID: 1357928024
       vertices: []
       indices: 
       edges: []

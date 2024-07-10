@@ -24,7 +24,7 @@ public enum LobbyUIType
     Exit
 }
 
-public enum EnhanceBtnType
+public enum EnhanceType
 {
     HP,
     Roll,
