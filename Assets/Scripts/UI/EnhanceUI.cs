@@ -19,6 +19,8 @@ public class EnhanceUI : EscapeUI
     bool[] btnCanInteractable = new bool[4] { true,true,true,true};
     bool isShowWarnMessage = false;
 
+    public bool IsUseBuff { get; set; } = false;
+
     void Awake()
     {
         selectEnhanceBtns[(int)EnhanceType.HP].onClick.AddListener(() => { HpEnhanceClick(); });

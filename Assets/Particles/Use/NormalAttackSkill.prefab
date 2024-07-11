@@ -14622,7 +14622,7 @@ GameObject:
   - component: {fileID: 322485791207682088}
   - component: {fileID: 6046070818597457311}
   m_Layer: 0
-  m_Name: Charge slash purple
+  m_Name: NormalAttackSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

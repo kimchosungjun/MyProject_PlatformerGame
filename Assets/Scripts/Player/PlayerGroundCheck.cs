@@ -38,12 +38,14 @@ public class PlayerGroundCheck : MonoBehaviour
             { 
                 JumpPlatform jumpPlatform = jumpPlatformDic[collision.name];
                 players[(int)currentType].Rigid.velocity = new Vector2(players[(int)currentType].Rigid.velocity.x, jumpPlatform.JumpForce);
+                jumpPlatform.PlayParticle();
             }
             else
             {
                 JumpPlatform jumpPlatform = collision.GetComponent<JumpPlatform>();
                 jumpPlatformDic.Add(collision.name, jumpPlatform);
                 players[(int)currentType].Rigid.velocity = new Vector2(players[(int)currentType].Rigid.velocity.x, jumpPlatform.JumpForce);
+                jumpPlatform.PlayParticle();
             }
         }
     }

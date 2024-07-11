@@ -5,13 +5,18 @@ using UnityEngine;
 public class NormalSkills : MonoBehaviour
 {
     [SerializeField] SkillType skillType;
+    
+    [Header("기본공격")]
     [SerializeField] float attackSpeed;
-    //[SerializeField] float attackSkillSpeed;
+    
+    [Header("공격스킬")]
+    [SerializeField] GameObject attackSkillParObj;
+       
     Rigidbody2D rigid;
     PlayerData data;
 
     bool isRight;
-    float timer = 0f;
+    [SerializeField]float timer = 0f;
     float attackDamage;
     float defaultAttackValue;
 
@@ -28,10 +33,15 @@ public class NormalSkills : MonoBehaviour
 
     public void InitBuffData(PlayerData _data)
     {
-        timer = 0f;
         data = _data;
         defaultAttackValue = _data.attackDamageValue;
         _data.attackDamageValue = data.buffSkillValue * defaultAttackValue;
+        GameManager.Instance.UI_Controller.Enhance.IsUseBuff = true;
+    }
+
+    private void OnEnable()
+    {
+        timer = 0f;
     }
 
     private void Update()
@@ -45,7 +55,7 @@ public class NormalSkills : MonoBehaviour
                 Buff();
                 break;
             case SkillType.AttackSkill:
-                ProjectileAttack();
+                AttackSkill();
                 break;
         }        
     }
@@ -64,6 +74,18 @@ public class NormalSkills : MonoBehaviour
         {
             data.attackDamageValue = defaultAttackValue;
             this.gameObject.SetActive(false);
+            GameManager.Instance.UI_Controller.Enhance.IsUseBuff = false;
+        }
+    }
+
+    public void AttackSkill()
+    {
+        attackSkillParObj.SetActive(true);
+        timer += Time.deltaTime;
+        if (timer >=0.5f)
+        {
+            attackSkillParObj.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
@@ -72,19 +94,23 @@ public class NormalSkills : MonoBehaviour
         if(collision.CompareTag(ConvertEnum.ConvertEnumToString(PaltformType.Ground)) ||
             collision.CompareTag(ConvertEnum.ConvertEnumToString(PaltformType.JumpPlatform)))
         {
-            this.gameObject.SetActive(false);
+            if (skillType == SkillType.Attack)
+            {
+                this.gameObject.SetActive(false);
+            }
         }
-        if (collision.CompareTag("Enemy") && skillType==SkillType.Attack)
+        if (collision.CompareTag("Enemy"))
         {
             // 데미지 주기
             Enemy enemy = collision.GetComponent<Enemy>();
-            enemy.Hit(attackDamage);
             switch (skillType)
             {
                 case SkillType.Attack:
                     this.gameObject.SetActive(false);
+                    enemy.Hit(attackDamage);
                     break;
                 case SkillType.AttackSkill:
+                    enemy.Hit(attackDamage * 2);
                     break;
             }
         }

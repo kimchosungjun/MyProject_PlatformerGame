@@ -22,11 +22,14 @@ public class AumManager
             return;
         }
         haveAum -= _cost;
+        GameManager.Instance.UI_Controller.Aum.UpdateAumAmount(haveAum);
         GameManager.Instance.UI_Controller.Enhance.UpdateHaveAumState(haveAum);
     }
 
     public void GetAum(int _earn)
     {
         haveAum += _earn;
+        GameManager.Instance.UI_Controller.Aum.UpdateAumAmount(haveAum);
+        GameManager.Instance.UI_Controller.Enhance.UpdateHaveAumState(haveAum);
     }
 }

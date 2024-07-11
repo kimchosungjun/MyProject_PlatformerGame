@@ -11,7 +11,7 @@ public class AumUI : MonoBehaviour
         aumCntText.text = GameManager.Aum_Manager.HaveAum.ToString();
     }
 
-    public void UpdateEnemyCnt(int _cnt)
+    public void UpdateAumAmount(int _cnt)
     {
         aumCntText.text = _cnt.ToString();
     }

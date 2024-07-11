@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentType: 0
   attackFabName: NoramlAttack
-  attackSkillFabName: 3
+  attackSkillFabName: NormalAttackSkill
   attackDecreaseMana: 0
   buffSkillDecreaseMana: 0
   attackSkillDecreaseMana: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
   ySpeed: 10
   rollSpeed: 10
   curMana: 1
-  maxMana: 1
+  maxMana: 100
   defenceValue: 1
   maxHp: 100
   attackDamageValue: 5
@@ -33,3 +33,7 @@ MonoBehaviour:
   buffSkillCoolTime: 30
   attackSkillCoolTime: 10
   buffMaintainTime: 15
+  curHpDegree: 0
+  curRollDegree: 0
+  curAttackDegree: 0
+  curBuffDegree: 0

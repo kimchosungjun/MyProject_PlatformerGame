@@ -11,7 +11,7 @@ public class IndicatorUI : MonoBehaviour
         if (_tf == null)
             return;
         if (_isActve)
-            transform.position = _tf.position + Vector3.up*2;
+            transform.position = _tf.position + Vector3.down*2;
         indicator.SetActive(_isActve);
     }
 }
