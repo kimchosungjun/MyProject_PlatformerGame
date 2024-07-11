@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 8724466350249207100}
   - component: {fileID: 2481766069617989408}
   m_Layer: 0
-  m_Name: Portal yellow
+  m_Name: BattlePortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

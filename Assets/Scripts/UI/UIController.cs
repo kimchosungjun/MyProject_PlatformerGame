@@ -10,6 +10,14 @@ public class UIController : MonoBehaviour
     [SerializeField] HPUI hpUI;
     public HPUI HP { get { return hpUI; } set { hpUI = value; } }
 
+    [SerializeField] EnemyUI enemyUI;
+    public EnemyUI Enemy { get { return enemyUI; } set { enemyUI = value; } }
+
+    [SerializeField] AumUI aumUI;
+    public AumUI Aum { get { return aumUI; } set { aumUI = value; } }
+
+    [SerializeField] IndicatorUI indicatorUI;
+    public IndicatorUI Indicator { get { return indicatorUI; } set { indicatorUI = value; } }
 
     [SerializeField] List<EscapeUI> escapeUIList = new List<EscapeUI>();
 

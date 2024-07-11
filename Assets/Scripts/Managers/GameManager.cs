@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public BaseScene CurrentScene { get; set; } = null;
+
     #region Not refer Managers
     private LoadSceneManager loadScene_Manager = new LoadSceneManager();
     public static LoadSceneManager LoadScene_Manager { get { return Instance.loadScene_Manager; } }
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Refer Managers
+    [Header("매니저")]
     [SerializeField] PlayerDataManager playerData_Manager;
     public PlayerDataManager PlayerData_Manager
     { 
@@ -25,11 +28,10 @@ public class GameManager : MonoBehaviour
             return playerData_Manager; 
         }
     }
-
- 
     #endregion
 
     #region Controllers
+    [Header("컨트롤러")]
     [SerializeField] PlayerController controller;
     public PlayerController Controller
     {

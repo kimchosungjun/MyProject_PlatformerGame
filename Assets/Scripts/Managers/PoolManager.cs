@@ -9,6 +9,12 @@ public class PoolManager : MonoBehaviour
     Dictionary<string, GameObject> prefabObjectDic = new Dictionary<string, GameObject>(); // 프리팹 저장
     Dictionary<string, List<Poolable>> poolListDic = new Dictionary<string, List<Poolable>>(); // 생성된 오브젝트 저장
 
+    public EnemySpawnTrigger SpawnTrigger { get; set; } = null;
+
+    int enemyCnt = 0;
+    public int EnemyCnt { get { return enemyCnt; } 
+        set { enemyCnt = value; GameManager.Instance.UI_Controller.Enemy.UpdateEnemyCnt(enemyCnt);  if (enemyCnt == 0 && SpawnTrigger != null) SpawnTrigger.ActivePortal(); } }
+
     public GameObject GetObjectPool(string _name)
     {
         if (prefabObjectDic.ContainsKey(_name))
@@ -53,6 +59,13 @@ public class PoolManager : MonoBehaviour
             poolListDic.Add(_name, poolList);
             return go;
         }
+    }
+
+    public void EnemySpawner(string _name, Vector2 pos)
+    {
+        GameObject go = GetObjectPool(_name);
+        go.transform.position = pos;
+        EnemyCnt += 1;
     }
 
     private void Awake()

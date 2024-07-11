@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(HitCor());
         if (curData.hp <= 0)
         {
+            PoolManager.Instace.EnemyCnt -= 1;
             anim.SetBool("Death", true);
             gameObject.tag = "Death";
             canMove = false;

@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Death
   - UI
+  - WorldUI
   layers:
   - Default
   - TransparentFX
