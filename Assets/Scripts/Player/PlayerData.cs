@@ -36,11 +36,24 @@ public class PlayerData : ScriptableObject
     public float attackSkillCoolTime;
     public float buffMaintainTime; // 버프 지속시간
 
+    [Header("EnhanceDegree")]
+
+    public int curHpDegree;
+    public int curRollDegree;
+    public int curAttackDegree;
+    public int curBuffDegree;
+
     public void Init()
     {
         rollCoolTime = 8f;
         maxHp = 100f;
         maxMana = 100;
+        buffSkillValue = 1.1f;
+
+        curHpDegree=0;
+        curRollDegree=0;
+        curAttackDegree=0;
+        curBuffDegree=0;
 
         switch (currentType)
         {

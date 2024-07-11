@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
             return playerData_Manager; 
         }
     }
+
+ 
     #endregion
 
     #region Controllers
@@ -43,6 +45,22 @@ public class GameManager : MonoBehaviour
             }
             return controller; 
         } 
+    }
+
+    [SerializeField] UIController ui_Controller;
+    public UIController UI_Controller
+    {
+        get 
+        {
+            if (ui_Controller == null)
+            {
+                GameObject ui = GameObject.FindWithTag("UI");
+                ui_Controller = ui.GetComponentInChildren<UIController>();
+                if (ui_Controller == null)
+                    return null;
+            }
+            return ui_Controller; 
+        }
     }
     #endregion
 

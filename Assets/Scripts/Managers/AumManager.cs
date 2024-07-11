@@ -22,6 +22,7 @@ public class AumManager
             return;
         }
         haveAum -= _cost;
+        GameManager.Instance.UI_Controller.Enhance.UpdateHaveAumState(haveAum);
     }
 
     public void GetAum(int _earn)

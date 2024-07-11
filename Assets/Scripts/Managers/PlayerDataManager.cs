@@ -12,42 +12,7 @@ public class PlayerDataManager : MonoBehaviour
 
     // Application 경로를 읽지 못하는 버그 => 다른걸로 수정 필요!
     string dataPath = Application.dataPath + "/Resources/PlayerData/playerData";
-
-    public void ApplyEnhanceData(EnhanceType _enhanceType)
-    {
-        switch (_enhanceType)
-        {
-            case EnhanceType.HP:
-                for (int i = 0; i < 3; i++)
-                {
-                    datas[i].maxHp += enhanceData.increaseHpValue[enhanceData.hpDegree];
-                }
-                enhanceData.hpDegree += 1;
-                break;
-            case EnhanceType.Roll:
-                for (int i = 0; i < 3; i++)
-                {
-                    datas[i].rollCoolTime -= enhanceData.increaseRollValue[enhanceData.rollDegree];
-                }
-                enhanceData.rollDegree += 1;
-                break;
-            case EnhanceType.Attack:
-                for (int i = 0; i < 3; i++)
-                {
-                    datas[i].attackDamageValue += enhanceData.increaseHpValue[enhanceData.attackDegree];
-                }
-                enhanceData.attackDegree += 1;
-                break;
-            case EnhanceType.Buff:
-                for (int i = 0; i < 3; i++)
-                {
-                    datas[i].buffSkillValue += enhanceData.increaseHpValue[enhanceData.buffDegree];
-                }
-                enhanceData.buffDegree += 1;
-                break;
-        }
-    }
-
+   
     public bool CheckDataPath()
     {
         if (File.Exists(dataPath))
@@ -77,6 +42,10 @@ public class PlayerDataManager : MonoBehaviour
         {
             datas[idx].Continue();
         }
+        enhanceData.hpDegree = datas[0].curHpDegree;
+        enhanceData.rollDegree = datas[0].curRollDegree;
+        enhanceData.attackDegree = datas[0].curAttackDegree;
+        enhanceData.buffDegree = datas[0].curBuffDegree;
     }
 
     public void SaveData()
@@ -114,7 +83,7 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
-    public void ApplyEnhanceStat(EnhanceType _type)
+    public void ApplyEnhanceStat(EnhanceType _type, EnhanceUI _enhanceUI)
     {
         int datasCnt = datas.Length;
 
@@ -124,29 +93,50 @@ public class PlayerDataManager : MonoBehaviour
                 for (int idx = 0; idx < datasCnt; idx++)
                 {
                     datas[idx].maxHp += enhanceData.increaseHpValue[enhanceData.hpDegree];
+                    GameManager.Instance.Controller.MaxHp+= enhanceData.increaseHpValue[enhanceData.hpDegree];
+                    datas[idx].curHpDegree += 1;
                 }
                 enhanceData.hpDegree += 1;
+                if (!CanEnhance(_type))
+                    _enhanceUI.UpdateBtnState(0, false);
+                else
+                    _enhanceUI.UpdateBtnState(0, true);
                 break;
             case EnhanceType.Roll:
                 for (int idx = 0; idx < datasCnt; idx++)
                 {
                     datas[idx].rollCoolTime -= enhanceData.increaseRollValue[enhanceData.rollDegree];
+                    datas[idx].curRollDegree += 1;
                 }
                 enhanceData.rollDegree += 1;
+                if (!CanEnhance(_type))
+                    _enhanceUI.UpdateBtnState(1, false);
+                else
+                    _enhanceUI.UpdateBtnState(1, true);
                 break;
             case EnhanceType.Attack:
                 for (int idx = 0; idx < datasCnt; idx++)
                 {
                     datas[idx].attackDamageValue += enhanceData.increaseAttackValue[enhanceData.attackDegree];
+                    datas[idx].curAttackDegree += 1;
                 }
                 enhanceData.attackDegree += 1;
+                if (!CanEnhance(_type))
+                    _enhanceUI.UpdateBtnState(2, false);
+                else
+                    _enhanceUI.UpdateBtnState(2, true);
                 break;
             case EnhanceType.Buff:
                 for (int idx = 0; idx < datasCnt; idx++)
                 {
                     datas[idx].buffSkillValue += enhanceData.increaseBuffValue[enhanceData.buffDegree];
+                    datas[idx].curBuffDegree += 1;
                 }
                 enhanceData.buffDegree += 1;
+                if (!CanEnhance(_type))
+                    _enhanceUI.UpdateBtnState(3, false);
+                else
+                    _enhanceUI.UpdateBtnState(3, true);
                 break;
         }
     }
@@ -165,7 +155,7 @@ public class EnhanceValueData
     public float[] increaseAttackValue = { 0.5f, 0.5f, 1f};
     public float[] increaseBuffValue = { 0.1f, 0.1f, 0.2f };
 
-    public float[] costs = { 3f, 4f, 5f };
+    public int[] costs = { 3, 4, 5 };
 
     // max
     public int enhanceHpDegree = 3;

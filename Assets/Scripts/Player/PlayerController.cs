@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     public Player[] Players { get { return players; } }
     List<PlayerData> dataList = new List<PlayerData>();
     public List<PlayerData> DataList { get { return dataList; } }
-    public float CurHP { get; set; }
-    public float MaxHp { get; set; }
+    private float curHp;
+    public float CurHP { get { return curHp; } set { curHp = value;  GameManager.Instance.UI_Controller.HP.UpdateCurHpBar(curHp); } }
+    private float maxHp;
+    public float MaxHp { get { return maxHp; } set { maxHp = value; GameManager.Instance.UI_Controller.HP.UpdateMaxHPBar(maxHp,curHp); } }
     public PlayerGroundCheck GroundChecker { get; set; }
 
     #region Unity Cycle
@@ -92,6 +94,14 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void Heal(float _healValue)
+    {
+        if (_healValue + curHp > maxHp)
+            CurHP = MaxHp;
+        else
+            CurHP += _healValue;
     }
 
     public void Hit(float _damage)
