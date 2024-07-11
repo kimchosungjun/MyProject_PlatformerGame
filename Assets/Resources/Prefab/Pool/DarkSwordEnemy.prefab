@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 5923039752154923365}
   - component: {fileID: 7538886993653592472}
   - component: {fileID: 7151588906751063200}
+  - component: {fileID: 6779659221463730997}
   m_Layer: 7
   m_Name: DarkSwordEnemy
   m_TagString: Enemy
@@ -130,7 +131,7 @@ Transform:
   - {fileID: 7433599286042046195}
   - {fileID: 7363763277270178763}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2627756155979312070
 SpriteRenderer:
@@ -264,7 +265,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.6}
+  m_Offset: {x: 0, y: 0.7}
   m_Size: {x: 0.5, y: 1.2}
   m_Direction: 0
 --- !u!114 &7151588906751063200
@@ -291,6 +292,20 @@ MonoBehaviour:
   attackRange: 1
   findTimer: 3
   notFindTimer: 3
+--- !u!114 &6779659221463730997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996141512080171618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ba7c24d41dc2640a690c56e41f3b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 1}
+  outlineSize: 1
 --- !u!1 &5406408985930247524
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8888372143953923546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
