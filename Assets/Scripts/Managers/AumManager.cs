@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AumManager 
 {
-    int haveAum = 100;
+    int haveAum = 0;
     public int HaveAum { get { return haveAum; } }
 
     public bool CanUseAum(int _cost)

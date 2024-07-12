@@ -13,12 +13,14 @@ public class EnhanceUI : EscapeUI
     [SerializeField] GameObject onoffObject;
     [SerializeField] TextMeshProUGUI aumText;
     [SerializeField] TextMeshProUGUI[] costTexts;
+    [SerializeField] TextMeshProUGUI determineWarnText;
+    [SerializeField] TextMeshProUGUI buffWarnText;
     EnhanceType currentType = EnhanceType.None;
     EnhanceValueData data;
 
     bool[] btnCanInteractable = new bool[4] { true,true,true,true};
     bool isShowWarnMessage = false;
-
+    bool isShowBuffWarnMessage = false;
     public bool IsUseBuff { get; set; } = false;
 
     void Awake()
@@ -142,13 +144,30 @@ public class EnhanceUI : EscapeUI
         {
             selectEnhanceBtns[idx].interactable = false;
         }
+        switch (currentType)
+        {
+            case EnhanceType.HP:
+                determineWarnText.text = "HP를 강화하시겠습니까?";
+                break;
+            case EnhanceType.Roll:
+                determineWarnText.text = "구르기를 강화하시겠습니까?";
+                break;
+            case EnhanceType.Attack:
+                determineWarnText.text = "공격력을 강화하시겠습니까?";
+                break;
+            case EnhanceType.Buff:
+                determineWarnText.text = "버프를 강화하시겠습니까?";
+                break;
+        }
         determineUI.SetActive(true);
     }
 
     public void ActiveWarnUI()
     {
-        if(!isShowWarnMessage)
+        if (!isShowWarnMessage)
+        {
             StartCoroutine(WarnCor());
+        }
     }
 
     public IEnumerator WarnCor()
@@ -158,6 +177,32 @@ public class EnhanceUI : EscapeUI
         yield return new WaitForSeconds(3f);
         warnUI.SetActive(false);
         isShowWarnMessage = false;
+    }
+
+    public void ShowBuffWarnMessage()
+    {
+        if (!isShowBuffWarnMessage)
+            StartCoroutine(BuffWarnMessageCor());
+    }
+
+    public IEnumerator BuffWarnMessageCor()
+    {
+        float warnTimer = 0f;
+        Color color = buffWarnText.color;
+        color.a = 0f;
+        buffWarnText.color = color;
+        isShowBuffWarnMessage = true;
+        while (warnTimer < 2f)
+        {
+            warnTimer += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, warnTimer / 2f);
+            buffWarnText.color = color;
+            yield return null;
+        }
+        yield return new WaitForSeconds(3f);
+        color.a = 0f;
+        buffWarnText.color = color;
+        isShowBuffWarnMessage = false;
     }
     #endregion
 
@@ -251,6 +296,11 @@ public class EnhanceUI : EscapeUI
         }
         else
         {
+            if(determineUI.activeSelf)
+            {
+                ClickNo();
+                return;
+            }
             IsOn = false;
             onoffObject.SetActive(_isActive);
             Time.timeScale = 1f;

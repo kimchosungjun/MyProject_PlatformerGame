@@ -12,6 +12,7 @@ TagManager:
   - Death
   - UI
   - WorldUI
+  - NPC
   layers:
   - Default
   - TransparentFX

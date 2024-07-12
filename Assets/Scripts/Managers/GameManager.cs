@@ -57,7 +57,11 @@ public class GameManager : MonoBehaviour
             if (ui_Controller == null)
             {
                 GameObject ui = GameObject.FindWithTag("UI");
-                ui_Controller = ui.GetComponentInChildren<UIController>();
+                if(ui==null)
+                {
+                    Debug.LogError("¾ø¾î¿ä!!");
+                }
+                ui_Controller = ui.GetComponent<UIController>();
                 if (ui_Controller == null)
                     return null;
             }

@@ -8,7 +8,10 @@ public class Crystal : MonoBehaviour
     [SerializeField, Range(1,5)] int randomAum =2;
     [SerializeField] ParticleSystem electricParticle;
     [SerializeField] SpriteOutline[] outlines;
- 
+
+    [SerializeField] SpriteRenderer crystalSprite;
+    [SerializeField] Color afterColor;
+
     bool isInteractable = false;
     bool isTriggerPlayer =false;
     private void Awake()
@@ -30,6 +33,7 @@ public class Crystal : MonoBehaviour
         GameManager.Aum_Manager.GetAum(randomAum);
         electricParticle.gameObject.SetActive(false);
         GameManager.Instance.UI_Controller.Indicator.OnOffUI(false, this.transform);
+        crystalSprite.color = afterColor;
         for (int i = 0; i < 2; i++)
             outlines[i].enabled = false;
         Destroy(this);
@@ -51,6 +55,8 @@ public class Crystal : MonoBehaviour
         if (collision.CompareTag("Player") && !isInteractable)
         {
             isTriggerPlayer = false;
+            if (GameManager.Instance.UI_Controller == null)
+                return;
             GameManager.Instance.UI_Controller.Indicator.OnOffUI(false, this.transform);
             for (int i = 0; i < 2; i++)
                 outlines[i].enabled = false;
