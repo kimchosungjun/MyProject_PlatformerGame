@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
     bool canUsePortal = false;
     public enum PortalType
     {
+        Battle,
         NextBattle,
         Town,
         Boss
@@ -31,6 +32,9 @@ public class Portal : MonoBehaviour
     {
         switch (portalType)
         {
+            case PortalType.Battle:
+                GameManager.LoadScene_Manager.LoadScene(nextSceneName);
+                break;
             case PortalType.NextBattle:
                 controller.gameObject.transform.position = nextVec;
                 break;

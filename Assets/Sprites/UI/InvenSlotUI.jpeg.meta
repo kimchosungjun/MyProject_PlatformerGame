@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,7 +147,1225 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: InvenSlotUI_0
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 1702
+        width: 299
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d90d63f3cf221e459badf713bb805df
+      internalID: -606782127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_1
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 1702
+        width: 301
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93bfb1278910cae4faaffa3d5a79ec6d
+      internalID: -1851703589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_2
+      rect:
+        serializedVersion: 2
+        x: 2090
+        y: 1702
+        width: 304
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dab7c89d6d9bea40a7d6685a89dc70b
+      internalID: 989900603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1500
+        width: 157
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdea5220b7ffb4f4db60d9bd355dc85d
+      internalID: 565799266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_4
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 1500
+        width: 405
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c38903baea5824daf414981590196f
+      internalID: 215203085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_5
+      rect:
+        serializedVersion: 2
+        x: 2717
+        y: 1531
+        width: 33
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b4b2635c745a04780753d9cd391c11
+      internalID: -1073374559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_6
+      rect:
+        serializedVersion: 2
+        x: 2797
+        y: 1536
+        width: 107
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbbb3dbae265cac4c99be9e78599b3b7
+      internalID: 1446354517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_7
+      rect:
+        serializedVersion: 2
+        x: 3186
+        y: 1526
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e666ca6a4f9b947bc86cfa97a9aef5
+      internalID: -1771708998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_8
+      rect:
+        serializedVersion: 2
+        x: 3272
+        y: 1536
+        width: 109
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa8e4658ff5cd0f4fa098f1e2845a470
+      internalID: -1238247908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_9
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1441
+        width: 97
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796020dd583838d4384a77e96cc01652
+      internalID: -742717673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_10
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1441
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c8e91fcd15a544b8d8137f133d7b67
+      internalID: 543806031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_11
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 1441
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5d5c6def8bb264fac2c2fd9ff162b9
+      internalID: -968338297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_12
+      rect:
+        serializedVersion: 2
+        x: 2090
+        y: 1441
+        width: 102
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66e00f4caa671bb42803a0a3c75c7430
+      internalID: 1016812738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_13
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 1441
+        width: 97
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da2766a97c5a244a92127e6c2a0d247
+      internalID: 2060710447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_14
+      rect:
+        serializedVersion: 2
+        x: 2745
+        y: 1249
+        width: 206
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8c635e43c4115468779211363bb79a
+      internalID: 1962276276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_15
+      rect:
+        serializedVersion: 2
+        x: 3201
+        y: 1246
+        width: 208
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b677fb85f4a618f4e8867261b8f4864b
+      internalID: 318883933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1194
+        width: 767
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ac6aed4afd15640a74ebabfe63aa37
+      internalID: 144331573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_17
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1313
+        width: 97
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcfa02fabe341d14a96832ffa7770f87
+      internalID: -1414323120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_18
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 1313
+        width: 50
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d6a7081f484e146b37b93f10110c91
+      internalID: -329997066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_19
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1322
+        width: 95
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a19e1e5fe441d245809c2bd34a5848d
+      internalID: 1739967345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_20
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 1313
+        width: 91
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c2287f848eac841acdb2d2ed7c5d53
+      internalID: 1601622615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_21
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 1322
+        width: 95
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e83694a5ef904e46b186b2ce7a279e9
+      internalID: -872043996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_22
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 1313
+        width: 90
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b4a50cc8fb5764a8fcdeaab4090077
+      internalID: 1633301604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_23
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 1313
+        width: 72
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c010feb19908c4f937187c7f69635e
+      internalID: -1537816560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_24
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 1322
+        width: 95
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9032385f21b992142bf5074800d64db2
+      internalID: -1402536075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_25
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 1313
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e85e6f3dfac35498e004df7d6e0a15
+      internalID: -1873530059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_26
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1203
+        width: 97
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf41cf81d20bc7c40b6370544bd4516c
+      internalID: 1097065869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_27
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1203
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed762e4c5b9ee154d9c0b0f6937272d1
+      internalID: 42158075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_28
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 1199
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de1c72a6345ae94f9e2c40191645261
+      internalID: 109790024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_29
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 1203
+        width: 95
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc9a33ab725c7b4da1f38cba73f7b3d
+      internalID: 1567494117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_30
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 1203
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5084d40f602a3ba45afdb951e3924c3b
+      internalID: 1519964952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_31
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 1196
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a831ae0c5cfbd14f9ba97f17c5a6762
+      internalID: 990790742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_32
+      rect:
+        serializedVersion: 2
+        x: 2970
+        y: 992
+        width: 212
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec78cb26625ce6a4082e65ed06be3464
+      internalID: 1733575472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_33
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1075
+        width: 97
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9693b93cfc6aa8f4eafdb3c75b1c71d5
+      internalID: -1837184647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_34
+      rect:
+        serializedVersion: 2
+        x: 1739
+        y: 1182
+        width: 52
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037ed0d7c2956e74985e657bb4a5d82e
+      internalID: -1806510550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_35
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1085
+        width: 95
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4402b0ebf038883499e459d54e3d942e
+      internalID: -1641307382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_36
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 890
+        width: 767
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111cee31e0553ef4292544731561ce41
+      internalID: 369665840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_37
+      rect:
+        serializedVersion: 2
+        x: 1976
+        y: 1085
+        width: 98
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a293128a0d8168a429c8c22bf8aacaf9
+      internalID: -1891270281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_38
+      rect:
+        serializedVersion: 2
+        x: 2095
+        y: 1080
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ccfc64c902dad0488488b3ed60cb6fa
+      internalID: -1464542580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_39
+      rect:
+        serializedVersion: 2
+        x: 2202
+        y: 1087
+        width: 4
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d69973fdffe78489dcc4d684d7d09b
+      internalID: -906450475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_40
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 1085
+        width: 95
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f1fb45823bac74ab6c3ac4348be362
+      internalID: 1031589011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_41
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 1073
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32503444c13ef2049908b7fb77f5178f
+      internalID: -1397263431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_42
+      rect:
+        serializedVersion: 2
+        x: 2202
+        y: 1071
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcea865365fbc64458300e9f1e434042
+      internalID: 916509729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_43
+      rect:
+        serializedVersion: 2
+        x: 2045
+        y: 1068
+        width: 14
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe172a902e0c7b1449020d66c69a3248
+      internalID: -971559831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_44
+      rect:
+        serializedVersion: 2
+        x: 2095
+        y: 966
+        width: 97
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59365259d08fe8e41911707164da5194
+      internalID: -1526518497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_45
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 966
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5a2d63ba6fa2442a07b33b505b28a0
+      internalID: 776545849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_46
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 966
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff9625f5be1585242b14f1fff567859e
+      internalID: -22064419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_47
+      rect:
+        serializedVersion: 2
+        x: 1976
+        y: 966
+        width: 98
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9458655cb9fb6b643ad9161fb55c0b58
+      internalID: 392634666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_48
+      rect:
+        serializedVersion: 2
+        x: 2202
+        y: 1025
+        width: 4
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9dfcf574e8a56f46b92ae072e7f26e7
+      internalID: 42328289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_49
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 966
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f2771236d1ea946962a799cd9a1eca
+      internalID: -807122712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_50
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 980
+        width: 5
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e07495945c3b224a8a3f9728b1de15f
+      internalID: 754787822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 752
+        width: 259
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287f469bbdb5ce244997a23cf9c6fab2
+      internalID: 58604698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_52
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 752
+        width: 259
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e7e15e3b836104396eed4b956d498f
+      internalID: 1976454932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_53
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 406
+        width: 85
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b78fed980e4de44aaeb26492678578c
+      internalID: -779519492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_54
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 406
+        width: 992
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af3ebaac53a50c42b08b3278fcd8155
+      internalID: -777662444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_55
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 582
+        width: 8
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bf6882b85cbd9e46b149f9dcc72b95e
+      internalID: 229476043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_56
+      rect:
+        serializedVersion: 2
+        x: 2617
+        y: 406
+        width: 88
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b414ad3453d13dd46a44ec2aeae5a778
+      internalID: 24506410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvenSlotUI_57
+      rect:
+        serializedVersion: 2
+        x: 2732
+        y: 410
+        width: 960
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e39b56f6744003f418b63dd7f811b917
+      internalID: 1593885811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +1376,65 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      InvenSlotUI_0: -606782127
+      InvenSlotUI_1: -1851703589
+      InvenSlotUI_10: 543806031
+      InvenSlotUI_11: -968338297
+      InvenSlotUI_12: 1016812738
+      InvenSlotUI_13: 2060710447
+      InvenSlotUI_14: 1962276276
+      InvenSlotUI_15: 318883933
+      InvenSlotUI_16: 144331573
+      InvenSlotUI_17: -1414323120
+      InvenSlotUI_18: -329997066
+      InvenSlotUI_19: 1739967345
+      InvenSlotUI_2: 989900603
+      InvenSlotUI_20: 1601622615
+      InvenSlotUI_21: -872043996
+      InvenSlotUI_22: 1633301604
+      InvenSlotUI_23: -1537816560
+      InvenSlotUI_24: -1402536075
+      InvenSlotUI_25: -1873530059
+      InvenSlotUI_26: 1097065869
+      InvenSlotUI_27: 42158075
+      InvenSlotUI_28: 109790024
+      InvenSlotUI_29: 1567494117
+      InvenSlotUI_3: 565799266
+      InvenSlotUI_30: 1519964952
+      InvenSlotUI_31: 990790742
+      InvenSlotUI_32: 1733575472
+      InvenSlotUI_33: -1837184647
+      InvenSlotUI_34: -1806510550
+      InvenSlotUI_35: -1641307382
+      InvenSlotUI_36: 369665840
+      InvenSlotUI_37: -1891270281
+      InvenSlotUI_38: -1464542580
+      InvenSlotUI_39: -906450475
+      InvenSlotUI_4: 215203085
+      InvenSlotUI_40: 1031589011
+      InvenSlotUI_41: -1397263431
+      InvenSlotUI_42: 916509729
+      InvenSlotUI_43: -971559831
+      InvenSlotUI_44: -1526518497
+      InvenSlotUI_45: 776545849
+      InvenSlotUI_46: -22064419
+      InvenSlotUI_47: 392634666
+      InvenSlotUI_48: 42328289
+      InvenSlotUI_49: -807122712
+      InvenSlotUI_5: -1073374559
+      InvenSlotUI_50: 754787822
+      InvenSlotUI_51: 58604698
+      InvenSlotUI_52: 1976454932
+      InvenSlotUI_53: -779519492
+      InvenSlotUI_54: -777662444
+      InvenSlotUI_55: 229476043
+      InvenSlotUI_56: 24506410
+      InvenSlotUI_57: 1593885811
+      InvenSlotUI_6: 1446354517
+      InvenSlotUI_7: -1771708998
+      InvenSlotUI_8: -1238247908
+      InvenSlotUI_9: -742717673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

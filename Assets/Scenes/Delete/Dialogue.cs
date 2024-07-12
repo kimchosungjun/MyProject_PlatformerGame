@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dialogue
 {
     public int storyID; // Json Name
-    public string storyTime; // Json Name
+    public string storySpeaker; // Json Name
     public List<string> storyLines; // Json Name
 }
 

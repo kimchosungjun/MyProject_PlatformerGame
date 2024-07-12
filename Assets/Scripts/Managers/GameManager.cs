@@ -28,6 +28,17 @@ public class GameManager : MonoBehaviour
             return playerData_Manager; 
         }
     }
+
+    [SerializeField] DialogueManager dialogue_Manager;
+    public DialogueManager Dialogue_Manager
+    {
+        get
+        {
+            if (dialogue_Manager == null)
+                dialogue_Manager = GetComponent<DialogueManager>();
+            return dialogue_Manager;
+        }
+    }
     #endregion
 
     #region Controllers
@@ -57,13 +68,9 @@ public class GameManager : MonoBehaviour
             if (ui_Controller == null)
             {
                 GameObject ui = GameObject.FindWithTag("UI");
-                if(ui==null)
-                {
-                    Debug.LogError("¾ø¾î¿ä!!");
-                }
-                ui_Controller = ui.GetComponent<UIController>();
-                if (ui_Controller == null)
+                if (ui == null)
                     return null;
+                ui_Controller = ui.GetComponent<UIController>();
             }
             return ui_Controller; 
         }
@@ -88,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void InitManagers()
     {
-      
+        //Dialogue_Manager.Init();
     }
 
     public void ClearManagers()

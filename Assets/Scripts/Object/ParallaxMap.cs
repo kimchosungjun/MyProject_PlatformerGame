@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ParallaxMap : MonoBehaviour
 {
+    [SerializeField, Range(0.1f, 1f)] float parallaxSpeed;
     Transform mainCamTf;
+    Vector3 startPos;
+
     SpriteRenderer[] mapSprites;
     Material[] spriteMats;
     Vector2[] offSets;
@@ -21,6 +24,8 @@ public class ParallaxMap : MonoBehaviour
     public void SetBackgroun()
     {
         mainCamTf = Camera.main.transform;
+        startPos = mainCamTf.position;
+
         mapSprites = GetComponentsInChildren<SpriteRenderer>();
         sprCnt = mapSprites.Length;
 
@@ -46,11 +51,14 @@ public class ParallaxMap : MonoBehaviour
     {
         if (mainCamTf == null)
             return;
+
+        float distance = mainCamTf.position.x - startPos.x;
         transform.position = new Vector3(mainCamTf.position.x, mainCamTf.position.y, 0);
+
         for(int idx=0; idx<sprCnt; idx++)
         {
-            offSets[idx] += Vector2.right * speed[idx] * Time.deltaTime;
-            offSets[idx].x = Mathf.Repeat(offSets[idx].x, 1.0f);
+            offSets[idx] = new Vector2(distance,0) * parallaxSpeed * speed[idx];
+            //offSets[idx].x = Mathf.Repeat(offSets[idx].x, 1.0f);
             spriteMats[idx].mainTextureOffset = offSets[idx];
         }
     }

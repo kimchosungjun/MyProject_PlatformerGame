@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float MaxHp { get { return maxHp; } set { maxHp = value; GameManager.Instance.UI_Controller.HP.UpdateMaxHPBar(maxHp,curHp); } }
     public PlayerGroundCheck GroundChecker { get; set; }
 
+    private bool canControlPlayer = true;
+    public bool CanControlPlayer { get { return canControlPlayer; } set { canControlPlayer = value; } }
     #region Unity Cycle
     private void Awake()
     {
@@ -47,8 +49,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        InputPlayer();
-        InputChangeType();
+        if (canControlPlayer)
+        {
+            InputPlayer();
+            InputChangeType();
+        }
     }
 
     public void InputPlayer()

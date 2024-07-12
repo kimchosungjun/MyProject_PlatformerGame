@@ -23,6 +23,8 @@ public class EnhanceUI : EscapeUI
     bool isShowBuffWarnMessage = false;
     public bool IsUseBuff { get; set; } = false;
 
+    #region Life Cycle
+
     void Awake()
     {
         selectEnhanceBtns[(int)EnhanceType.HP].onClick.AddListener(() => { HpEnhanceClick(); });
@@ -89,6 +91,7 @@ public class EnhanceUI : EscapeUI
             UpdateBtnState(3, true);
         }
     }
+    #endregion
 
     #region EnhanceBtn Event
     public void HpEnhanceClick()

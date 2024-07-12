@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    #region Link UI
     [SerializeField] EnhanceUI enhanceUI;
     public EnhanceUI Enhance { get { return enhanceUI; } set { enhanceUI = value; } }
 
@@ -22,13 +23,18 @@ public class UIController : MonoBehaviour
     [SerializeField] KeyUI keyUI;
     public KeyUI Key { get { return keyUI; } set { keyUI = value; } }
 
+    [SerializeField] DialogueUI dialogueUI;
+    public DialogueUI Dialogue { get { return dialogueUI; } set { dialogueUI = value; } }
+    #endregion
+
     [SerializeField] List<EscapeUI> escapeUIList = new List<EscapeUI>();
 
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseUI();
+        Dialogue.Execute();
     }
 
     public void CloseUI()

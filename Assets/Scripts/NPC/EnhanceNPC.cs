@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class EnhanceNPC : NPC
 {
-    [SerializeField] string talkID;
+    [SerializeField] int talkID;
     [SerializeField] SpriteOutline outline;
-    bool isStartDialogue = true;
+    bool isStartDialogue = false;
     bool isCollidePlayer = false;
 
     EnhanceUI enhance = null;
     EnhanceUI Enhance { get { if (enhance == null) enhance = GameManager.Instance.UI_Controller.Enhance; return enhance; } }
     public void Talk()
     {
-        // use talkid
+        GameManager.Instance.UI_Controller.Dialogue.StartDialogue(talkID);
     }
 
     public void EnhanceStat()
@@ -57,7 +57,7 @@ public class EnhanceNPC : NPC
         {
             outline.enabled = false;
             isCollidePlayer = false;
-            if (GameManager.Instance.UI_Controller == null)
+            if (GameManager.Instance.UI_Controller.Indicator == null)
                 return;
             GameManager.Instance.UI_Controller.Indicator.OnOffUI(false, this.transform);
         }
