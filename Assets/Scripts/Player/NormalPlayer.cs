@@ -37,6 +37,7 @@ public class NormalPlayer : Player
             horizontal = 0;
             rigid.velocity = new Vector2(0, rigid.velocity.y);
         }
+        CoolTimerChecker();
     }
     #endregion
 

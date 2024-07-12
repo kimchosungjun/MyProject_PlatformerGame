@@ -49,7 +49,7 @@ namespace PlayerNormalStateSpace
                     player.Rigid.velocity = new Vector2(player.Rigid.velocity.x, data.ySpeed);
                     return;
                 }
-                if (Input.GetKeyDown(KeyCode.LeftShift) && player.CanRoll)
+                if (Input.GetKeyDown(KeyCode.LeftShift) && player.CanRoll())
                 {
                     player.ChangeActionState(PlayerActionType.Roll);
                     return;
@@ -113,7 +113,7 @@ namespace PlayerNormalStateSpace
                     player.Rigid.velocity = new Vector2(player.Rigid.velocity.x, data.ySpeed);
                     return;
                 }
-                if (Input.GetKeyDown(KeyCode.LeftShift) && player.CanRoll)
+                if (Input.GetKeyDown(KeyCode.LeftShift) && player.CanRoll())
                 {
                     player.ChangeActionState(PlayerActionType.Roll);
                     return;
@@ -262,7 +262,6 @@ namespace PlayerNormalStateSpace
         {
             player.Anim.SetBool(currentAnimName, true);
             player.Invinsibility(playerData.rollTimer);
-            player.Roll();
             player.IsRoll = true;
             timer = 0f;
         }

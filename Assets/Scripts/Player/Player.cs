@@ -15,16 +15,13 @@ public abstract class Player : MonoBehaviour
     protected bool isGround;
     public bool IsGround { get { return isGround; } set { isGround = value; } }
 
-    protected bool canRoll = true;
-    public bool CanRoll { get { return canRoll; } }
-
     protected bool isRoll;
     public bool IsRoll { get { return isRoll; } set { isRoll = value; } }
 
     protected bool isInvincibility = false;
-    public bool IsInvincibility { get { return isInvincibility; }}
+    public bool IsInvincibility { get { return isInvincibility; } }
 
-    protected bool canControll =true;
+    protected bool canControll = true;
     public bool CanControll { get { return canControll; } set { canControll = value; } }
     #endregion
 
@@ -36,6 +33,9 @@ public abstract class Player : MonoBehaviour
     protected PlayerController controller;
     protected PlayerState[] playerStates;
     protected PlayerStateMachine stateMachine;
+
+    protected UIController ui_Controller;
+    public UIController UI_Controller { get { if (ui_Controller == null) ui_Controller = GameManager.Instance.UI_Controller; return ui_Controller; } }
 
     public Animator Anim { get { return anim; } }
     public Rigidbody2D Rigid { get { return rigid; } }
@@ -50,9 +50,22 @@ public abstract class Player : MonoBehaviour
     protected float horizontal;
 
     // Normal Attack, Skill CoolTime Check
+    protected bool isCoolDownRoll = true;
+    public bool IsCoolDownRoll { get { return isCoolDownRoll; } }
     protected bool isCoolDownAttack = true;
-    protected bool isCoolDownBuffSkill= true;
+    protected bool isCoolDownBuffSkill = true;
     protected bool isCoolDownAttackSkill = true;
+
+    // Press Key Cool Timer 
+    protected float rollCoolTimer = 0f;
+    protected float attackCoolTimer = 0f;
+    protected float buffSkillCoolTimer = 0f;
+    protected float attackSkillCoolTimer = 0f;
+
+    public float RollCoolTimer { get { return rollCoolTimer; } }
+    public float AttackCoolTimer { get { return attackCoolTimer; } }
+    public float BuffSkillCoolTimer { get { return buffSkillCoolTimer; } }
+    public float AttackSkillCoolTimer { get { return attackSkillCoolTimer; } }
     #endregion
 
     #region Unity Life Cycle (Init : Awake, Execute : Update)
@@ -66,7 +79,7 @@ public abstract class Player : MonoBehaviour
         stateMachine.ChangeState(playerStates[(int)currentActionType]);
     }
 
-    #region Timer (무적, 구르기)
+    #region Timer (무적)
     public void Invinsibility(float _timer)
     {
         StartCoroutine(InvincibilityCoolTimeCor(_timer));
@@ -78,39 +91,67 @@ public abstract class Player : MonoBehaviour
         yield return new WaitForSeconds(_timer);
         isInvincibility = false;
     }
-
-    public void Roll()
-    {
-        StartCoroutine(RollCoolTimerCor(data.rollCoolTime));
-    }
-
-    public IEnumerator RollCoolTimerCor(float _timer)
-    {
-        canRoll = false;
-        yield return new WaitForSeconds(_timer);
-        canRoll = true;
-    }
     #endregion
 
-    #region Timer (공격, 버프스킬, 공격스킬)
+    #region Timer (구르기, 공격, 버프스킬, 공격스킬)
+    public void CoolTimerChecker()
+    {
+        // Roll
+        if (!isCoolDownRoll)
+        {
+            rollCoolTimer += Time.deltaTime;
+            if (rollCoolTimer > data.rollCoolTime)
+                isCoolDownRoll = true;
+        }
+        // Attack
+        if (!isCoolDownAttack)
+        {
+            attackCoolTimer += Time.deltaTime;
+            if (attackCoolTimer > data.attackCoolTime)
+                isCoolDownAttack = true;
+        }
+        // Buff
+        if (!isCoolDownBuffSkill)
+        {
+            buffSkillCoolTimer += Time.deltaTime;
+            if (buffSkillCoolTimer > data.buffSkillCoolTime)
+                isCoolDownBuffSkill = true;
+        }
+        // Attack Skill
+        if (!isCoolDownAttackSkill)
+        {
+            attackSkillCoolTimer += Time.deltaTime;
+            if (attackSkillCoolTimer > data.attackSkillCoolTime)
+                isCoolDownAttackSkill = true;
+        }
+    }
+
+    public bool CanRoll()
+    {
+        if (isCoolDownRoll)
+        {
+            isCoolDownRoll = false;
+            rollCoolTimer = 0f;
+            UI_Controller.Key.KeyPress(data.rollCoolTime, PressKeyType.Roll);
+            return true;
+        }
+        return false;
+    }
+
     public bool CanAttack()
     {
         if (isCoolDownAttack)
         {
             data.curMana -= data.attackDecreaseMana;
-            if (data.curMana <= 0)
+            if (data.curMana <= 0 && controller.CurrentType!=PlayerType.Normal)
                 controller.ChangeType(PlayerType.Normal);
             isCoolDownAttack = false;
-            Invoke("AttackCoolTime", data.attackCoolTime);
+            attackCoolTimer = 0f;
+            UI_Controller.Key.KeyPress(data.attackCoolTime, PressKeyType.Attack);
             return true;
         }
         else
             return false;
-    }
-
-    public void AttackCoolTime()
-    {
-        isCoolDownAttack = true;
     }
 
     public bool CanBuffSkill()
@@ -121,19 +162,15 @@ public abstract class Player : MonoBehaviour
             if (curMana < 0)
                 return false;
             data.curMana -= data.buffSkillDecreaseMana;
-            if(data.curMana<=0)
+            if(data.curMana<=0 && controller.CurrentType != PlayerType.Normal)
                 controller.ChangeType(PlayerType.Normal);
             isCoolDownBuffSkill = false;
-            Invoke("BuffSkillCoolTime", data.buffSkillCoolTime);
+            buffSkillCoolTimer = 0f;
+            UI_Controller.Key.KeyPress(data.buffSkillCoolTime, PressKeyType.Buff);
             return true;
         }
         else
             return false;
-    }
-
-    public void BuffSkillCoolTime()
-    {
-        isCoolDownBuffSkill = true;
     }
 
     public bool CanAttackSkill()
@@ -144,21 +181,16 @@ public abstract class Player : MonoBehaviour
             if (curMana < 0)
                 return false;
             data.curMana -= data.attackSkillDecreaseMana;
-            if (data.curMana <= 0)
+            if (data.curMana <= 0 && controller.CurrentType != PlayerType.Normal)
                 controller.ChangeType(PlayerType.Normal);
             isCoolDownAttackSkill = false;
-            Invoke("AttackSkillCoolTime", data.attackSkillCoolTime);
+            attackSkillCoolTimer = 0f;
+            UI_Controller.Key.KeyPress(data.attackSkillCoolTime, PressKeyType.AttackSkill);
             return true;
         }
         else
             return false;
     }
-
-    public void AttackSkillCoolTime()
-    {
-        isCoolDownAttackSkill = true;
-    }
-
     #endregion
 
     #region Hitting

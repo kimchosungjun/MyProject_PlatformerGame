@@ -19,6 +19,9 @@ public class UIController : MonoBehaviour
     [SerializeField] IndicatorUI indicatorUI;
     public IndicatorUI Indicator { get { return indicatorUI; } set { indicatorUI = value; } }
 
+    [SerializeField] KeyUI keyUI;
+    public KeyUI Key { get { return keyUI; } set { keyUI = value; } }
+
     [SerializeField] List<EscapeUI> escapeUIList = new List<EscapeUI>();
 
 

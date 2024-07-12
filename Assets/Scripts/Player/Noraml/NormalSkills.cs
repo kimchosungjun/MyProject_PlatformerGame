@@ -80,9 +80,14 @@ public class NormalSkills : MonoBehaviour
 
     public void AttackSkill()
     {
+        if (isRight)
+            transform.localScale = new Vector3(1, 1, 1);
+        else
+            transform.localScale = new Vector3(-1, 1, 1);
+
         attackSkillParObj.SetActive(true);
         timer += Time.deltaTime;
-        if (timer >=0.5f)
+        if (timer >=2f)
         {
             attackSkillParObj.SetActive(false);
             gameObject.SetActive(false);

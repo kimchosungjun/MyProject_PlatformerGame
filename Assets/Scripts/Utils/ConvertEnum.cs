@@ -59,6 +59,14 @@ public enum SkillType
     Buff,
     AttackSkill
 }
+
+public enum PressKeyType
+{
+    Roll,
+    Attack,
+    Buff,
+    AttackSkill
+}
 #endregion
 
 #region Environment(Tag)
