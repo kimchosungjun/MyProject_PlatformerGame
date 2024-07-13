@@ -147,6 +147,8 @@ public class EnhanceUI : EscapeUI
         {
             selectEnhanceBtns[idx].interactable = false;
         }
+        warnUI.SetActive(false);
+        isShowWarnMessage = false;
         switch (currentType)
         {
             case EnhanceType.HP:
@@ -169,17 +171,9 @@ public class EnhanceUI : EscapeUI
     {
         if (!isShowWarnMessage)
         {
-            StartCoroutine(WarnCor());
+            warnUI.SetActive(true);
+            isShowWarnMessage = true;
         }
-    }
-
-    public IEnumerator WarnCor()
-    {
-        warnUI.SetActive(true);
-        isShowWarnMessage = true;
-        yield return new WaitForSeconds(3f);
-        warnUI.SetActive(false);
-        isShowWarnMessage = false;
     }
 
     public void ShowBuffWarnMessage()
@@ -307,6 +301,7 @@ public class EnhanceUI : EscapeUI
             IsOn = false;
             onoffObject.SetActive(_isActive);
             Time.timeScale = 1f;
+            warnUI.SetActive(false);
         }
     }
     #endregion

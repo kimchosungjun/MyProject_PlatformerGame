@@ -36,6 +36,17 @@ public class NormalPlayer : Player
         {
             horizontal = 0;
             rigid.velocity = new Vector2(0, rigid.velocity.y);
+            if (!IsGround)
+            {
+                if (rigid.velocity.y == 0)
+                    anim.SetBool("Fall", false);
+                if (rigid.velocity.y < 0)
+                    anim.SetBool("Jump", false);
+            }
+            anim.SetBool("Move", false);
+            anim.SetBool("Roll", false);
+            anim.SetBool("Idle", true);
+
         }
         CoolTimerChecker();
     }

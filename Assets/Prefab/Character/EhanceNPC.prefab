@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8830207912220197606
 SpriteRenderer:
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ab54464b770d1478273257e85220b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talkData: {fileID: 11400000, guid: f572490d56cd1c74daf050dcb7df03f3, type: 2}
   talkID: 0
   outline: {fileID: 3684571195162370879}
 --- !u!114 &3684571195162370879

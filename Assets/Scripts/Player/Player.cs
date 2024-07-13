@@ -22,7 +22,7 @@ public abstract class Player : MonoBehaviour
     public bool IsInvincibility { get { return isInvincibility; } }
 
     protected bool canControll = true;
-    public bool CanControll { get { return canControll; } set { canControll = value; } }
+    public bool CanControll { get { return canControll; } set { canControll = value;  } }
     #endregion
 
     #region Component

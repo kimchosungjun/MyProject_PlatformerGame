@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public PlayerGroundCheck GroundChecker { get; set; }
 
     private bool canControlPlayer = true;
-    public bool CanControlPlayer { get { return canControlPlayer; } set { canControlPlayer = value; } }
+    public bool CanControlPlayer { get { return canControlPlayer; } set { canControlPlayer = value; players[(int)currentType].CanControll = value; } }
     #region Unity Cycle
     private void Awake()
     {
@@ -51,9 +51,9 @@ public class PlayerController : MonoBehaviour
     {
         if (canControlPlayer)
         {
-            InputPlayer();
             InputChangeType();
         }
+        InputPlayer();
     }
 
     public void InputPlayer()

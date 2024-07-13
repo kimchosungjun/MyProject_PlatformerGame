@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour
     [SerializeField, Tooltip("World Position")] Vector2 nextVec;
     [SerializeField] string nextSceneName;
     PlayerController controller;
+    IndicatorUI indicator;
     bool canUsePortal = false;
     public enum PortalType
     {
@@ -46,7 +47,7 @@ public class Portal : MonoBehaviour
                 break;
         }
         GameManager.Instance.UI_Controller.Indicator.OnOffUI(false, transform);
-        Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
     }
 
 
@@ -59,7 +60,9 @@ public class Portal : MonoBehaviour
                 controller = collision.GetComponent<PlayerController>();
             }
             canUsePortal = true;
-            GameManager.Instance.UI_Controller.Indicator.OnOffUI(true, transform);
+            if (indicator == null)
+                indicator = GameManager.Instance.UI_Controller.Indicator;
+            indicator.OnOffUI(true, transform);
             // 인디케이터 활성화
         }  
     }
@@ -69,7 +72,9 @@ public class Portal : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             canUsePortal = false;
-            GameManager.Instance.UI_Controller.Indicator.OnOffUI(false, transform);
+            if (indicator == null)
+                return;
+            indicator.OnOffUI(false, transform);
             // 인디케이터 비활성화
         }
     }

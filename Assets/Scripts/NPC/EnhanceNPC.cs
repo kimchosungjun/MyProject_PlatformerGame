@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnhanceNPC : NPC
+public class EnhanceNPC : MonoBehaviour
 {
+    [SerializeField] NPCTalkData talkData;
     [SerializeField] int talkID;
     [SerializeField] SpriteOutline outline;
     bool isStartDialogue = false;
@@ -11,11 +12,25 @@ public class EnhanceNPC : NPC
 
     EnhanceUI enhance = null;
     EnhanceUI Enhance { get { if (enhance == null) enhance = GameManager.Instance.UI_Controller.Enhance; return enhance; } }
+
+    bool canTalk = true;
+
     public void Talk()
     {
         GameManager.Instance.UI_Controller.Dialogue.StartDialogue(talkID);
     }
 
+    private void Awake()
+    {
+        if (talkData.isTalk)
+        {
+            canTalk = false;
+        }
+        else
+        {
+            canTalk = true;
+        }
+    }
     public void EnhanceStat()
     {
         if (!Enhance.IsUseBuff)
@@ -26,12 +41,13 @@ public class EnhanceNPC : NPC
 
     private void Update()
     {
-        if (isCollidePlayer && Input.GetKeyDown(KeyCode.F))
+        if (!GameManager.Instance.UI_Controller.Dialogue.IsStartDialogue && isCollidePlayer && Input.GetKeyDown(KeyCode.F))
         {
-            if (!isStartDialogue)
+            if (!isStartDialogue || canTalk)
             {
-                isStartDialogue = true;
                 Talk();
+                talkData.isTalk = true;
+                canTalk = false;
                 return;
             }
             else
@@ -57,8 +73,6 @@ public class EnhanceNPC : NPC
         {
             outline.enabled = false;
             isCollidePlayer = false;
-            if (GameManager.Instance.UI_Controller.Indicator == null)
-                return;
             GameManager.Instance.UI_Controller.Indicator.OnOffUI(false, this.transform);
         }
     }
