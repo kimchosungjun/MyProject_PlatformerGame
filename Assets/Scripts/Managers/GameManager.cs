@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public BaseScene CurrentScene { get; set; } = null;
-
+    [SerializeField] VideoPlayer videoPlayer;
+    public VideoPlayer Video { get { if (videoPlayer == null) videoPlayer = GetComponent<VideoPlayer>(); return videoPlayer; } }
     #region Not refer Managers
     private LoadSceneManager loadScene_Manager = new LoadSceneManager();
     public static LoadSceneManager LoadScene_Manager { get { return Instance.loadScene_Manager; } }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5075d787ce51a45ac57c8dd4a3ef60, type: 3}
   m_Name: Elder
   m_EditorClassIdentifier: 
-  isTalk: 1
+  isTalk: 0

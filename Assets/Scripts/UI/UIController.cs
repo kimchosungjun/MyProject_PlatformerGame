@@ -29,6 +29,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] List<EscapeUI> escapeUIList = new List<EscapeUI>();
 
+    [SerializeField] TutorialUI tutorialUI;
+    public TutorialUI Tutorial { get { return tutorialUI; } set { tutorialUI = value; } }
     
     private void Update()
     {
@@ -48,5 +50,6 @@ public class UIController : MonoBehaviour
                 return;
             }
         }
+        // 게임 정지 & 환경설정으로
     }
 }
