@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public BaseScene CurrentScene { get; set; } = null;
+    private BaseScene currentScene = null;
+    public BaseScene CurrentScene { get { return currentScene; } set { currentScene = value;} } 
     [SerializeField] VideoPlayer videoPlayer;
     public VideoPlayer Video { get { if (videoPlayer == null) videoPlayer = GetComponent<VideoPlayer>(); return videoPlayer; } }
     #region Not refer Managers

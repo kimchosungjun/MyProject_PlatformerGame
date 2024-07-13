@@ -27,4 +27,10 @@ public class TutorialUI : EscapeUI
         tutorialName.text = _name;
         tutorialInfo.text = _info;
     }
+
+    public void ExitBtn()
+    {
+        tutorialObject.SetActive(false);
+        Time.timeScale = 1f;
+    }
 }
