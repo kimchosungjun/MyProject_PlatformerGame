@@ -35,6 +35,9 @@ public class UIController : MonoBehaviour
     [SerializeField] FadeUI fadeUI;
     public FadeUI Fade { get { return fadeUI; } set { fadeUI = value; } }
 
+    [SerializeField] InformationUI infoUI;
+    public InformationUI Info { get { return infoUI; } set { infoUI = value; } }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
