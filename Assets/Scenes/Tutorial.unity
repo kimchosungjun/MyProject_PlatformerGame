@@ -1532,7 +1532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271846587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -635.9842, y: -464.614, z: -3.0875854}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3519,7 +3519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &570665402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3778,13 +3778,14 @@ GameObject:
   m_Component:
   - component: {fileID: 630254230}
   - component: {fileID: 630254231}
+  - component: {fileID: 630254232}
   m_Layer: 0
   m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &630254230
 Transform:
   m_ObjectHideFlags: 0
@@ -3845,6 +3846,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 80, y: 30}
   m_EdgeRadius: 0
+--- !u!114 &630254232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630254229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff0c62af7a071f47993839cd214ed95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upValue: 2
 --- !u!1 &668726298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3945,7 +3959,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674444541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -6720,7 +6734,6 @@ GameObject:
   - component: {fileID: 1148489636}
   - component: {fileID: 1148489635}
   - component: {fileID: 1148489634}
-  - component: {fileID: 1148489637}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6795,47 +6808,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148489633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 284796185}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1148489637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148489633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 0
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1158213172
 GameObject:
   m_ObjectHideFlags: 0
@@ -19284,8 +19263,12 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 350634923184611464, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 350634923184611464, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.33
+      value: 15.08
       objectReference: {fileID: 0}
     - target: {fileID: 350634923184611464, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19326,6 +19309,10 @@ PrefabInstance:
     - target: {fileID: 4996141512080171618, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
       propertyPath: m_Name
       value: DarkSwordEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996141512080171618, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5406408985930247524, guid: 8d7ac992635a41c4bbb62966adf44516, type: 3}
       propertyPath: m_IsActive

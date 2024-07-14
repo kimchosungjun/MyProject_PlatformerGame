@@ -7,7 +7,7 @@ public class BowEnemy : Enemy
     float timer = 0f;
     float lookDirX = 1f;
     public float LookDirX { get { return lookDirX; } set { lookDirX = value; FlipX(value); } }
-    EnemyActionType currentType = EnemyActionType.Idle;
+    [SerializeField] EnemyActionType currentType = EnemyActionType.Idle;
 
     [Header("Bow Enemy Information")]
     [SerializeField] Transform magicPosition;

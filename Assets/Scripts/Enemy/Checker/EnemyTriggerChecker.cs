@@ -27,6 +27,7 @@ public class EnemyTriggerChecker : MonoBehaviour
             case EnemyCheckType.IsGround:
                 if(collision.CompareTag("Ground"))
                     enemy.IsGround = true;
+                Debug.Log("¶¥¿¡ ´ê¾Ò¾î¿ä!");
                 break;
             case EnemyCheckType.IsFrontGround:
                 if (collision.CompareTag("Ground")|| collision.CompareTag("JumpPlatform"))

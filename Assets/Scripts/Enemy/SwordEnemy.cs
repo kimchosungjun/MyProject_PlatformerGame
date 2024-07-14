@@ -7,7 +7,7 @@ public class SwordEnemy : Enemy
     float timer = 0f;
     float lookDirX = 1f;
     public float LookDirX { get { return lookDirX; } set { lookDirX = value; FlipX(value); } }
-    EnemyActionType currentType = EnemyActionType.Idle;
+    [SerializeField] EnemyActionType currentType = EnemyActionType.Idle;
     EnemySword sword = null;
 
     [Header("Sword Enemy Information")]
@@ -24,14 +24,20 @@ public class SwordEnemy : Enemy
 
     public void AnimationControl()
     {
+        if (rigid.velocity.y < -0.1f)
+            anim.SetBool("Fall", true);
+        else
+            anim.SetBool("Fall", false);
+        if (!canMove)
+        {
+            anim.SetBool("Move", false);
+            return;
+        }
         if (rigid.velocity.x == 0)
             anim.SetBool("Move", false);
         else
             anim.SetBool("Move", true);
-        if (rigid.velocity.y < 0)
-            anim.SetBool("Fall", true);
-        else
-            anim.SetBool("Fall", false);
+        
     }
 
     public void Execute()

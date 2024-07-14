@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 5923039752154923365}
   - component: {fileID: 7538886993653592472}
   - component: {fileID: 7151588906751063200}
-  - component: {fileID: 6779659221463730997}
   m_Layer: 7
   m_Name: DarkSwordEnemy
   m_TagString: Enemy
@@ -288,24 +287,11 @@ MonoBehaviour:
   canMove: 1
   canAttack: 1
   isAttack: 0
+  currentType: 0
   swordObject: {fileID: 5406408985930247524}
   attackRange: 1
   findTimer: 3
   notFindTimer: 3
---- !u!114 &6779659221463730997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4996141512080171618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ba7c24d41dc2640a690c56e41f3b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
-  outlineSize: 1
 --- !u!1 &5406408985930247524
 GameObject:
   m_ObjectHideFlags: 0
