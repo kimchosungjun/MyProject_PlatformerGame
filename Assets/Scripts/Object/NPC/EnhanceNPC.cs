@@ -7,7 +7,6 @@ public class EnhanceNPC : MonoBehaviour
     [SerializeField] NPCTalkData talkData;
     [SerializeField] int talkID;
     [SerializeField] SpriteOutline outline;
-    bool isStartDialogue = false;
     bool isCollidePlayer = false;
 
     EnhanceUI enhance = null;
@@ -43,7 +42,7 @@ public class EnhanceNPC : MonoBehaviour
     {
         if (!GameManager.Instance.UI_Controller.Dialogue.IsStartDialogue && isCollidePlayer && Input.GetKeyDown(KeyCode.F))
         {
-            if (!isStartDialogue || canTalk)
+            if (canTalk)
             {
                 Talk();
                 talkData.isTalk = true;

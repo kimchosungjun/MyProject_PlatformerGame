@@ -19,6 +19,7 @@ public class TutorialUI : EscapeUI
             Time.timeScale = 0f;
         else
             Time.timeScale = 1f;
+        IsOn = _isActive;
     }
 
     public void Set(string _name, string _info, VideoClip _clip)
@@ -31,6 +32,7 @@ public class TutorialUI : EscapeUI
     public void ExitBtn()
     {
         tutorialObject.SetActive(false);
+        IsOn = false;
         Time.timeScale = 1f;
     }
 }

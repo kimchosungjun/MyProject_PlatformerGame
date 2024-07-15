@@ -4,7 +4,7 @@
       "storyID": 0,
       "storySpeaker": "에리카",
       "storyLines": [
-        "$Character(에리카)$",
+        "$Character(Erica)$",
         "너.. 어떻게 여기에 왔어?",
         "설마 인간들을 다 해치우고 온거야?",
         "$Speaker(엘린)$",

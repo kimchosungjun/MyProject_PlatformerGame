@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region SerializeField 
+    [SerializeField] ParticleSystem healParticle;
     [SerializeField] Transform attackTransform;
     public Transform AttackTransform { get { return attackTransform; } }
     [SerializeField] PlayerType currentType;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
         GroundChecker.Init(currentType);
 
         MaxHp = dataList[0].maxHp;
-        CurHP = MaxHp;
+        CurHP = 80;
     }
 
     private void Update()
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
     public void Heal(float _healValue)
     {
+        healParticle.Play();
         if (_healValue + curHp > maxHp)
             CurHP = MaxHp;
         else
