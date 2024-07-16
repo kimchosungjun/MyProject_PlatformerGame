@@ -4851,7 +4851,7 @@ GameObject:
   - component: {fileID: 7394623249002131220}
   - component: {fileID: 8622450354863718224}
   m_Layer: 0
-  m_Name: BothPortal
+  m_Name: BossPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9786,8 +9786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextVec: {x: 0, y: 0}
-  nextSceneName: BossScene
-  portalType: 2
+  nextSceneName: Boss
+  portalType: 3
 --- !u!1 &6842134302800741127
 GameObject:
   m_ObjectHideFlags: 0
