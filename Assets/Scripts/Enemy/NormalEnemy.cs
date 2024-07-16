@@ -5,6 +5,7 @@ using UnityEngine;
 public class NormalEnemy : Enemy
 {
     [Header("∂• ∞À√‚")]
+    [SerializeField] protected LayerMask groundLayer;
     [SerializeField] protected Transform enemyTransform;
     [SerializeField] protected Transform cliffTranfrom;
     [SerializeField] protected float groundDistance;
@@ -50,19 +51,19 @@ public class NormalEnemy : Enemy
         else
             detectVec = Vector2.left;
 
-        if (Physics2D.Raycast(enemyTransform.position, detectVec, frontDistance, LayerMask.GetMask("Ground")))
+        if (Physics2D.Raycast(enemyTransform.position, detectVec, frontDistance, groundLayer))
             isFrontGround = true;
         else
             isFrontGround = false;
 
         // Down Ground
-        if (Physics2D.Raycast(enemyTransform.position, Vector2.down, groundDistance, LayerMask.GetMask("Ground")))
+        if (Physics2D.Raycast(enemyTransform.position, Vector2.down, groundDistance, groundLayer))
             isGround = true;
         else
             isGround = false;
 
         // Cliff Ground
-        if (Physics2D.Raycast(cliffTranfrom.position, Vector2.down, groundDistance, LayerMask.GetMask("Ground")))
+        if (Physics2D.Raycast(cliffTranfrom.position, Vector2.down, groundDistance, groundLayer))
             isCliffGround = true;
         else
             isCliffGround = false;

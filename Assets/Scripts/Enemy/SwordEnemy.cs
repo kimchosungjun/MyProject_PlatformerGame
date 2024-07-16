@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwordEnemy : NormalEnemy
 {
+    [Header("°Ë»ç")]
     [SerializeField] EnemyActionType currentType = EnemyActionType.Idle;
     [SerializeField] GameObject swordObject;
     [SerializeField] EnemySword enemySword;

@@ -30,12 +30,11 @@ public class EnemySpawnTrigger : MonoBehaviour
     public void SpawnEnemy()
     {
         int enemyNameCnt = spawnEnemyNames.Length;
-        int spawnCnt = spawnEnemyCnt.Length;
         int spawPosCnt = spawnPositions.Length;
         int randNum;
         for(int q = 0; q<enemyNameCnt; q++)
         {
-            for(int p = 0; p<spawnCnt; p++)
+            for(int p = 0; p<spawnEnemyCnt[q]; p++)
             {
                 randNum = Random.Range(0, spawPosCnt);
                 PoolManager.Instace.EnemySpawner(spawnEnemyNames[q],spawnPositions[randNum]);
