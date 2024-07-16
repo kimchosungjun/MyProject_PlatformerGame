@@ -14,11 +14,11 @@ public class LobbyUI : MonoBehaviour
     {
         BlockBtn();
 
-        lobbyBtns[(int)LobbyUIType.Start].onClick.AddListener(()=> 
-        { GameManager.LoadScene_Manager.LoadScene(nextSceneName);  GameManager.Instance.PlayerData_Manager.StartNew(); });
+        //lobbyBtns[(int)LobbyUIType.Start].onClick.AddListener(()=> 
+        //{ ResetBtn(); });
        
-        lobbyBtns[(int)LobbyUIType.Continue].onClick.AddListener(()=> 
-        { GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartContinue(); });
+        //lobbyBtns[(int)LobbyUIType.Continue].onClick.AddListener(()=> 
+        //{ ResetBtn();  });
 
         lobbyBtns[(int)LobbyUIType.Exit].onClick.AddListener(()=> { Application.Quit(); });
     }
@@ -27,5 +27,15 @@ public class LobbyUI : MonoBehaviour
     {
         if (!GameManager.Instance.PlayerData_Manager.CheckDataPath())
             lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
+    }
+
+    public void ResetBtn()
+    {
+        GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartNew();
+    }
+
+    public void ContinueBtn()
+    {
+        GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartContinue();
     }
 }

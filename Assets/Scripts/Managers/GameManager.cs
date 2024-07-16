@@ -120,17 +120,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Update()
+    public void SaveAllData()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            SceneManager.LoadScene("Lobby");
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            // ¿˙¿Â
-            talkData_Manager.SaveJson();
-        }
+        PlayerData_Manager.SaveJson(); 
+        TalkData_Manager.SaveJson();
     }
 }

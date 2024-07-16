@@ -10,9 +10,8 @@ public class PlayerDataManager : MonoBehaviour
     EnhanceValueData enhanceData;
     public EnhanceValueData EnhanceData { get { return enhanceData; } }
 
-    // Application 경로를 읽지 못하는 버그 => 다른걸로 수정 필요!
     string dataPath = Application.dataPath + "/Resources/PlayerData/playerData";
-   
+
     public bool CheckDataPath()
     {
         if (File.Exists(dataPath))
@@ -48,10 +47,10 @@ public class PlayerDataManager : MonoBehaviour
         enhanceData.buffDegree = datas[0].curBuffDegree;
     }
 
-    public void SaveData()
+    public void SaveJson()
     {
-        string toStringData = JsonUtility.ToJson(enhanceData);
-        File.WriteAllText(dataPath, toStringData);
+        string modifyString = JsonUtility.ToJson(enhanceData);
+        File.WriteAllText(dataPath, modifyString);
     }
 
     public bool CanEnhance(EnhanceType _type)
