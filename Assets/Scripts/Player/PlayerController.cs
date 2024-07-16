@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         GroundChecker.Init(currentType);
 
         MaxHp = dataList[0].maxHp;
-        CurHP = 80;
+        CurHP = maxHp;
     }
 
     private void Update()

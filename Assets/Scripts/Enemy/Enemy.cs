@@ -4,35 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy Data")]
+    [Header("적 데이터")]
     [SerializeField] EnemyData data;
     protected Color hitColor = new Color();
     protected SpriteRenderer sprite;
     protected CurrentEnemyData curData;
     protected WaitForSeconds hitTime = new WaitForSeconds(0.2f);
     public CurrentEnemyData CurData { get { return curData; } set { curData = value; } }
-   
+
     #region Bool Val
-    [Header("Bool Value Check")]
-    [SerializeField] protected bool isFrontGround = false;
-    public bool IsFrontGroud { get { return isFrontDownGround; } set{ isFrontGround = value; } }
-
-    [SerializeField] protected bool isFrontDownGround = false;
-    public bool IsFrontDownGround { get { return isFrontDownGround; } set { isFrontDownGround = value; } }
-
-    [SerializeField] protected bool isGround = false;
-    public bool IsGround { get { return isGround; } set { isGround = value; } }
-
-    [SerializeField] protected bool isNearPlayer = false;
-    public bool IsNearPlayer { get { return isNearPlayer; } set { isNearPlayer = value; } }
-
-    [SerializeField] protected bool canMove = true;
-    public bool CanMove { get { return canMove; } set { canMove = value; } }
-
-    [SerializeField] protected bool canAttack = true;
-    public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
-
-    [SerializeField] protected bool isAttack = false;
+    [Header("제어 변수")]
+    [SerializeField] protected bool isDeath = false;
+    public bool IsDeath { get { return isDeath; } set { isDeath = value; } }
     #endregion
 
     #region Common Component
@@ -41,17 +24,9 @@ public class Enemy : MonoBehaviour
     
     protected Animator anim;
     public Animator Anim { get { return anim; } }
-    
-    protected PlayerController controller;
-    public PlayerController Controller { get { return controller; } }
     #endregion
 
     protected virtual void Awake()
-    {
-        Init();
-    }
-
-    public virtual void Init()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -63,9 +38,13 @@ public class Enemy : MonoBehaviour
     protected void OnEnable()
     {
         if (curData != null)
+        {
+            isDeath = false;
             curData.hp = curData.maxHp;
+        }
     }
 
+    #region Hit & Death
     public virtual void Hit(float _damage)
     {
         float trueDamage = _damage - curData.defence;
@@ -75,21 +54,12 @@ public class Enemy : MonoBehaviour
         StartCoroutine(HitCor());
         if (curData.hp <= 0)
         {
+            isDeath = true;
             PoolManager.Instace.EnemyCnt -= 1;
             anim.SetBool("Death", true);
             gameObject.tag = "Death";
-            canMove = false;
         }
     }
-
-    public virtual void Death()
-    {
-        gameObject.SetActive(false);
-        anim.SetBool("Death", false);
-        gameObject.tag = "Enemy";
-        canMove = true;
-    }
-
     public IEnumerator HitCor()
     {
         hitColor.a = 0.5f;
@@ -98,4 +68,12 @@ public class Enemy : MonoBehaviour
         hitColor.a = 1f;
         sprite.color = hitColor;
     }
+
+    public virtual void DoneDeath()
+    {
+        gameObject.SetActive(false);
+        anim.SetBool("Death", false);
+        gameObject.tag = "Enemy";
+    }
+    #endregion
 }

@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6bdd1e278844842afa16979d72bead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Town
+  nextSceneName: Tutorial
   lobbyBtns:
   - {fileID: 1885117170}
   - {fileID: 1783819102}

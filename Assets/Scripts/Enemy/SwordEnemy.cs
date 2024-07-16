@@ -2,46 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordEnemy : Enemy
+public class SwordEnemy : NormalEnemy
 {
-    float timer = 0f;
-    float lookDirX = 1f;
-    public float LookDirX { get { return lookDirX; } set { lookDirX = value; FlipX(value); } }
     [SerializeField] EnemyActionType currentType = EnemyActionType.Idle;
-    EnemySword sword = null;
-
-    [Header("Sword Enemy Information")]
     [SerializeField] GameObject swordObject;
-    [SerializeField, Range(0, 5f)] float attackRange = 2f;
-    [SerializeField, Tooltip("find behaviour timer")] float findTimer = 3f;
-    [SerializeField, Tooltip("idle, move behaviour timer")] float notFindTimer = 3f;
-
-    private void Update()
+    [SerializeField] EnemySword enemySword;
+    private void Start()
     {
-        Execute();
-        AnimationControl();
+        ChangeActionType(EnemyActionType.Move);
+        if (playerController == null)
+            playerController = GameManager.Instance.Controller;
+        enemySword.SetInformation(curData);
     }
 
-    public void AnimationControl()
+    public void Update()
     {
-        if (rigid.velocity.y < -0.1f)
-            anim.SetBool("Fall", true);
-        else
-            anim.SetBool("Fall", false);
-        if (!canMove)
+        LayerChecker();
+        if (isDeath)
         {
             anim.SetBool("Move", false);
-            return;
+            anim.SetBool("Fall", false);
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
         }
-        if (rigid.velocity.x == 0)
+        else
+        {
+            AnimationChecker();
+            Execute();
+        }
+    }
+
+    public void AnimationChecker()
+    {
+        // Move
+        if (Mathf.Abs(rigid.velocity.x) < 0.1f)
             anim.SetBool("Move", false);
         else
             anim.SetBool("Move", true);
-        
+        // Fall
+        if (isGround)
+            anim.SetBool("Fall", false);
+        else
+            anim.SetBool("Fall", true);
     }
 
+    public void Flip(bool _isRight)
+    {
+        if (!isGround)
+            return;
+
+        isLookRight = _isRight;
+        if (_isRight)
+            transform.localScale = new Vector3(2, 2, 2);
+        else
+            transform.localScale = new Vector3(-2, 2, 2);
+    }
+ 
     public void Execute()
     {
+        if (!canMove)
+        {
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
+            return;
+        }
+
         switch (currentType)
         {
             case EnemyActionType.Idle:
@@ -58,31 +81,25 @@ public class SwordEnemy : Enemy
 
     public void IdleAI()
     {
-        if (!canMove)
-            return;
-
-        if (isNearPlayer)
+        if(isNearPlayer)
         {
-            currentType = EnemyActionType.Find;
-            timer = 0f;
+            ChangeActionType(EnemyActionType.Find);
             return;
         }
 
-        rigid.velocity = new Vector2(0, rigid.velocity.y);
-
-        timer += Time.deltaTime;
-        if (timer > notFindTimer)
+        // Idle AI
+        idleTimer += Time.deltaTime;
+        if (idleTimer > idleMaintainTime)
         {
             int randNum = Random.Range(0, 2);
-            timer = 0f;
-            if (randNum != 0)
+            if (randNum == 0)
             {
-                randNum = Random.Range(0, 2);
-                if (randNum == 0)
-                    LookDirX = 1f;
-                else
-                    LookDirX = -1f;
-                currentType = EnemyActionType.Move;
+                ChangeActionType(EnemyActionType.Idle);
+                return;
+            }
+            else
+            {
+                ChangeActionType(EnemyActionType.Move);
                 return;
             }
         }
@@ -90,156 +107,135 @@ public class SwordEnemy : Enemy
 
     public void MoveAI()
     {
-        if (!canMove)
+        if (isFrontGround)
         {
-            currentType = EnemyActionType.Idle;
-            rigid.velocity = new Vector2(0, rigid.velocity.y);
+            Flip(!isLookRight);
             return;
         }
-
-        if (isFrontGround || !isFrontDownGround)
-        {
-            LookDirX *= -1f;
-            timer = 0f;
-            rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
-            return;
-        }
-        rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
 
         if (isNearPlayer)
         {
-            currentType = EnemyActionType.Find;
-            //timer = 0f;
+            ChangeActionType(EnemyActionType.Find);
             return;
         }
 
-        timer += Time.deltaTime;
-        if (timer > notFindTimer)
+        //Move AI
+        rigid.velocity = new Vector2(transform.localScale.x * curData.moveSpeed, rigid.velocity.y);
+        moveTimer += Time.deltaTime;
+        if (moveTimer > moveMaintainTime)
         {
             int randNum = Random.Range(0, 2);
-            timer = 0f;
-            if (randNum != 0)
+            if (randNum == 0)
             {
-                currentType = EnemyActionType.Idle;
+                ChangeActionType(EnemyActionType.Idle);
                 return;
             }
             else
             {
-                randNum = Random.Range(0, 2);
-                if (randNum == 0)
-                    LookDirX = 1f;
-                else
-                    LookDirX = -1f;
+                ChangeActionType(EnemyActionType.Move);
+                return;
             }
         }
     }
 
     public void FindAI()
     {
-        if (canMove)
-        {
-            if (isAttack)
-                rigid.velocity = new Vector2(0, rigid.velocity.y);
-            else if (!isFrontGround)
-                rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
-            else
-                rigid.velocity = new Vector2(0, rigid.velocity.y);
-        }
-        else
-        {
-            rigid.velocity = new Vector2(0, rigid.velocity.y);
-            return;
-        }
-
-        if (controller == null)
-            controller = GameManager.Instance.Controller;
-
-        if (!isAttack)
-        {
-            if (controller.transform.position.x < transform.position.x) // 플레이어가 왼쪽에 있음
-                LookDirX = -1f;
-            else if (controller.transform.position.x > transform.position.x)
-                LookDirX = 1f;
-        }
+        if (playerController.transform.position.x - transform.position.x > 0.1f)
+            Flip(true);
+        else if (playerController.transform.position.x - transform.position.x < -0.1f)
+            Flip(false); 
 
         if (isNearPlayer)
         {
-            timer = 0f;
-
-            float Distance = Vector2.Distance(controller.transform.position, transform.position);
-            if (Distance < attackRange)
+            findTimer = 0f;
+            float distance = Vector2.Distance(transform.position, playerController.transform.position);
+            if (distance < attackRange)
             {
-                if (!canMove)
-                    return;
-                // Attack : 땅에 닿아있을때만
-                if (CanAttack)
+                if (canAttack)
                 {
-                    if (isGround && !isAttack)
-                    {
-                        isAttack = true;
-                        canAttack = false;
-                        anim.SetTrigger("Attack");
-                    }
+                    if (isFrontGround)
+                        rigid.velocity = new Vector2(0, rigid.velocity.y);
+                    canMove = false;
+                    canAttack = false;
+                    anim.SetTrigger("Attack");
+                    Invoke("AttackTimer", curData.attackCoolTime);
                 }
                 else
                 {
-                    rigid.velocity = new Vector2(0, rigid.velocity.y);
+                    if (isFrontGround)
+                        rigid.velocity = new Vector2(0, rigid.velocity.y);
                 }
             }
             else
             {
-                // Follow Player
-                if(!isAttack)
-                    rigid.velocity = new Vector2(lookDirX * curData.moveSpeed, rigid.velocity.y);
+                if (isFrontGround)
+                    rigid.velocity = new Vector2(0, rigid.velocity.y);
+                else
+                    rigid.velocity = new Vector2(curData.moveSpeed * transform.localScale.x, rigid.velocity.y);
             }
         }
-        else // 주변에 플레이어가 없을 때
+        else
         {
-            timer += Time.deltaTime;
-            if (timer > findTimer)
+            if (isFrontGround)
+                rigid.velocity = new Vector2(0, rigid.velocity.y);
+            else
+                rigid.velocity = new Vector2(curData.moveSpeed * transform.localScale.x, rigid.velocity.y);
+            // Set Another Type
+            findTimer += Time.deltaTime;
+            if (findTimer > findMaintainTime)
             {
                 int randNum = Random.Range(0, 2);
-                timer = 0f;
                 if (randNum == 0)
                 {
-                    currentType = EnemyActionType.Idle;
+                    ChangeActionType(EnemyActionType.Idle);
                     return;
                 }
                 else
                 {
-                    currentType = EnemyActionType.Move;
+                    ChangeActionType(EnemyActionType.Move);
                     return;
                 }
             }
         }
     }
 
-    public void FlipX(float _dir)
+    public void ChangeActionType(EnemyActionType _changeType)
     {
-        if (_dir >= 1)
-            transform.localScale = new Vector3(2, 2, 1);
-        else if (_dir <= -1)
-            transform.localScale = new Vector3(-2, 2, 1);
+        currentType = _changeType;
+        switch (_changeType)
+        {
+            case EnemyActionType.Idle:
+                idleTimer = 0f;
+                break;
+            case EnemyActionType.Move:
+                moveTimer = 0f;
+                int randNum = Random.Range(0, 2);
+                if (randNum == 0)
+                    Flip(true);
+                else
+                    Flip(false);
+                break;
+            case EnemyActionType.Find:
+                findTimer = 0f;
+                break;
+        }
     }
 
-    public void SwingSword()
+
+    // Call By Attack Animation
+    public void ActiveAttack()
     {
-        if (sword == null)
-            sword = swordObject.GetComponent<EnemySword>();
-        sword.SetInformation(CurData);
         swordObject.SetActive(true);
     }
 
-    public void DoneSwing()
+    public void InActiveAttack()
     {
+        canMove = true;
         swordObject.SetActive(false);
-        isAttack = false;
-        StartCoroutine(AttackCoolDownCor());
     }
 
-    public IEnumerator AttackCoolDownCor()
+    public void AttackTimer()
     {
-        yield return new WaitForSeconds(curData.attackCoolTime);
         canAttack = true;
     }
 }
