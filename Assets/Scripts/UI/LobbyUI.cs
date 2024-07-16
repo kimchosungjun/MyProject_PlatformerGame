@@ -15,7 +15,7 @@ public class LobbyUI : MonoBehaviour
         BlockBtn();
 
         lobbyBtns[(int)LobbyUIType.Start].onClick.AddListener(()=> 
-        { GameManager.LoadScene_Manager.LoadScene(nextSceneName);  GameManager.Instance.PlayerData_Manager.StartNew(); InitTalkDatas(); });
+        { GameManager.LoadScene_Manager.LoadScene(nextSceneName);  GameManager.Instance.PlayerData_Manager.StartNew(); });
        
         lobbyBtns[(int)LobbyUIType.Continue].onClick.AddListener(()=> 
         { GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartContinue(); });
@@ -27,14 +27,5 @@ public class LobbyUI : MonoBehaviour
     {
         if (!GameManager.Instance.PlayerData_Manager.CheckDataPath())
             lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
-    }
-
-    public void InitTalkDatas()
-    {
-        int cnt = talkDataList.Count;
-        for(int i=0; i<cnt; i++)
-        {
-            talkDataList[i].Init();
-        }
     }
 }

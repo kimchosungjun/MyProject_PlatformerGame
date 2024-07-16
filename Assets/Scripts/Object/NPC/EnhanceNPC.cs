@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnhanceNPC : MonoBehaviour
 {
-    [SerializeField] NPCTalkData talkData;
+    string talkerName = "Elder";
+    TalkData talkData;
+    public TalkData Talk_Data { get { if (talkData == null) talkData = GameManager.Instance.TalkData_Manager.LoadTalk(talkerName); return talkData; } }
+
     [SerializeField] int talkID;
     [SerializeField] SpriteOutline outline;
     bool isCollidePlayer = false;
@@ -19,16 +22,9 @@ public class EnhanceNPC : MonoBehaviour
         GameManager.Instance.UI_Controller.Dialogue.StartDialogue(talkID);
     }
 
-    private void Awake()
+    private void Start()
     {
-        if (talkData.isTalk)
-        {
-            canTalk = false;
-        }
-        else
-        {
-            canTalk = true;
-        }
+        canTalk = !talkData.isTalk;
     }
     public void EnhanceStat()
     {

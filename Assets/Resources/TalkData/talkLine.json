@@ -1,0 +1,40 @@
+{
+  "talks": [
+    {
+      "isTalk": false,
+      "talkerName": "Erica"
+    },
+    {
+      "isTalk": false,
+      "talkerName": "Elder"
+    },
+    {
+      "isTalk": true,
+      "talkerName": "Move"
+    },
+    {
+      "isTalk": true,
+      "talkerName": "Roll"
+    },
+    {
+      "isTalk": false,
+      "talkerName": "Jump"
+    },
+    {
+      "isTalk": false,
+      "talkerName": "Crystal"
+    },
+    {
+      "isTalk": false,
+      "talkerName": "Heal"
+    },
+    {
+      "isTalk": false,
+      "talkerName": "Battle"
+    },
+    {
+      "isTalk": false,
+      "talkerName": "Skill"
+    }
+  ]
+}

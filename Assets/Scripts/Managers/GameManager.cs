@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Refer Managers
-    [Header("매니저")]
+    [Header("Player Data Manager")]
     [SerializeField] PlayerDataManager playerData_Manager;
     public PlayerDataManager PlayerData_Manager
     { 
@@ -33,6 +33,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Header("Talk Data Manager")]
+    [SerializeField] TalkDataManager talkData_Manager;
+    public TalkDataManager TalkData_Manager
+    {
+        get
+        {
+            if (talkData_Manager == null)
+                talkData_Manager = GetComponent<TalkDataManager>();
+            return talkData_Manager;
+        }
+    }
+
+    [Header("Dialogue Data Manager")]
     [SerializeField] DialogueManager dialogue_Manager;
     public DialogueManager Dialogue_Manager
     {
@@ -112,6 +125,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Y))
         {
             SceneManager.LoadScene("Lobby");
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            // 저장
+            talkData_Manager.SaveJson();
         }
     }
 }

@@ -1503,6 +1503,10 @@ PrefabInstance:
       value: "\uD50C\uB808\uC774\uC5B4 \uC810\uD504"
       objectReference: {fileID: 0}
     - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
+      propertyPath: talkName
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
       propertyPath: videoClip
       value: 
       objectReference: {fileID: 32900000, guid: 182db613ab3f62e4584172474c4fdb19, type: 3}
@@ -1589,6 +1593,10 @@ PrefabInstance:
       propertyPath: talkData
       value: 
       objectReference: {fileID: 11400000, guid: e0fb4899a3e449346a011fd7620b38ce, type: 2}
+    - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
+      propertyPath: talkName
+      value: Roll
+      objectReference: {fileID: 0}
     - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
       propertyPath: videoClip
       value: 
@@ -8439,6 +8447,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1285796569}
     m_Modifications:
     - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
+      propertyPath: talkName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
       propertyPath: videoClip
       value: 
       objectReference: {fileID: 32900000, guid: aa819d2f404cf774483876ae411380a2, type: 3}
@@ -9484,6 +9496,10 @@ PrefabInstance:
       propertyPath: talkData
       value: 
       objectReference: {fileID: 11400000, guid: 3be30dc6cc4527e42a623e2f6fe5ed64, type: 2}
+    - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
+      propertyPath: talkName
+      value: Skill
+      objectReference: {fileID: 0}
     - target: {fileID: 2984354557127761639, guid: 4b4a50d3f3e477e46a67bae70d55d2f1, type: 3}
       propertyPath: videoClip
       value: 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6208462080578412879}
   - component: {fileID: 7989541098641400452}
   - component: {fileID: 4991713715135579623}
+  - component: {fileID: 5709577319499527564}
   - component: {fileID: 1513034194565675535}
   m_Layer: 0
   m_Name: GameManager
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1513034194565675535}
   playerData_Manager: {fileID: 7989541098641400452}
+  talkData_Manager: {fileID: 5709577319499527564}
   dialogue_Manager: {fileID: 4991713715135579623}
   controller: {fileID: 0}
   ui_Controller: {fileID: 0}
@@ -79,6 +81,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyLine: {fileID: 4900000, guid: 79e9576f8498d154189cef03bd9e0b0a, type: 3}
+--- !u!114 &5709577319499527564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318965840512753913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2555d9844fe2c4f42a16364fc221f2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talkLine: {fileID: 4900000, guid: 92b994358425045499519b8669f110b2, type: 3}
 --- !u!328 &1513034194565675535
 VideoPlayer:
   m_ObjectHideFlags: 0

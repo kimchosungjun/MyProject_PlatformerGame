@@ -5,13 +5,18 @@ using UnityEngine.Video;
 
 public class TutorialLight : MonoBehaviour
 {
-    [SerializeField] NPCTalkData talkData; 
+    TalkData talkData;
+
+    [SerializeField] string talkName;
     [SerializeField, TextArea] string nameStr;
     [SerializeField, TextArea] string infoStr;
     [SerializeField] VideoClip videoClip;
 
-    private void Awake()
+    private void Start()
     {
+        if (talkData == null)
+            talkData = GameManager.Instance.TalkData_Manager.LoadTalk(talkName);
+
         if (talkData.isTalk)
             Destroy(gameObject);
     }
