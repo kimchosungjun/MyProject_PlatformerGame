@@ -319,7 +319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541259289
 GameObject:
@@ -470,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349747899644235615, guid: 1c4fa089409ac8942860fc4cd7fd6711, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8349747899644235615, guid: 1c4fa089409ac8942860fc4cd7fd6711, type: 3}
       propertyPath: m_LocalPosition.x
@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2982406984598034210, guid: 6e6f19b0d3b00444290132d0930588d9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2982406984598034210, guid: 6e6f19b0d3b00444290132d0930588d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -672,7 +672,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043604247
 GameObject:
@@ -1254,7 +1254,7 @@ RectTransform:
   - {fileID: 143083678}
   - {fileID: 1869558648}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1278,16 +1278,6 @@ MonoBehaviour:
   - {fileID: 1885117170}
   - {fileID: 1783819102}
   - {fileID: 1665178096}
-  talkDataList:
-  - {fileID: 11400000, guid: 2f76604ffd1c83841878a7015cd35633, type: 2}
-  - {fileID: 11400000, guid: f572490d56cd1c74daf050dcb7df03f3, type: 2}
-  - {fileID: 11400000, guid: 3be30dc6cc4527e42a623e2f6fe5ed64, type: 2}
-  - {fileID: 11400000, guid: e0fb4899a3e449346a011fd7620b38ce, type: 2}
-  - {fileID: 11400000, guid: 869ed10fa2ebcdf45b6d45c175045656, type: 2}
-  - {fileID: 11400000, guid: d0c84b9f0ae5b4b4d9457a1328d9a150, type: 2}
-  - {fileID: 11400000, guid: 2cc7c68d90422304291e04c47fc08217, type: 2}
-  - {fileID: 11400000, guid: 1d7d8b3a468e2ee4b884837fb5ff6769, type: 2}
-  - {fileID: 11400000, guid: fe673c1441e949d48a94e23b4a564113, type: 2}
 --- !u!114 &1735933971 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5709577319499527564, guid: 6e6f19b0d3b00444290132d0930588d9, type: 3}
@@ -1648,7 +1638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119931893151688939, guid: 32fa36f335f060e44aeff9981cdcff02, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5119931893151688939, guid: 32fa36f335f060e44aeff9981cdcff02, type: 3}
       propertyPath: m_LocalPosition.x

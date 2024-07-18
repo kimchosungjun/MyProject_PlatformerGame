@@ -38,10 +38,12 @@ public class UIController : MonoBehaviour
     [SerializeField] InformationUI infoUI;
     public InformationUI Info { get { return infoUI; } set { infoUI = value; } }
 
-
     bool isPause = false;
     [SerializeField] PauseUI pauseUI;
     public PauseUI Pause { get { return pauseUI; } set { pauseUI = value; } }
+
+    [SerializeField] GameoverUI gameoverUI;
+    public GameoverUI Gameover { get { return gameoverUI; } set { gameoverUI = value; } }
 
     private void Update()
     {

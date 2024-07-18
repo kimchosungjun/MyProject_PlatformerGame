@@ -8,8 +8,8 @@ public class PlayerDataManager : MonoBehaviour
     // PlayerData Value
     string newDataPath = "";
     string useDataPath = "";
-    string newDataName = "/playerData.txt";
-    string useDataName = "/playerUseData.txt";
+    string newDataName = "/playerData.json";
+    string useDataName = "/playerUseData.json";
 
     // Player Data 
     PlayerData pData;
@@ -22,8 +22,6 @@ public class PlayerDataManager : MonoBehaviour
     #region Relate Data : New, Continue, Save
     public void StartNew()
     {
-        if (!CheckDataPath(newDataPath))
-            return;
         string newData = File.ReadAllText(newDataPath);
         pData = JsonUtility.FromJson<PlayerData>(newData);
         // 기존 데이터 초기화
@@ -33,8 +31,6 @@ public class PlayerDataManager : MonoBehaviour
 
     public void StartContinue()
     {
-        if (!CheckDataPath(useDataPath))
-            return;
         string useData = File.ReadAllText(useDataPath);
         pData = JsonUtility.FromJson<PlayerData>(useData);
     }
@@ -58,6 +54,18 @@ public class PlayerDataManager : MonoBehaviour
     {
         newDataPath = Application.persistentDataPath + newDataName;
         useDataPath = Application.persistentDataPath + useDataName;
+        if (!CheckDataPath(newDataPath))
+        {
+            TextAsset resourceFile = Resources.Load<TextAsset>("Data/" + newDataName.TrimStart('/').Replace(".json", ""));
+            if (resourceFile != null)
+                File.WriteAllText(newDataPath, resourceFile.text);
+        }
+        if (!CheckDataPath(useDataPath))
+        {
+            TextAsset resourceFile = Resources.Load<TextAsset>("Data/" + useDataName.TrimStart('/').Replace(".json", ""));
+            if (resourceFile != null)
+                File.WriteAllText(useDataPath, resourceFile.text);
+        }
     }
 
     /// <summary>

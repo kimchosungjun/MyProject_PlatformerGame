@@ -70,4 +70,22 @@ public class FadeUI : MonoBehaviour
         GameManager.LoadScene_Manager.LoadScene(_sceneName);
         isFadeOut = false;
     }
+
+    public IEnumerator GameOverFadeOutCor()
+    {
+        float timer = 0f;
+        isFadeOut = true;
+        while (timer < fadeTimer)
+        {
+            timer += Time.deltaTime;
+            defaultColor.a = Mathf.Lerp(0, 1, timer / fadeTimer);
+            fadeImage.color = defaultColor;
+            yield return null;
+        }
+        defaultColor.a = 1f;
+        fadeImage.color = defaultColor;
+        isFadeOut = false;
+        GameManager.Instance.UI_Controller.Gameover.TurnOnGameOver();
+        Time.timeScale = 0f;
+    }
 }

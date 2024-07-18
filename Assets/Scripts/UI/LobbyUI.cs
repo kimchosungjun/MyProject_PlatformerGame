@@ -8,8 +8,6 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] string nextSceneName;
     [SerializeField, Tooltip("0:새로하기,1: 이어하기,  2:나가기")] Button[] lobbyBtns;
 
-    [SerializeField] List<NPCTalkData> talkDataList = new List<NPCTalkData>();
-
     private void Start()
     {
         BlockBtn();
@@ -31,11 +29,15 @@ public class LobbyUI : MonoBehaviour
 
     public void ResetBtn()
     {
-        GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartNew();
+        GameManager.LoadScene_Manager.LoadScene(nextSceneName); 
+        GameManager.Instance.PlayerData_Manager.StartNew();
+        GameManager.Instance.TalkData_Manager.StartNew();
     }
 
     public void ContinueBtn()
     {
-        GameManager.LoadScene_Manager.LoadScene(nextSceneName); GameManager.Instance.PlayerData_Manager.StartContinue();
+        GameManager.LoadScene_Manager.LoadScene(nextSceneName); 
+        GameManager.Instance.PlayerData_Manager.StartContinue();
+        GameManager.Instance.TalkData_Manager.StartContinue();
     }
 }
