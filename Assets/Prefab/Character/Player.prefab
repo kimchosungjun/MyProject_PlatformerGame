@@ -40,10 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5307345666912328952}
-  - component: {fileID: 4829738477616218293}
   - component: {fileID: 3440860996470220396}
-  - component: {fileID: 1507893698335154214}
   - component: {fileID: 147024119514699034}
+  - component: {fileID: 4829738477616218293}
+  - component: {fileID: 1507893698335154214}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -70,21 +70,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4829738477616218293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599861372491291602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4588becd48ece2448d373fadd87ed59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healParticle: {fileID: 2913187232571309734}
-  attackTransform: {fileID: 6824971312425865493}
-  currentType: 0
 --- !u!50 &3440860996470220396
 Rigidbody2D:
   serializedVersion: 4
@@ -112,25 +97,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1507893698335154214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599861372491291602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2b84402928cbc469289ec1d4c26188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentActionType: 0
-  data: {fileID: 11400000, guid: 83d81a948a82e604f852d0e3a9056258, type: 2}
-  anim: {fileID: 4638582261484388009}
-  rigid: {fileID: 3440860996470220396}
-  sprite: {fileID: 2999295477829942635}
-  buffSkillObject: {fileID: 1104918161796661829}
-  attackSkillPosition: {fileID: 6018525830214448309}
 --- !u!61 &147024119514699034
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,6 +142,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &4829738477616218293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599861372491291602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4588becd48ece2448d373fadd87ed59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healParticle: {fileID: 2913187232571309734}
+  attackTransform: {fileID: 6824971312425865493}
+  currentType: 0
+  players:
+  - {fileID: 1507893698335154214}
+--- !u!114 &1507893698335154214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599861372491291602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2b84402928cbc469289ec1d4c26188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentActionType: 0
+  anim: {fileID: 4638582261484388009}
+  rigid: {fileID: 3440860996470220396}
+  sprite: {fileID: 2999295477829942635}
+  buffSkillObject: {fileID: 1104918161796661829}
+  attackSkillPosition: {fileID: 6018525830214448309}
 --- !u!1 &4230033462565218622
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735593721828047185, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: attackSkillParObj
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

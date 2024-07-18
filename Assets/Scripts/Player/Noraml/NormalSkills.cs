@@ -28,14 +28,14 @@ public class NormalSkills : MonoBehaviour
             isRight = false;
         else if (_dir >= 1)
             isRight = true;
-        attackDamage = _data.attackDamageValue;
+        attackDamage = _data.damageValue;
     }
 
     public void InitBuffData(PlayerData _data)
     {
         data = _data;
-        defaultAttackValue = _data.attackDamageValue;
-        _data.attackDamageValue = data.buffSkillValue * defaultAttackValue;
+        defaultAttackValue = _data.damageValue;
+        _data.damageValue = data.buffSkillValue * defaultAttackValue;
         GameManager.Instance.UI_Controller.Enhance.IsUseBuff = true;
     }
 
@@ -72,7 +72,7 @@ public class NormalSkills : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= data.buffMaintainTime)
         {
-            data.attackDamageValue = defaultAttackValue;
+            data.damageValue = defaultAttackValue;
             this.gameObject.SetActive(false);
             GameManager.Instance.UI_Controller.Enhance.IsUseBuff = false;
         }

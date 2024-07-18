@@ -69,12 +69,12 @@ public class NormalPlayer : Player
             if (!CanAttack())
                 return;
             anim.SetTrigger("Attack");
-            GameObject go = PoolManager.Instace.GetObjectPool(data.attackFabName);
-            if(go==null)
+            GameObject go = PoolManager.Instace.GetObjectPool("NoramlAttack");
+            if (go == null)
                 return;
             go.transform.position = attackTransform.position;
             NormalSkills normalSkills = go.GetComponent<NormalSkills>();
-            normalSkills.InitAttackData(data, transform.localScale.x);
+            normalSkills.InitAttackData(PData, transform.localScale.x);
         }
     }
 
@@ -88,7 +88,7 @@ public class NormalPlayer : Player
                 return;
             buffSkillObject.SetActive(true);
             NormalSkills normalSkills = buffSkillObject.GetComponent<NormalSkills>();
-            normalSkills.InitBuffData(data);
+            normalSkills.InitBuffData(pData);
         }
     }
 
@@ -99,12 +99,12 @@ public class NormalPlayer : Player
             if (!CanAttackSkill())
                 return;
             anim.SetTrigger("Attack");
-            GameObject go = PoolManager.Instace.GetObjectPool(data.attackSkillFabName);
+            GameObject go = PoolManager.Instace.GetObjectPool("NormalAttackSkill");
             if (go == null)
                 return;
             go.transform.position = attackSkillPosition.position;
             NormalSkills normalSkills = go.GetComponent<NormalSkills>();
-            normalSkills.InitAttackData(data, transform.localScale.x);
+            normalSkills.InitAttackData(PData, transform.localScale.x);
         }
     }
     #endregion

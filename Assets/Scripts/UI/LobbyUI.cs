@@ -25,8 +25,8 @@ public class LobbyUI : MonoBehaviour
 
     public void BlockBtn()
     {
-        if (!GameManager.Instance.PlayerData_Manager.CheckDataPath())
-            lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
+        //if (!GameManager.Instance.PlayerData_Manager.CheckDataPath())
+        //    lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
     }
 
     public void ResetBtn()

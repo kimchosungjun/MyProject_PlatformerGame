@@ -16,7 +16,8 @@ public class EnhanceUI : EscapeUI
     [SerializeField] TextMeshProUGUI determineWarnText;
     [SerializeField] TextMeshProUGUI buffWarnText;
     EnhanceType currentType = EnhanceType.None;
-    EnhanceValueData data;
+    EnhanceValueData enhanceData;
+    PlayerData playerData;
 
     bool[] btnCanInteractable = new bool[4] { true,true,true,true};
     bool isShowWarnMessage = false;
@@ -40,8 +41,10 @@ public class EnhanceUI : EscapeUI
     private void Start()
     {
         aumText.text = GameManager.Aum_Manager.HaveAum.ToString();
-        if (data == null)
-            data = GameManager.Instance.PlayerData_Manager.EnhanceData;
+        if (enhanceData == null)
+            enhanceData = GameManager.Instance.PlayerData_Manager.EnhanceData;
+        if (playerData == null)
+            playerData = GameManager.Instance.PlayerData_Manager.PData;
         CheckSelectBtnActiveState();
     }
 
@@ -96,10 +99,10 @@ public class EnhanceUI : EscapeUI
     #region EnhanceBtn Event
     public void HpEnhanceClick()
     {
-        if (data == null)
-            data = GameManager.Instance.PlayerData_Manager.EnhanceData;
-        currentType=EnhanceType.HP;
-        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)data.costs[data.hpDegree]))
+        if (enhanceData == null)
+            enhanceData = GameManager.Instance.PlayerData_Manager.EnhanceData;
+        currentType = EnhanceType.HP;
+        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)enhanceData.aumCost[playerData.curHpDegree]))
             ActiveDetermineUI();
         else
             ActiveWarnUI();
@@ -107,10 +110,10 @@ public class EnhanceUI : EscapeUI
 
     public void RollEnhanceClick()
     {
-        if (data == null)
-            data = GameManager.Instance.PlayerData_Manager.EnhanceData;
+        if (enhanceData == null)
+            enhanceData = GameManager.Instance.PlayerData_Manager.EnhanceData;
         currentType = EnhanceType.Roll;
-        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)data.costs[data.rollDegree]))
+        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)enhanceData.aumCost[playerData.curRollDegree]))
             ActiveDetermineUI();
         else
             ActiveWarnUI();
@@ -118,10 +121,10 @@ public class EnhanceUI : EscapeUI
 
     public void AttackEnhanceClick()
     {
-        if (data == null)
-            data = GameManager.Instance.PlayerData_Manager.EnhanceData;
+        if (enhanceData == null)
+            enhanceData = GameManager.Instance.PlayerData_Manager.EnhanceData;
         currentType = EnhanceType.Attack;
-        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)data.costs[data.attackDegree]))
+        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)enhanceData.aumCost[playerData.curAttackDegree]))
             ActiveDetermineUI();
         else
             ActiveWarnUI();
@@ -129,10 +132,10 @@ public class EnhanceUI : EscapeUI
 
     public void BuffEnhanceClick()
     {
-        if (data == null)
-            data = GameManager.Instance.PlayerData_Manager.EnhanceData;
+        if (enhanceData == null)
+            enhanceData = GameManager.Instance.PlayerData_Manager.EnhanceData;
         currentType = EnhanceType.Buff;
-        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)data.costs[data.buffDegree]))
+        if (GameManager.Instance.PlayerData_Manager.CanEnhance(currentType) && GameManager.Aum_Manager.CanUseAum((int)enhanceData.aumCost[playerData.curBuffDegree]))
             ActiveDetermineUI();
         else
             ActiveWarnUI();
@@ -209,25 +212,27 @@ public class EnhanceUI : EscapeUI
         switch (currentType)
         {
             case EnhanceType.HP:
-                GameManager.Aum_Manager.UseAum((int)data.costs[data.hpDegree]);
+                GameManager.Aum_Manager.UseAum((int)enhanceData.aumCost[playerData.curHpDegree]);
                 GameManager.Instance.PlayerData_Manager.ApplyEnhanceStat(currentType, this);
                 break;
             case EnhanceType.Roll:
-                GameManager.Aum_Manager.UseAum((int)data.costs[data.rollDegree]);
+                GameManager.Aum_Manager.UseAum((int)enhanceData.aumCost[playerData.curRollDegree]);
                 GameManager.Instance.PlayerData_Manager.ApplyEnhanceStat(currentType, this);
                 break;
             case EnhanceType.Attack:
-                GameManager.Aum_Manager.UseAum((int)data.costs[data.attackDegree]);
+                GameManager.Aum_Manager.UseAum((int)enhanceData.aumCost[playerData.curAttackDegree]);
                 GameManager.Instance.PlayerData_Manager.ApplyEnhanceStat(currentType, this);
                 break;
             case EnhanceType.Buff:
-                GameManager.Aum_Manager.UseAum((int)data.costs[data.buffDegree]);
+                GameManager.Aum_Manager.UseAum((int)enhanceData.aumCost[playerData.curBuffDegree]);
                 GameManager.Instance.PlayerData_Manager.ApplyEnhanceStat(currentType, this);
                 break;
         }
-
+       
         determineUI.SetActive(false);
         currentType = EnhanceType.None;
+
+        CheckSelectBtnActiveState();
     }
 
     public void ClickNo()
@@ -253,16 +258,16 @@ public class EnhanceUI : EscapeUI
             switch (_idx)
             {
                 case 0:
-                    costTexts[_idx].text = data.costs[data.hpDegree].ToString();
+                    costTexts[_idx].text = enhanceData.aumCost[playerData.curHpDegree].ToString();
                     break;
                 case 1:
-                    costTexts[_idx].text = data.costs[data.rollDegree].ToString();
+                    costTexts[_idx].text = enhanceData.aumCost[playerData.curRollDegree].ToString();
                     break;
                 case 2:
-                    costTexts[_idx].text = data.costs[data.attackDegree].ToString();
+                    costTexts[_idx].text = enhanceData.aumCost[playerData.curAttackDegree].ToString();
                     break;
                 case 3:
-                    costTexts[_idx].text = data.costs[data.buffDegree].ToString();
+                    costTexts[_idx].text = enhanceData.aumCost[playerData.curBuffDegree].ToString();
                     break;
             }
         }

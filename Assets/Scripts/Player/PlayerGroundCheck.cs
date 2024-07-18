@@ -7,15 +7,15 @@ public class PlayerGroundCheck : MonoBehaviour
     [SerializeField, Tooltip("0:노말, 1: 바람, 2: 물")] Player[] players;
     PlayerType currentType = PlayerType.Normal;
 
-    private string ground;
-    private string jumpPlatform;
+    //private string ground;
+    //private string jumpPlatform;
 
     Dictionary<string, JumpPlatform> jumpPlatformDic = new Dictionary<string, JumpPlatform>();
 
     public void Init(PlayerType _playerType)
     {
-        ground = ConvertEnum.ConvertEnumToString<PaltformType>(PaltformType.Ground);
-        jumpPlatform = ConvertEnum.ConvertEnumToString<PaltformType>(PaltformType.JumpPlatform);
+        //ground = ConvertEnum.ConvertEnumToString<PaltformType>(PaltformType.Ground);
+        //jumpPlatform = ConvertEnum.ConvertEnumToString<PaltformType>(PaltformType.JumpPlatform);
         ChangeType(_playerType);
     }
 
@@ -28,11 +28,11 @@ public class PlayerGroundCheck : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Ground
-        if(collision.CompareTag(ground))
+        if(collision.CompareTag("Ground"))
         {
             players[(int)currentType].IsGround = true;
         }
-        if (collision.gameObject.CompareTag(jumpPlatform))
+        if (collision.CompareTag("JumpPlatform"))
         {
             if (jumpPlatformDic.ContainsKey(collision.name))
             { 
@@ -53,7 +53,7 @@ public class PlayerGroundCheck : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Ground
-        if (collision.CompareTag(ground))
+        if (collision.CompareTag("Ground"))
         {
             players[(int)currentType].IsGround = false;
         }

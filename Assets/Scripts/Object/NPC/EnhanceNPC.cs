@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnhanceNPC : MonoBehaviour
 {
-    string talkerName = "Elder";
-    TalkData talkData;
+    string talkerName = "Erica";
+    TalkData talkData =null;
     public TalkData Talk_Data { get { if (talkData == null) talkData = GameManager.Instance.TalkData_Manager.LoadTalk(talkerName); return talkData; } }
 
     [SerializeField] int talkID;
@@ -24,7 +24,7 @@ public class EnhanceNPC : MonoBehaviour
 
     private void Start()
     {
-        canTalk = !talkData.isTalk;
+        canTalk = !Talk_Data.isTalk;
     }
     public void EnhanceStat()
     {

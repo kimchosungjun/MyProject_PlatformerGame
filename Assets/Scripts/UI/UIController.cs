@@ -38,6 +38,11 @@ public class UIController : MonoBehaviour
     [SerializeField] InformationUI infoUI;
     public InformationUI Info { get { return infoUI; } set { infoUI = value; } }
 
+
+    bool isPause = false;
+    [SerializeField] PauseUI pauseUI;
+    public PauseUI Pause { get { return pauseUI; } set { pauseUI = value; } }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -56,6 +61,11 @@ public class UIController : MonoBehaviour
                 return;
             }
         }
-        // 게임 정지 & 환경설정으로
+
+        if (isPause)
+            pauseUI.TurnOnOffUI(false);
+        else
+            pauseUI.TurnOnOffUI(true);
+        isPause = !isPause;
     }
 }

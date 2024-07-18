@@ -18,7 +18,7 @@ namespace PlayerNormalStateSpace
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Idle);
-            data = player.Data;
+            data = player.PData;
         }
 
         public override void Enter()
@@ -81,7 +81,7 @@ namespace PlayerNormalStateSpace
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Move);
-            data = player.Data;
+            data = player.PData;
         }
 
         public override void Enter()
@@ -146,7 +146,7 @@ namespace PlayerNormalStateSpace
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Jump);
-            data = player.Data;
+            data = player.PData;
         }
 
         public override void Enter()
@@ -201,7 +201,7 @@ namespace PlayerNormalStateSpace
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Fall);
-            data = player.Data;
+            data = player.PData;
         }
 
         public override void Enter()
@@ -255,13 +255,13 @@ namespace PlayerNormalStateSpace
         {
             player = _player;
             currentAnimName = ConvertEnum.ConvertEnumToString(PlayerActionType.Roll);
-            playerData = _player.Data;
+            playerData = _player.PData;
         }
 
         public override void Enter()
         {
             player.Anim.SetBool(currentAnimName, true);
-            player.Invinsibility(playerData.rollTimer);
+            player.Invinsibility(playerData.rollTime);
             player.IsRoll = true;
             timer = 0f;
         }
@@ -269,9 +269,9 @@ namespace PlayerNormalStateSpace
         public override void Execute()
         {
             timer += Time.deltaTime;
-            if (timer < playerData.rollTimer)
+            if (timer < playerData.rollTime)
             {
-                player.Rigid.velocity = new Vector2(playerData.rollSpeed*player.transform.localScale.x ,player.Rigid.velocity.y);
+                player.Rigid.velocity = new Vector2(playerData.rollSpeed * player.transform.localScale.x, player.Rigid.velocity.y);
             }
             else
             {

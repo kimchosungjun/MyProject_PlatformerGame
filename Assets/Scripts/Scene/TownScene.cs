@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TownScene : MonoBehaviour
+public class TownScene : BaseScene
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        LoadScene();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void LoadNextScene()
     {
-        
+        GameManager.Instance.CurrentScene = null;
+    }
+
+    public override void LoadScene()
+    {
+        GameManager.Instance.CurrentScene = this;
+        GameManager.Instance.UI_Controller.Fade.FadeIn();
+        GameManager.Instance.Controller.LoadHP();
     }
 }

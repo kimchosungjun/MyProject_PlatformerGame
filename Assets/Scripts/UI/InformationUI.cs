@@ -23,7 +23,7 @@ public class InformationUI : MonoBehaviour
     public void PointEnter(string _type)
     {
         PlayerController controller = GameManager.Instance.Controller;
-        PlayerData data = controller.Players[(int)controller.CurrentType].Data;
+        PlayerData data = controller.Players[(int)controller.CurrentType].PData;
 
         //Vector3 mousePosition = Input.mousePosition + upVec;
         //RectTransformUtility.ScreenPointToLocalPointInRectangle(

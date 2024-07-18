@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseScene : MonoBehaviour
+public abstract class BaseScene : MonoBehaviour
 {
-    public virtual void LoadNextScene()
-    {
-
-    }
-
-    public virtual void LoadScene()
-    {
-
-    }
+    public abstract void LoadNextScene();
+    public abstract void LoadScene();
 }

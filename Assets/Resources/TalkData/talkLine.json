@@ -9,11 +9,11 @@
       "talkerName": "Elder"
     },
     {
-      "isTalk": true,
+      "isTalk": false,
       "talkerName": "Move"
     },
     {
-      "isTalk": true,
+      "isTalk": false,
       "talkerName": "Roll"
     },
     {

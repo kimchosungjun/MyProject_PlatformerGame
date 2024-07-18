@@ -7,8 +7,10 @@ public abstract class Player : MonoBehaviour
     #region Player Data
     [Header("Data")]
     [SerializeField] protected PlayerActionType currentActionType = PlayerActionType.Idle;
-    [SerializeField] protected PlayerData data;
-    public PlayerData Data { get { return data; } }
+    [SerializeField] protected PlayerType currentType = PlayerType.Normal;
+
+    protected PlayerData pData=null;
+    public PlayerData PData { get { if (pData == null) pData = GameManager.Instance.PlayerData_Manager.PData; return pData; } }
     #endregion
 
     #region Bool Val
@@ -73,11 +75,13 @@ public abstract class Player : MonoBehaviour
     public abstract void Execute(); // Update
     #endregion
 
+    #region Change Action State
     public void ChangeActionState(PlayerActionType _actionType)
     {
         currentActionType = _actionType;
         stateMachine.ChangeState(playerStates[(int)currentActionType]);
     }
+    #endregion
 
     #region Timer (¹«Àû)
     public void Invinsibility(float _timer)
@@ -100,28 +104,28 @@ public abstract class Player : MonoBehaviour
         if (!isCoolDownRoll)
         {
             rollCoolTimer += Time.deltaTime;
-            if (rollCoolTimer > data.rollCoolTime)
+            if (rollCoolTimer > pData.rollCoolTime)
                 isCoolDownRoll = true;
         }
         // Attack
         if (!isCoolDownAttack)
         {
             attackCoolTimer += Time.deltaTime;
-            if (attackCoolTimer > data.attackCoolTime)
+            if (attackCoolTimer > pData.attackCoolTime)
                 isCoolDownAttack = true;
         }
         // Buff
         if (!isCoolDownBuffSkill)
         {
             buffSkillCoolTimer += Time.deltaTime;
-            if (buffSkillCoolTimer > data.buffSkillCoolTime)
+            if (buffSkillCoolTimer > pData.buffSkillCoolTime)
                 isCoolDownBuffSkill = true;
         }
         // Attack Skill
         if (!isCoolDownAttackSkill)
         {
             attackSkillCoolTimer += Time.deltaTime;
-            if (attackSkillCoolTimer > data.attackSkillCoolTime)
+            if (attackSkillCoolTimer > pData.attackSkillCoolTime)
                 isCoolDownAttackSkill = true;
         }
     }
@@ -132,7 +136,7 @@ public abstract class Player : MonoBehaviour
         {
             isCoolDownRoll = false;
             rollCoolTimer = 0f;
-            UI_Controller.Key.KeyPress(data.rollCoolTime, PressKeyType.Roll);
+            UI_Controller.Key.KeyPress(pData.rollCoolTime, PressKeyType.Roll);
             return true;
         }
         return false;
@@ -142,12 +146,13 @@ public abstract class Player : MonoBehaviour
     {
         if (isCoolDownAttack)
         {
-            data.curMana -= data.attackDecreaseMana;
-            if (data.curMana <= 0 && controller.CurrentType!=PlayerType.Normal)
+            if (currentType != PlayerType.Normal)
+                pData.curMana -= pData.attackDecreaseMana;
+            if (pData.curMana <= 0 && controller.CurrentType!=PlayerType.Normal)
                 controller.ChangeType(PlayerType.Normal);
             isCoolDownAttack = false;
             attackCoolTimer = 0f;
-            UI_Controller.Key.KeyPress(data.attackCoolTime, PressKeyType.Attack);
+            UI_Controller.Key.KeyPress(pData.attackCoolTime, PressKeyType.Attack);
             return true;
         }
         else
@@ -158,15 +163,18 @@ public abstract class Player : MonoBehaviour
     {
         if (isCoolDownBuffSkill)
         {
-            int curMana = data.curMana - data.buffSkillDecreaseMana;
-            if (curMana < 0)
-                return false;
-            data.curMana -= data.buffSkillDecreaseMana;
-            if(data.curMana<=0 && controller.CurrentType != PlayerType.Normal)
+            if (currentType != PlayerType.Normal)
+            {
+                int curMana = pData.curMana - pData.buffSkillDecreaseMana;
+                if (curMana < 0)
+                    return false;
+            }
+            pData.curMana -= pData.buffSkillDecreaseMana;
+            if(pData.curMana<=0 && controller.CurrentType != PlayerType.Normal)
                 controller.ChangeType(PlayerType.Normal);
             isCoolDownBuffSkill = false;
             buffSkillCoolTimer = 0f;
-            UI_Controller.Key.KeyPress(data.buffSkillCoolTime, PressKeyType.Buff);
+            UI_Controller.Key.KeyPress(pData.buffSkillCoolTime, PressKeyType.Buff);
             return true;
         }
         else
@@ -177,15 +185,18 @@ public abstract class Player : MonoBehaviour
     {
         if (isCoolDownAttackSkill)
         {
-            int curMana = data.curMana - data.attackSkillDecreaseMana;
-            if (curMana < 0)
-                return false;
-            data.curMana -= data.attackSkillDecreaseMana;
-            if (data.curMana <= 0 && controller.CurrentType != PlayerType.Normal)
+            if (currentType != PlayerType.Normal)
+            {
+                int curMana = pData.curMana - pData.attackSkillDecreaseMana;
+                if (curMana < 0)
+                    return false;
+            }
+            pData.curMana -= pData.attackSkillDecreaseMana;
+            if (pData.curMana <= 0 && controller.CurrentType != PlayerType.Normal)
                 controller.ChangeType(PlayerType.Normal);
             isCoolDownAttackSkill = false;
             attackSkillCoolTimer = 0f;
-            UI_Controller.Key.KeyPress(data.attackSkillCoolTime, PressKeyType.AttackSkill);
+            UI_Controller.Key.KeyPress(pData.attackSkillCoolTime, PressKeyType.AttackSkill);
             return true;
         }
         else
@@ -202,10 +213,11 @@ public abstract class Player : MonoBehaviour
         StartCoroutine(HitByEnemyCor());
         Invinsibility(1f);
 
-        float trueDamage = _damamge-data.defenceValue;
+        float trueDamage = _damamge-pData.defenceValue;
         if (trueDamage <= 0)
             trueDamage = 1f;
-        controller.CurHP -= _damamge;
+        controller.CurHP -= trueDamage;
+
         if (controller.CurHP <= 0)
         {
             canControll = false;

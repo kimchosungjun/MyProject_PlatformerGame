@@ -85,3 +85,14 @@ public enum EnemyActionType
     Find
 }
 #endregion
+
+#region Scene
+public enum SceneType
+{
+    Lobby,
+    Tutorial,
+    Battle,
+    Town,
+    Boss
+}
+#endregion

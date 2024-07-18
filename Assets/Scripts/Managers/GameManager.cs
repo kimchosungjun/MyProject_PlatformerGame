@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
     public void InitManagers()
     {
         //Dialogue_Manager.Init();
+        PlayerData_Manager.Init();
     }
 
     public void ClearManagers()
