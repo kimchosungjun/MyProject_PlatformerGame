@@ -17,13 +17,24 @@ public class BossAttackTrigger : MonoBehaviour
     public PlayerController PController { get { if (pController == null) pController = GameManager.Instance.Controller; return pController; } }
     public BoxCollider2D triggerCollider;
 
+    BossEnemy bossEnemy;
     BossStat stat;
+    public BossStat Stat { get { if (stat == null) { GetStat(); } return stat; } }
     bool isCollide = false;
 
-
-    public void Setting(BossStat _stat)
+    public void GetStat()
     {
-        stat = _stat;
+        bossEnemy = GetComponentInParent<BossEnemy>();
+        stat = bossEnemy.bossStat;
+    }
+
+    public void Setting(BossEnemy _bossEnemy)
+    {
+        if (bossEnemy == null)
+        {
+            bossEnemy = _bossEnemy;
+            stat = bossEnemy.bossStat;
+        }
         isCollide = false;
     }
 
@@ -35,10 +46,11 @@ public class BossAttackTrigger : MonoBehaviour
             switch (attackType)
             {
                 case BossAttackType.Near:
-                    pController.Hit(stat.nearDamage);
+                    PController.Hit(Stat.nearDamage);
+                    isCollide = false;
                     break;
                 case BossAttackType.Far:
-                    pController.Hit(stat.farDamage);
+                    PController.Hit(Stat.farDamage);
                     break;
             }
         }

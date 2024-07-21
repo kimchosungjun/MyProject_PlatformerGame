@@ -25,7 +25,7 @@ public class DialogueUI : MonoBehaviour
     bool isStartDialogue = false; // Prevent Overlap Dialogue
     public bool IsStartDialogue { get { return isStartDialogue; } set {  isStartDialogue = value; GameManager.Instance.Controller.CanControlPlayer = !isStartDialogue; } }
     bool isDoneDialogue = false; // Show Next Dialouge Key
-    bool findRichText = false;
+    //bool findRichText = false;
 
     public void Execute()
     {
@@ -76,21 +76,20 @@ public class DialogueUI : MonoBehaviour
         {
             if(dialogue.storyLines[curIdx][i] != '^')
                 dialogueText.text += dialogue.storyLines[curIdx][i];
-            if (findRichText)
-            {
-                //dialogueText.text += dialogue.storyLines[curIdx][i];
-                continue;
-            }
             if (dialogue.storyLines[curIdx][i] == '^')
             {
-                if (!findRichText)
+                for(int k=i+1; k<len; k++)
                 {
-                    findRichText = true;
-                    //dialogueText.text += dialogue.storyLines[curIdx][i];
-                    continue;
+                    if (dialogue.storyLines[curIdx][k] == '^')
+                    {
+                        i = k + 1;
+                        break;
+                    }
+                    else
+                    {
+                        dialogueText.text += dialogue.storyLines[curIdx][k];
+                    }
                 }
-                else
-                    findRichText = false;
             }
             yield return new WaitForSeconds(typeTime);
         }
@@ -176,6 +175,15 @@ public class DialogueUI : MonoBehaviour
             case "Type":
                 ChangeTypeSpeed(_eventParameters);
                 break;
+            case "Boss":
+                BossStateStart();
+                break;
+            case "BossPattern":
+                FindBossPattern();
+                break;
+            case "Ending":
+                GameEnding();
+                break;
         }
     }
     #endregion
@@ -201,6 +209,23 @@ public class DialogueUI : MonoBehaviour
     public void ChangeTypeSpeed(List<string> _eventParameters)
     {
         typeTime = float.Parse(_eventParameters[0]);
+    }
+
+    public void BossStateStart()
+    {
+        GameManager.Instance.CurrentScene.bossScene.StartBossBattle();
+    }
+
+    public void FindBossPattern()
+    {
+        GameManager.Instance.CurrentScene.bossScene.AfterKillBoss();
+    }
+
+    public void GameEnding()
+    {
+        IsStartDialogue = true;
+        GameManager.Instance.Controller.enabled = false;
+        StartCoroutine(GameManager.Instance.UI_Controller.Fade.EndingFadeOutCor());
     }
     #endregion
 }

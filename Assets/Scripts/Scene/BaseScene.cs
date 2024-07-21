@@ -6,4 +6,6 @@ public abstract class BaseScene : MonoBehaviour
 {
     public abstract void LoadNextScene();
     public abstract void LoadScene();
+
+    public BossScene bossScene;
 }

@@ -16,7 +16,10 @@ public class HPUI : MonoBehaviour
             controller = GameManager.Instance.Controller;
         slider.maxValue = controller.MaxHp;
         slider.value = controller.CurHP;
-        hpText.text = slider.value + "/" + slider.maxValue;
+        slider.value = Mathf.Round(controller.CurHP * 10f) / 10f;
+        float roundedHP = slider.value;
+        hpText.text = roundedHP.ToString("0.0");
+        hpText.text += "/" + slider.maxValue;
     }
 
     public void UpdateMaxHPBar(float _maxValue, float _curValue)

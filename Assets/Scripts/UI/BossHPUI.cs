@@ -21,8 +21,10 @@ public class BossHPUI : MonoBehaviour
 
     public void UpdateCurHpBar(float _curValue)
     {
-        slider.value = _curValue;
-        hpText.text = slider.value + "/" + slider.maxValue;
+        slider.value = Mathf.Round(_curValue * 10f) / 10f;
+        float roundedHP = slider.value;
+        hpText.text = roundedHP.ToString("0.0");
+        hpText.text += "/" + slider.maxValue;
     }
 
     public void OnOffUI(bool _isActive)

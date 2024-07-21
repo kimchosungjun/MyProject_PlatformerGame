@@ -68,6 +68,15 @@ public class PoolManager : MonoBehaviour
         EnemyCnt += 1;
     }
 
+    public GameObject BossEnemySpawn(string _name, Vector2 pos)
+    {
+        GameObject go = GetObjectPool(_name);
+        go.transform.position = pos;
+        EnemyCnt += 1;
+        return go;
+    }
+
+    public void DeleteBossEnemyList() { EnemyCnt = 0; }
     private void Awake()
     {
         if (Instace == null)

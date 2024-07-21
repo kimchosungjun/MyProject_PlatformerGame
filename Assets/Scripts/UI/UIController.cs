@@ -48,6 +48,9 @@ public class UIController : MonoBehaviour
     [SerializeField] GameoverUI gameoverUI;
     public GameoverUI Gameover { get { return gameoverUI; } set { gameoverUI = value; } }
 
+    [SerializeField] MonologueUI monologueUI;
+    public MonologueUI Monologue { get { return monologueUI; } set { monologueUI = value; } }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

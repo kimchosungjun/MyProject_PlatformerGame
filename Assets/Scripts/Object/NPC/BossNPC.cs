@@ -6,7 +6,6 @@ public class BossNPC : MonoBehaviour
 {
     [SerializeField] int talkID;
     bool canTalk = true;
-
     public void Talk()
     {
         GameManager.Instance.UI_Controller.Dialogue.StartDialogue(talkID);
@@ -18,6 +17,10 @@ public class BossNPC : MonoBehaviour
         {
             canTalk = false;
             Talk();
+            if (talkID == 4)
+            {
+                GameManager.Instance.CurrentScene.bossScene.DeleteAfterKillBoss();
+            }
         }
     }
 }

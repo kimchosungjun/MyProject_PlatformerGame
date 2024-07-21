@@ -222,11 +222,11 @@ public abstract class Player : MonoBehaviour
         if (controller.CurHP <= 0)
         {
             canControll = false;
-            anim.SetBool("Death", true);
             anim.SetBool("Idle", false);
             anim.SetBool("Move", false);
             anim.SetBool("Jump", false);
             anim.SetBool("Fall", false);
+            anim.SetBool("Death", true);
             gameObject.tag = "Death";
             // Death UI
             GameManager.Instance.UI_Controller.Gameover.GameOverActionMethod();
