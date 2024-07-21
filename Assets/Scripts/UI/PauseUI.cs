@@ -22,7 +22,6 @@ public class PauseUI : EscapeUI
 
     public void ExitGame()
     {
-        Debug.Log("종료버튼 누름");
         GameManager.Instance.SaveAllData();
         Application.Quit();
     }

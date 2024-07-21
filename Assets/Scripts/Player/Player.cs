@@ -217,6 +217,7 @@ public abstract class Player : MonoBehaviour
         if (trueDamage <= 0)
             trueDamage = 1f;
         controller.CurHP -= trueDamage;
+        PData.curHP = controller.CurHP;
 
         if (controller.CurHP <= 0)
         {
@@ -228,6 +229,7 @@ public abstract class Player : MonoBehaviour
             anim.SetBool("Fall", false);
             gameObject.tag = "Death";
             // Death UI
+            GameManager.Instance.UI_Controller.Gameover.GameOverActionMethod();
         }
         else
         {

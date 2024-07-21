@@ -9,7 +9,6 @@ public class EnemySpawnTrigger : MonoBehaviour
     bool isOnPlayer = false;
 
     [SerializeField] string[] spawnEnemyNames;
-    [SerializeField] int[] spawnEnemyCnt;
     [SerializeField] Vector2[] spawnPositions;
 
     private void Awake()
@@ -29,16 +28,12 @@ public class EnemySpawnTrigger : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        int enemyNameCnt = spawnEnemyNames.Length;
         int spawPosCnt = spawnPositions.Length;
         int randNum;
-        for(int q = 0; q<enemyNameCnt; q++)
+        for (int q = 0; q < spawPosCnt; q++)
         {
-            for(int p = 0; p<spawnEnemyCnt[q]; p++)
-            {
-                randNum = Random.Range(0, spawPosCnt);
-                PoolManager.Instace.EnemySpawner(spawnEnemyNames[q],spawnPositions[randNum]);
-            }
+            randNum = Random.Range(0, 2);
+            PoolManager.Instace.EnemySpawner(spawnEnemyNames[randNum], spawnPositions[q]);
         }
     }
 

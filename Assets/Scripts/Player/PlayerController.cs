@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         MaxHp = PData.maxHP;
         CurHP = maxHp;
+        PData.curHP = CurHP;
     }
 
     public void LoadHP()
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
             CurHP = MaxHp;
         else
             CurHP += _healValue;
+        PData.curHP = CurHP;
     }
 
     public void Hit(float _damage)

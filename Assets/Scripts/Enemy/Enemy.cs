@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         hitColor = sprite.color;
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         if (curData != null)
         {
@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
             gameObject.tag = "Death";
         }
     }
+
     public IEnumerator HitCor()
     {
         hitColor.a = 0.5f;

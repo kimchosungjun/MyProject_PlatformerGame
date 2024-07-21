@@ -96,8 +96,7 @@ public class NormalSkills : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag(ConvertEnum.ConvertEnumToString(PaltformType.Ground)) ||
-            collision.CompareTag(ConvertEnum.ConvertEnumToString(PaltformType.JumpPlatform)))
+        if(collision.CompareTag(ConvertEnum.ConvertEnumToString(PaltformType.Ground)))
         {
             if (skillType == SkillType.Attack)
             {

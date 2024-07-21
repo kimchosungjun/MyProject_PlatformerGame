@@ -21,7 +21,7 @@ public class GameoverUI : MonoBehaviour
         gameoverObject.SetActive(false);
         Time.timeScale = 1f;
         GameManager.Instance.SaveAllData();
-        //GameManager.LoadScene_Manager.LoadScene("Lobby");
+        GameManager.LoadScene_Manager.LoadScene("Lobby");
         Application.Quit();
     }
 }

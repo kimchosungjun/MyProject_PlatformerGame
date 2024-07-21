@@ -31,7 +31,7 @@ public class EnemyProjectile : MonoBehaviour
             anim.Play("MagicFireEx");
         }
 
-        if(collision.CompareTag("Ground") || collision.CompareTag("JumpPlatform"))
+        if(collision.CompareTag("Ground"))
         {
             rigid.velocity = Vector2.zero;
             anim.Play("MagicFireEx");

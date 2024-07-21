@@ -141,20 +141,20 @@ public class WizardEnemy : NormalEnemy
 
     public void FindAI()
     {
-        if (playerController.transform.position.x - transform.position.x > 0.1f)
-            Flip(true);
-        else if (playerController.transform.position.x - transform.position.x < -0.1f)
-            Flip(false);
-
         if (isNearPlayer)
         {
+            if (playerController.transform.position.x - transform.position.x > 0.1f)
+                Flip(true);
+            else if (playerController.transform.position.x - transform.position.x < -0.1f)
+                Flip(false);
+
             findTimer = 0f;
             float distance = Vector2.Distance(transform.position, playerController.transform.position);
             if (distance < attackRange)
             {
                 if (canAttack)
                 {
-                    if (isFrontGround)
+                    if (isFrontGround || !isCliffGround )
                         rigid.velocity = new Vector2(0, rigid.velocity.y);
                     canMove = false;
                     canAttack = false;
@@ -163,13 +163,15 @@ public class WizardEnemy : NormalEnemy
                 }
                 else
                 {
-                    if (isFrontGround)
+                    if (isFrontGround || !isCliffGround )
                         rigid.velocity = new Vector2(0, rigid.velocity.y);
+                    else
+                        rigid.velocity = new Vector2(CurData.moveSpeed * (transform.localScale.x/Mathf.Abs(transform.localScale.x)), rigid.velocity.y);
                 }
             }
             else
             {
-                if (isFrontGround)
+                if (isFrontGround || !isCliffGround)
                     rigid.velocity = new Vector2(0, rigid.velocity.y);
                 else
                     rigid.velocity = new Vector2(curData.moveSpeed * transform.localScale.x, rigid.velocity.y);
@@ -177,7 +179,7 @@ public class WizardEnemy : NormalEnemy
         }
         else
         {
-            if (isFrontGround)
+            if (isFrontGround || !isCliffGround)
                 rigid.velocity = new Vector2(0, rigid.velocity.y);
             else
                 rigid.velocity = new Vector2(curData.moveSpeed * transform.localScale.x, rigid.velocity.y);

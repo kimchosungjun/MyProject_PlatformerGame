@@ -8,7 +8,7 @@ public class DialogueUI : MonoBehaviour
 {
     [Header("기획자 Part")]
     [SerializeField, Tooltip("다음 대화를 자동으로 넘기는지 결정하는 것")] bool isAutoDialouge;
-    [SerializeField, Range(0.1f, 0.5f), Tooltip("타이핑 속도")] float typeTime;
+    [SerializeField, Range(0.0f, 0.5f), Tooltip("타이핑 속도")] float typeTime;
     [SerializeField, Range(0.1f, 1f), Tooltip("대화가 자동으로 넘어가는 속도")] float nextDialogueTime;
 
     [Header("개발자 Part")]
@@ -25,6 +25,7 @@ public class DialogueUI : MonoBehaviour
     bool isStartDialogue = false; // Prevent Overlap Dialogue
     public bool IsStartDialogue { get { return isStartDialogue; } set {  isStartDialogue = value; GameManager.Instance.Controller.CanControlPlayer = !isStartDialogue; } }
     bool isDoneDialogue = false; // Show Next Dialouge Key
+    bool findRichText = false;
 
     public void Execute()
     {
@@ -73,7 +74,24 @@ public class DialogueUI : MonoBehaviour
 
         for (int i = 0; i < len; i++)
         {
-            dialogueText.text += dialogue.storyLines[curIdx][i];
+            if(dialogue.storyLines[curIdx][i] != '^')
+                dialogueText.text += dialogue.storyLines[curIdx][i];
+            if (findRichText)
+            {
+                //dialogueText.text += dialogue.storyLines[curIdx][i];
+                continue;
+            }
+            if (dialogue.storyLines[curIdx][i] == '^')
+            {
+                if (!findRichText)
+                {
+                    findRichText = true;
+                    //dialogueText.text += dialogue.storyLines[curIdx][i];
+                    continue;
+                }
+                else
+                    findRichText = false;
+            }
             yield return new WaitForSeconds(typeTime);
         }
         curIdx += 1;
@@ -155,6 +173,9 @@ public class DialogueUI : MonoBehaviour
             case "Character":
                 ShowCharacterImage(_eventParameters);
                 break;
+            case "Type":
+                ChangeTypeSpeed(_eventParameters);
+                break;
         }
     }
     #endregion
@@ -175,6 +196,11 @@ public class DialogueUI : MonoBehaviour
         }
         characterImage.sprite = imageSpr;
         characterImageObject.SetActive(true);
+    }
+
+    public void ChangeTypeSpeed(List<string> _eventParameters)
+    {
+        typeTime = float.Parse(_eventParameters[0]);
     }
     #endregion
 }

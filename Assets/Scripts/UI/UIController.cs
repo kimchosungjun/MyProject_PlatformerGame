@@ -42,6 +42,9 @@ public class UIController : MonoBehaviour
     [SerializeField] PauseUI pauseUI;
     public PauseUI Pause { get { return pauseUI; } set { pauseUI = value; } }
 
+    [SerializeField] BossHPUI bossHPUI;
+    public BossHPUI BossHP { get { return bossHPUI; } set { bossHPUI = value; } }
+
     [SerializeField] GameoverUI gameoverUI;
     public GameoverUI Gameover { get { return gameoverUI; } set { gameoverUI = value; } }
 
