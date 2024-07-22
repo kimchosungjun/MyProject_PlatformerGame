@@ -2470,6 +2470,7 @@ RectTransform:
   - {fileID: 4087963170354739397}
   - {fileID: 4877950321610864925}
   - {fileID: 752806522760845808}
+  - {fileID: 269756354398834837}
   m_Father: {fileID: 2601660005263988823}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4542,17 +4543,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4041585888955415126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601660005263988823}
+  m_Father: {fileID: 3306973257957899433}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 436}
   m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1503555007052907659
@@ -5419,13 +5420,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monologueText: {fileID: 8690775264805360861}
   firstStageMonologue:
-  - "\uB098\uB294 \uC65C \uB2E4\uB978 \uC2AC\uB77C\uC784\uB4E4\uACFC \uB2E4\uB978\uAC78\uAE4C?"
+  - "\uB0B4\uAC00 \uB2E4\uB978 \uC2AC\uB77C\uC784\uB4E4\uACFC \uB2E4\uB978 \uC774\uC720\uB294
+    \uBB58\uAE4C?"
   - "\uC65C \uC778\uAC04\uB4E4\uC740 \uC6B0\uB9AC\uB97C \uBC30\uCC99\uD558\uB294\uAC78\uAE4C?"
-  - "\uC774\uC5D0 \uB300\uD55C \uBB3C\uC74C\uC758 \uB2F5\uC740 \uC544\uC9C1 \uC798
-    \uBAA8\uB974\uACA0\uB2E4.."
-  - "\uC81C\uC0AC\uC7A5\uC740 \uB2F5\uC744 \uC54C\uACE0 \uC788\uC9C0 \uC54A\uC744\uAE4C??"
-  - "\uBAA8\uD5D8\uC774 \uAE38\uC5B4\uC9C0\uC9C0 \uC54A\uAE38 \uBC14\uB77C\uBA70
-    \uC81C\uC0AC\uC7A5\uC744 \uB4A4\uB530\uB77C \uB098\uC130\uB2E4."
+  - "\uC774\uC5D0 \uB300\uD55C \uB2F5\uC744 \uCC3E\uAE30 \uC704\uD574 \uC81C\uC0AC\uC7A5\uC744
+    \uCAD3\uC544\uAC14\uB2E4."
+  - "\uC774\uB54C\uB294 \uBAB0\uB790\uB2E4."
+  - "<color=red>\uCDA9\uACA9\uC801\uC778 \uBE44\uBC00\uC774</color> \uC788\uC5C8\uB2E4\uB294
+    \uAC78.."
   - "- 1\uC7A5 \uC644\uB8CC -"
   fadeTime: 3
 --- !u!1 &5298455565218498372
@@ -7489,7 +7491,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3306973257957899433}
-  - {fileID: 269756354398834837}
   m_Father: {fileID: 3089264615901169236}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11174,10 +11175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

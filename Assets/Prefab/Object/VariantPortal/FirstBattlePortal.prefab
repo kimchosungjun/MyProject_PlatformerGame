@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8230367671059641588}
   - component: {fileID: 421258458770322360}
   - component: {fileID: 7349468916231709235}
-  - component: {fileID: 8824687415398164941}
   - component: {fileID: 3703201904736326044}
   - component: {fileID: 3433068234958175266}
   m_Layer: 0
@@ -28,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065913461907175577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 33.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4892,21 +4891,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8824687415398164941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065913461907175577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5766c28d4304e36408e68db64ae4e798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextVec: {x: 0, y: 0}
-  nextSceneName: 
-  portalType: 0
 --- !u!61 &3703201904736326044
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4991713715135579623}
   - component: {fileID: 5709577319499527564}
   - component: {fileID: 1513034194565675535}
+  - component: {fileID: 5489658631521979708}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,6 +55,7 @@ MonoBehaviour:
   talkData_Manager: {fileID: 5709577319499527564}
   dialogue_Manager: {fileID: 4991713715135579623}
   cursor_Manager: {fileID: 3959025035201293815}
+  sound_Manager: {fileID: 5489658631521979708}
   controller: {fileID: 0}
   ui_Controller: {fileID: 0}
 --- !u!114 &7989541098641400452
@@ -129,6 +131,20 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &5489658631521979708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318965840512753913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b09dd542077df40a98fd76fa7381fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmSounds: []
+  sfxSounds: []
 --- !u!1 &4835920441488003435
 GameObject:
   m_ObjectHideFlags: 0

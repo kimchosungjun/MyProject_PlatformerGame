@@ -62,6 +62,9 @@ public class GameManager : MonoBehaviour
     public CursorManager Cursor_Manager { get { return cursor_Manager; } }
     #endregion
 
+    [Header("Sound Manager")]
+    [SerializeField] SoundManager sound_Manager;
+    public SoundManager Sound_Manager { get { return sound_Manager; } }
     #region Controllers
     [Header("컨트롤러")]
     [SerializeField] PlayerController controller;

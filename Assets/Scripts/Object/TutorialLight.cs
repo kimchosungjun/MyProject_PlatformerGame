@@ -26,7 +26,6 @@ public class TutorialLight : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GameManager.Instance.UI_Controller.Tutorial.Set(nameStr, infoStr, videoClip);
-            GameManager.Instance.UI_Controller.Tutorial.TurnOnOffUI(true);
             talkData.isTalk = true;
             Destroy(gameObject);
         }

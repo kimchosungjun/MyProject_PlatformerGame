@@ -1,5 +1,5 @@
 {
-   "xSpeed":5,
+   "xSpeed":6,
    "ySpeed":12,
    "rollSpeed":15,
    "curMana":0,
@@ -9,7 +9,7 @@
    "attackSkillDecreaseMana":20,
    "curHP":100,
    "maxHP":100,
-   "defenceValue":5,
+   "defenceValue":2,
    "damageValue":10,
    "buffSkillValue":1.1,
    "rollTime":0.5,

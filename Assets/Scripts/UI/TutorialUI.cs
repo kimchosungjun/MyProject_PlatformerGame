@@ -27,6 +27,12 @@ public class TutorialUI : EscapeUI
         GameManager.Instance.Video.clip = _clip;
         tutorialName.text = _name;
         tutorialInfo.text = _info;
+        Invoke("TurnOnDelay", 0.1f);
+    }
+
+    public void TurnOnDelay()
+    {
+        GameManager.Instance.UI_Controller.Tutorial.TurnOnOffUI(true);
     }
 
     public void ExitBtn()
