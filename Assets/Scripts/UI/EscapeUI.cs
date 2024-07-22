@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class EscapeUI : MonoBehaviour
 {
-    public bool IsOn { get; set; } = true;
+    public bool IsOn { get; set; } = false;
     /// <summary>
     /// IsOn을 무조건 false, true 호출해줘야 함
     /// </summary>

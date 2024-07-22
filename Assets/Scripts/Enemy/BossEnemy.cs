@@ -155,7 +155,6 @@ public class BossEnemy : Enemy
                 rigid.velocity = Vector2.zero;
                 isNearAttacking = true;
                 anim.SetTrigger("NearAttack");
-                nearAttackObj.SetActive(true);
                 nearAttackCoolTimer = 0f;
             }
             else
@@ -171,6 +170,7 @@ public class BossEnemy : Enemy
             nearAttackCoolTimer += Time.deltaTime;
         }
     }
+    public void ActiveNearAttack() { nearAttackObj.SetActive(true); }
 
     public void EndNearAttack() { isNearAttacking = false; nearAttackObj.SetActive(false); }
 

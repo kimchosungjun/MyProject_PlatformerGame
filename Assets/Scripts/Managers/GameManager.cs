@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour
             return dialogue_Manager;
         }
     }
+
+    [Header("Cursor Manager")]
+    [SerializeField] CursorManager cursor_Manager;
+    public CursorManager Cursor_Manager { get { return cursor_Manager; } }
     #endregion
 
     #region Controllers
@@ -117,10 +121,10 @@ public class GameManager : MonoBehaviour
         TalkData_Manager.Init();
     }
 
-    public void ClearManagers()
-    {
+    //public void ClearManagers()
+    //{
 
-    }
+    //}
 
     public void SaveAllData()
     {

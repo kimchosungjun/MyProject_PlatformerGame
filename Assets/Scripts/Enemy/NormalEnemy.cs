@@ -72,15 +72,15 @@ public class NormalEnemy : Enemy
         isNearPlayer = playerDetect.IsDetectPlayer();
     }
 
-    protected void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(enemyTransform.position, enemyTransform.position + Vector3.down * groundDistance);
-        Gizmos.color = Color.black;
-        Gizmos.DrawLine(cliffTranfrom.position, Vector3.down * groundDistance + new Vector3(cliffTranfrom.position.x, 0, 0));
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(enemyTransform.position, enemyTransform.position + transform.localScale.x * Vector3.right * frontDistance);
-    }
+    //protected void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawLine(enemyTransform.position, enemyTransform.position + Vector3.down * groundDistance);
+    //    Gizmos.color = Color.black;
+    //    Gizmos.DrawLine(cliffTranfrom.position, Vector3.down * groundDistance + new Vector3(cliffTranfrom.position.x, 0, 0));
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawLine(enemyTransform.position, enemyTransform.position + transform.localScale.x * Vector3.right * frontDistance);
+    //}
 
     //protected void OnCollisionEnter2D(Collision2D collision)
     //{

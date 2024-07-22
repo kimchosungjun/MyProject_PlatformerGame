@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BattleScene : BaseScene
 {
+    [SerializeField] Vector3 playerSpawnPos;
     private void Start()
     {
         LoadScene();
@@ -12,6 +13,7 @@ public class BattleScene : BaseScene
     public override void LoadNextScene()
     {
         GameManager.Instance.CurrentScene = null;
+        GameManager.Instance.Controller.gameObject.transform.position = playerSpawnPos;
     }
 
     public override void LoadScene()

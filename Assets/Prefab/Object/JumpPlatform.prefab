@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 808708212351739891}
   - component: {fileID: 2997735310351415724}
   - component: {fileID: 5257154669018138834}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: JumpPlatform
   m_TagString: JumpPlatform
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

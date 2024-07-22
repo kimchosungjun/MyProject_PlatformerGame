@@ -46,9 +46,14 @@ public class WizardEnemy : NormalEnemy
             anim.SetBool("Fall", true);
     }
 
+    bool canFlip = true;
+    [SerializeField] float flipTime = 0.1f;
     public void Flip(bool _isRight)
     {
         if (!isGround)
+            return;
+
+        if (!canFlip)
             return;
 
         isLookRight = _isRight;
@@ -56,6 +61,14 @@ public class WizardEnemy : NormalEnemy
             transform.localScale = new Vector3(4, 4, 4);
         else
             transform.localScale = new Vector3(-4, 4, 4);
+        canFlip = false;
+        StartCoroutine(FlipTimerCor());
+    }
+
+    public IEnumerator FlipTimerCor()
+    {
+        yield return new WaitForSeconds(flipTime);
+        canFlip = true;
     }
 
     public void Execute()
@@ -108,9 +121,10 @@ public class WizardEnemy : NormalEnemy
 
     public void MoveAI()
     {
-        if (isFrontGround)
+        if (isFrontGround || !isCliffGround)
         {
             Flip(!isLookRight);
+            rigid.velocity = new Vector2(transform.localScale.x * curData.moveSpeed, rigid.velocity.y);
             return;
         }
 

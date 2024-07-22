@@ -46,9 +46,14 @@ public class SwordEnemy : NormalEnemy
             anim.SetBool("Fall", true);
     }
 
+    bool canFlip = true;
+    [SerializeField] float flipTime = 0.1f;
     public void Flip(bool _isRight)
     {
         if (!isGround)
+            return;
+
+        if (!canFlip)
             return;
 
         isLookRight = _isRight;
@@ -56,8 +61,16 @@ public class SwordEnemy : NormalEnemy
             transform.localScale = new Vector3(2, 2, 2);
         else
             transform.localScale = new Vector3(-2, 2, 2);
+        canFlip = false;
+        StartCoroutine(FlipTimerCor());
     }
- 
+
+    public IEnumerator FlipTimerCor()
+    {
+        yield return new WaitForSeconds(flipTime);
+        canFlip = true;
+    }
+
     public void Execute()
     {
         if (!canMove)
@@ -82,7 +95,7 @@ public class SwordEnemy : NormalEnemy
 
     public void IdleAI()
     {
-        if(isNearPlayer)
+        if (isNearPlayer)
         {
             ChangeActionType(EnemyActionType.Find);
             return;
@@ -108,9 +121,10 @@ public class SwordEnemy : NormalEnemy
 
     public void MoveAI()
     {
-        if (isFrontGround)
+        if (isFrontGround || !isCliffGround)
         {
             Flip(!isLookRight);
+            rigid.velocity = new Vector2(transform.localScale.x * curData.moveSpeed, rigid.velocity.y);
             return;
         }
 
