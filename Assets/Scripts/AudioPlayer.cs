@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioPlayer : MonoBehaviour
+public class SFXPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

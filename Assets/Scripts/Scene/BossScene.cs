@@ -5,6 +5,10 @@ using UnityEngine;
 public class BossScene : BaseScene
 {
     [SerializeField] GameObject afterKillBossTalkObj;
+    [SerializeField] GameObject fightBoss;
+    [SerializeField] GameObject imageBoss;
+
+    [SerializeField] string bgmName;
     private void Start()
     {
         LoadScene();
@@ -21,6 +25,7 @@ public class BossScene : BaseScene
         GameManager.Instance.CurrentScene = this;
         GameManager.Instance.UI_Controller.Fade.FadeIn();
         GameManager.Instance.Controller.LoadHP();
+        GameManager.Instance.Sound_Manager.ChangeBGM(bgmName);
     }
 
     public void AfterKillBoss()
@@ -33,9 +38,6 @@ public class BossScene : BaseScene
         afterKillBossTalkObj.SetActive(false);
     }
 
-
-    [SerializeField] GameObject fightBoss;
-    [SerializeField] GameObject imageBoss;
     public void StartBossBattle()
     {
         fightBoss.SetActive(true);

@@ -96,3 +96,13 @@ public enum SceneType
     Boss
 }
 #endregion
+
+#region Sound
+public enum MixerType
+{
+    Master,
+    BGM,
+    SFX
+}
+
+#endregion

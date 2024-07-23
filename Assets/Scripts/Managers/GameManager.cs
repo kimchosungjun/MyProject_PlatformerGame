@@ -60,11 +60,20 @@ public class GameManager : MonoBehaviour
     [Header("Cursor Manager")]
     [SerializeField] CursorManager cursor_Manager;
     public CursorManager Cursor_Manager { get { return cursor_Manager; } }
-    #endregion
 
     [Header("Sound Manager")]
     [SerializeField] SoundManager sound_Manager;
-    public SoundManager Sound_Manager { get { return sound_Manager; } }
+    public SoundManager Sound_Manager
+    {
+        get
+        {
+            if (sound_Manager == null)
+                sound_Manager = GetComponent<SoundManager>();
+            return sound_Manager;
+        }
+    }
+    #endregion
+
     #region Controllers
     [Header("컨트롤러")]
     [SerializeField] PlayerController controller;
@@ -122,12 +131,10 @@ public class GameManager : MonoBehaviour
         //Dialogue_Manager.Init();
         PlayerData_Manager.Init();
         TalkData_Manager.Init();
+        Sound_Manager.Init();
     }
 
-    //public void ClearManagers()
-    //{
-
-    //}
+    public void ClearManagers() { }
 
     public void SaveAllData()
     {
