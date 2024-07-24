@@ -131,7 +131,6 @@ public class GameManager : MonoBehaviour
         //Dialogue_Manager.Init();
         PlayerData_Manager.Init();
         TalkData_Manager.Init();
-        Sound_Manager.Init();
     }
 
     public void ClearManagers() { }

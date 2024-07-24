@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LobbyScene : BaseScene
 {
-    string bgmName= "LobbyTutorial";
-
     private void Start()
     {
         LoadScene();
@@ -19,6 +17,6 @@ public class LobbyScene : BaseScene
     public override void LoadScene()
     {
         GameManager.Instance.CurrentScene = this;
-        GameManager.Instance.Sound_Manager.ChangeBGM(bgmName);
+        GameManager.Instance.Sound_Manager.PlayBGM(bgmClip);
     }
 }

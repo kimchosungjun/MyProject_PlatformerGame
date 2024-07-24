@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
+    [SerializeField] protected SFXSoundPlayer soundPlayer;
+
     #region Player Data
     [Header("Data")]
     [SerializeField] protected PlayerActionType currentActionType = PlayerActionType.Idle;
@@ -229,11 +231,13 @@ public abstract class Player : MonoBehaviour
             anim.SetBool("Death", true);
             gameObject.tag = "Death";
             // Death UI
+            soundPlayer.PlayPlayerSFX(PlayerSoundType.Death);
             GameManager.Instance.UI_Controller.Gameover.GameOverActionMethod();
         }
         else
         {
             anim.SetTrigger("Hurt");
+            soundPlayer.PlayPlayerSFX(PlayerSoundType.Hit);
         }
     }
 

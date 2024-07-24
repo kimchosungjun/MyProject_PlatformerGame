@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] protected SFXSoundPlayer soundPlayer;
+
     [Header("적 데이터")]
     [SerializeField] EnemyData data;
     protected Color hitColor = new Color();
@@ -28,6 +30,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Awake()
     {
+        if (soundPlayer == null)
+            soundPlayer = GetComponentInChildren<SFXSoundPlayer>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
@@ -58,6 +62,11 @@ public class Enemy : MonoBehaviour
             PoolManager.Instace.EnemyCnt -= 1;
             anim.SetBool("Death", true);
             gameObject.tag = "Death";
+            soundPlayer.PlayEnemySFX(EnemySoundType.Death);
+        }
+        else
+        {
+            soundPlayer.PlayEnemySFX(EnemySoundType.Hit);
         }
     }
 

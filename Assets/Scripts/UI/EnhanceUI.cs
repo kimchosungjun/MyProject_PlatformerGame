@@ -174,6 +174,7 @@ public class EnhanceUI : EscapeUI
     {
         if (!isShowWarnMessage)
         {
+            GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Warn);
             warnUI.SetActive(true);
             isShowWarnMessage = true;
         }
@@ -187,6 +188,7 @@ public class EnhanceUI : EscapeUI
 
     public IEnumerator BuffWarnMessageCor()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Warn);
         float warnTimer = 0f;
         Color color = buffWarnText.color;
         color.a = 0f;

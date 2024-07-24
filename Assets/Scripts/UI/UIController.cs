@@ -25,7 +25,6 @@ public class UIController : MonoBehaviour
 
     [SerializeField] DialogueUI dialogueUI;
     public DialogueUI Dialogue { get { return dialogueUI; } set { dialogueUI = value; } }
-    #endregion
 
     [SerializeField] List<EscapeUI> escapeUIList = new List<EscapeUI>();
 
@@ -50,6 +49,10 @@ public class UIController : MonoBehaviour
 
     [SerializeField] MonologueUI monologueUI;
     public MonologueUI Monologue { get { return monologueUI; } set { monologueUI = value; } }
+
+    [SerializeField] SoundUI soundUI;
+    public SoundUI Sound { get { return soundUI; } set { soundUI = value; } }
+    #endregion
 
     private void Update()
     {

@@ -5,48 +5,20 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] AudioClip[] allSounds;
     [SerializeField] AudioSource bgmSource;
-    [SerializeField, Tooltip("0:Master, 1:BGM, 2:SFX")] AudioMixerGroup[] mixers;
-
-    Dictionary<string, AudioClip> soundDictionary = new Dictionary<string, AudioClip>();
-
-    #region Link Sound
-    public void Init()
-    {
-        int soundCnt = allSounds.Length;
-        for(int idx=0; idx< soundCnt; idx++)
-        {
-            soundDictionary.Add(allSounds[idx].name, allSounds[idx]);
-        }
-    }
-
-    public AudioClip GetSFXSound(string _name)
-    {
-        if (soundDictionary.ContainsKey(_name))
-            return soundDictionary[_name];
-        return null;
-    }
-    #endregion
+    [SerializeField] AudioSource uiSource;
+    [SerializeField, Tooltip("0은 클릭, 1은 경고")] AudioClip[] uiClips;
 
     #region Set Sound
-    public void ChangeBGM(string _name)
+    public void PlayBGM(AudioClip _clip)
     {
-        if (!soundDictionary.ContainsKey(_name))
-        {
-            Debug.LogError("해당 사운드가 없습니다.");
-            return;
-        }
-        bgmSource.clip = soundDictionary[_name];
+        bgmSource.clip = _clip;
         bgmSource.Play();
     }
 
-    public void SetVolume(MixerType _mixerType, float _volume)
+    public void PlayUISFX(UISoundType _soundType)
     {
-        if (_volume <= 0)
-            _volume = 0.01f;
-        string mixerName = ConvertEnum.ConvertEnumToString<MixerType>(_mixerType);
-        mixers[((int)_mixerType)].audioMixer.SetFloat(mixerName, Mathf.Log10(_volume) * 20);
+        uiSource.PlayOneShot(uiClips[(int)_soundType]);
     }
     #endregion
 }

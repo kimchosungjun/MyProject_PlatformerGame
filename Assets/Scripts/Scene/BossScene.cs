@@ -25,7 +25,7 @@ public class BossScene : BaseScene
         GameManager.Instance.CurrentScene = this;
         GameManager.Instance.UI_Controller.Fade.FadeIn();
         GameManager.Instance.Controller.LoadHP();
-        GameManager.Instance.Sound_Manager.ChangeBGM(bgmName);
+        GameManager.Instance.Sound_Manager.PlayBGM(bgmClip);
     }
 
     public void AfterKillBoss()

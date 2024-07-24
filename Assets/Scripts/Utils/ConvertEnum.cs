@@ -105,4 +105,24 @@ public enum MixerType
     SFX
 }
 
+public enum UISoundType
+{
+    Warn,
+    Click
+}
+
+public enum PlayerSoundType
+{
+    Attack,
+    Buff,
+    AttackSkill,
+    Hit,
+    Death
+}
+
+public enum EnemySoundType
+{
+    Hit,
+    Death
+}
 #endregion

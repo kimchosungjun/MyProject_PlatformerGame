@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee73ad485cd93e4f8a39ff9ea25b184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
   bossScene: {fileID: 0}
-  bgmName: Town
 --- !u!1 &1078265754167123993
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a69bf59249154ea6a1154b5705e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
   bossScene: {fileID: 0}
   playerSpawnPos: {x: 0, y: 0, z: 0}
-  bgmName: Battle
 --- !u!1 &4226910151135591787
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ Transform:
   - {fileID: 4613590615877867257}
   - {fileID: 706423555880463530}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4228162152378185809
 GameObject:
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9a5cc4fa798334ab0fa2713bf7c3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
   bossScene: {fileID: 0}
 --- !u!1 &5886562064097544659
 GameObject:
@@ -315,8 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8706596ee86a8304d920a6d09b5704c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
   bossScene: {fileID: 0}
-  bgmName: LobbyTutorial
 --- !u!1 &8904948892932643980
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5932b7ca35272640a22692f720d42a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
   bossScene: {fileID: 4332412748770778883}
   afterKillBossTalkObj: {fileID: 0}
   fightBoss: {fileID: 0}

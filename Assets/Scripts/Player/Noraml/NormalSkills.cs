@@ -20,6 +20,8 @@ public class NormalSkills : MonoBehaviour
     float attackDamage;
     float defaultAttackValue;
 
+    int collideEnemyCnt = 0;
+
     public void InitAttackData(PlayerData _data, float _dir)
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -41,6 +43,7 @@ public class NormalSkills : MonoBehaviour
 
     private void OnEnable()
     {
+        collideEnemyCnt = 0;
         timer = 0f;
     }
 
@@ -110,6 +113,9 @@ public class NormalSkills : MonoBehaviour
             switch (skillType)
             {
                 case SkillType.Attack:
+                    if (collideEnemyCnt != 0)
+                        return;
+                    collideEnemyCnt += 1;
                     this.gameObject.SetActive(false);
                     enemy.Hit(attackDamage);
                     break;

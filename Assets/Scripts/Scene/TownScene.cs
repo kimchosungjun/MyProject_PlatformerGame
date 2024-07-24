@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TownScene : BaseScene
 {
-    [SerializeField] string bgmName;
     private void Start()
     {
         LoadScene();
@@ -20,6 +19,6 @@ public class TownScene : BaseScene
         GameManager.Instance.CurrentScene = this;
         GameManager.Instance.UI_Controller.Fade.FadeIn();
         GameManager.Instance.Controller.LoadHP();
-        GameManager.Instance.Sound_Manager.ChangeBGM(bgmName);
+        GameManager.Instance.Sound_Manager.PlayBGM(bgmClip);
     }
 }

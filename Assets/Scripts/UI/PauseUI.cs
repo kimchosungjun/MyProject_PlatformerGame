@@ -6,7 +6,6 @@ public class PauseUI : EscapeUI
 {
     [SerializeField] GameObject pauseObject;
     
-
     public override void TurnOnOffUI(bool _isActive)
     {
         pauseObject.SetActive(_isActive);
@@ -15,6 +14,7 @@ public class PauseUI : EscapeUI
         else
             Time.timeScale = 1f;
     }
+
     public void ResumeGame()
     {
         TurnOnOffUI(false);
@@ -26,4 +26,8 @@ public class PauseUI : EscapeUI
         Application.Quit();
     }
 
+    public void PressSoundManage()
+    {
+        GameManager.Instance.UI_Controller.Sound.TurnOnOffUI(true);
+    }
 }

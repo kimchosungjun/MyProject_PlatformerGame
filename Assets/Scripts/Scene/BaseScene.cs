@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BaseScene : MonoBehaviour
 {
+    [SerializeField] protected AudioClip bgmClip;
     public abstract void LoadNextScene();
     public abstract void LoadScene();
 

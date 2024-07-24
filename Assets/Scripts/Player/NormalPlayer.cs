@@ -10,6 +10,8 @@ public class NormalPlayer : Player
     #region Life Cycle
     public override void Init(PlayerController _playerController) // = Awake
     {
+        if (soundPlayer == null)
+            soundPlayer = GetComponentInChildren<SFXSoundPlayer>();
         controller = _playerController;
         stateMachine = new PlayerStateMachine();
         playerStates = new PlayerState[(int)PlayerActionType.Roll + 1];
@@ -72,6 +74,7 @@ public class NormalPlayer : Player
             GameObject go = PoolManager.Instace.GetObjectPool("NoramlAttack");
             if (go == null)
                 return;
+            soundPlayer.PlayPlayerSFX(PlayerSoundType.Attack);
             go.transform.position = attackTransform.position;
             NormalSkills normalSkills = go.GetComponent<NormalSkills>();
             normalSkills.InitAttackData(PData, transform.localScale.x);
@@ -86,6 +89,7 @@ public class NormalPlayer : Player
                 return;
             if (buffSkillObject == null)
                 return;
+            soundPlayer.PlayPlayerSFX(PlayerSoundType.Buff);
             buffSkillObject.SetActive(true);
             NormalSkills normalSkills = buffSkillObject.GetComponent<NormalSkills>();
             normalSkills.InitBuffData(pData);
@@ -102,6 +106,7 @@ public class NormalPlayer : Player
             GameObject go = PoolManager.Instace.GetObjectPool("NormalAttackSkill");
             if (go == null)
                 return;
+            soundPlayer.PlayPlayerSFX(PlayerSoundType.AttackSkill);
             go.transform.position = attackSkillPosition.position;
             NormalSkills normalSkills = go.GetComponent<NormalSkills>();
             normalSkills.InitAttackData(PData, transform.localScale.x);
