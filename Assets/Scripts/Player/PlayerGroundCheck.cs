@@ -32,6 +32,13 @@ public class PlayerGroundCheck : MonoBehaviour
         {
             players[(int)currentType].IsGround = true;
         }
+
+        if (collision.CompareTag("MovePlatform"))
+        {
+            players[(int)currentType].IsGround = true;
+            players[(int)currentType].gameObject.transform.SetParent(collision.transform);
+        }
+
         if (collision.CompareTag("JumpPlatform"))
         {
             if (jumpPlatformDic.ContainsKey(collision.name))
@@ -56,6 +63,12 @@ public class PlayerGroundCheck : MonoBehaviour
         if (collision.CompareTag("Ground"))
         {
             players[(int)currentType].IsGround = false;
+        }
+
+        if (collision.CompareTag("MovePlatform"))
+        {
+            players[(int)currentType].IsGround = false;
+            players[(int)currentType].gameObject.transform.SetParent(null);
         }
     }
     #endregion

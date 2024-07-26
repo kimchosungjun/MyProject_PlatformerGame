@@ -20,5 +20,17 @@ public class SoundManager : MonoBehaviour
     {
         uiSource.PlayOneShot(uiClips[(int)_soundType]);
     }
+
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+    #endregion
+
+    #region Save Data
+    public float masterValue=1f;
+    public float bgmValue=1f;
+    public float sfxValue=1f;
+
     #endregion
 }

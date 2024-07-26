@@ -13,6 +13,7 @@ TagManager:
   - UI
   - WorldUI
   - NPC
+  - MovePlatform
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Ground
   - Enemy
   - JumpPlatform
-  - 
+  - MovePlatform
   - 
   - 
   - 

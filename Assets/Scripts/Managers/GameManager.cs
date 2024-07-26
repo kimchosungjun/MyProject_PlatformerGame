@@ -133,7 +133,10 @@ public class GameManager : MonoBehaviour
         TalkData_Manager.Init();
     }
 
-    public void ClearManagers() { }
+    public void ClearManagers() 
+    {
+        aum_Manager.Clear();
+    }
 
     public void SaveAllData()
     {

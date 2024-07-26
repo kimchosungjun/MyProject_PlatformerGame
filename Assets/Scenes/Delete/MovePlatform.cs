@@ -12,7 +12,7 @@ public class MovePlatform : MonoBehaviour
     int currentPoint = 0;
     int pointCnt = 0;
     [SerializeField] Vector2[] movePos;
-    //WaitForSeconds delayTime;
+    WaitForSeconds delayTime;
 
     private void Awake()
     {
@@ -23,8 +23,8 @@ public class MovePlatform : MonoBehaviour
     private void Start()
     {
         // 대기시간 픽스되면 사용
-        //delayTime = new WaitForSeconds(stopTime);
-        //StartCoroutine(MovePlatformCor());
+        delayTime = new WaitForSeconds(stopTime);
+        StartCoroutine(MovePlatformCor());
     }
 
     public IEnumerator MovePlatformCor()
@@ -42,8 +42,7 @@ public class MovePlatform : MonoBehaviour
             transform.position = Vector2.Lerp(startPos, destPos, timer / reachTime);
             yield return null;
         }
-        //yield return delayTime;
-        yield return new WaitForSeconds(stopTime);
+        yield return delayTime;
         StartCoroutine(MovePlatformCor());
     }
 

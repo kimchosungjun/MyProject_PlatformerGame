@@ -332,7 +332,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2020962121, guid: 61a30fb234c2dc249942e471ee850cbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -377,7 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf5b4b46eacb024197d5c27906ae40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talkData: {fileID: 11400000, guid: 2f76604ffd1c83841878a7015cd35633, type: 2}
   talkID: 1
   outline: {fileID: 5945771267257961565}
 --- !u!114 &5945771267257961565

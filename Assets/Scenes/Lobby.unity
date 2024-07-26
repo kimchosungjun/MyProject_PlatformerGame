@@ -533,18 +533,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5489658631521979708, guid: 6e6f19b0d3b00444290132d0930588d9, type: 3}
-      propertyPath: uiClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489658631521979708, guid: 6e6f19b0d3b00444290132d0930588d9, type: 3}
-      propertyPath: uiClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: a7f21f9757daa824cb0d98731aa1b440, type: 3}
-    - target: {fileID: 5489658631521979708, guid: 6e6f19b0d3b00444290132d0930588d9, type: 3}
-      propertyPath: uiClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 39f92ae2e8f8822449c810f532d29438, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -13,6 +13,8 @@ public class MonologueUI : MonoBehaviour
 
     Color textColor;
 
+    public bool IsMonologue { get; set; } = false;
+
     private void Awake()
     {
         textColor = monologueText.color;   
@@ -20,6 +22,11 @@ public class MonologueUI : MonoBehaviour
 
     public void FirstStateMonologue()
     {
+        if (curIdx == 0)
+        {
+            IsMonologue = true;
+            GameManager.Instance.Sound_Manager.StopBGM();
+        }
         StartCoroutine(MonologueCor());
     }
 
@@ -52,6 +59,7 @@ public class MonologueUI : MonoBehaviour
 
     public void EndMonologue()
     {
+        IsMonologue = false;
         GameManager.Instance.SaveAllData();
         GameManager.LoadScene_Manager.LoadScene("Lobby");
     }

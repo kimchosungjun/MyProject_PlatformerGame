@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AumManager 
 {
-    int haveAum = 100;
+    int haveAum = 0;
     public int HaveAum { get { return haveAum; } }
 
     public bool CanUseAum(int _cost)
@@ -31,5 +31,10 @@ public class AumManager
         haveAum += _earn;
         GameManager.Instance.UI_Controller.Aum.UpdateAumAmount(haveAum);
         GameManager.Instance.UI_Controller.Enhance.UpdateHaveAumState(haveAum);
+    }
+
+    public void Clear()
+    {
+        haveAum = 0;
     }
 }

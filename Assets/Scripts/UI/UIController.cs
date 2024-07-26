@@ -56,9 +56,12 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!Dialogue.IsStartDialogue && !Monologue.IsMonologue &&Input.GetKeyDown(KeyCode.Escape))
             CloseUI();
         Dialogue.Execute();
+
+        if (Input.GetKeyDown(KeyCode.P))
+            GameManager.Aum_Manager.GetAum(10);
     }
 
     public void CloseUI()

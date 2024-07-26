@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 313248057, guid: 72386b83646daf746844d94f0266f2c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ab54464b770d1478273257e85220b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talkData: {fileID: 11400000, guid: f572490d56cd1c74daf050dcb7df03f3, type: 2}
   talkID: 0
   outline: {fileID: 3684571195162370879}
 --- !u!114 &3684571195162370879

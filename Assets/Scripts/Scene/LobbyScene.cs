@@ -18,5 +18,6 @@ public class LobbyScene : BaseScene
     {
         GameManager.Instance.CurrentScene = this;
         GameManager.Instance.Sound_Manager.PlayBGM(bgmClip);
+        GameManager.Instance.ClearManagers();
     }
 }
