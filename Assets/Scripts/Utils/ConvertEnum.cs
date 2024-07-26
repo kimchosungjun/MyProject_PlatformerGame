@@ -107,8 +107,8 @@ public enum MixerType
 
 public enum UISoundType
 {
-    Warn,
-    Click
+    Click,
+    Warn
 }
 
 public enum PlayerSoundType
