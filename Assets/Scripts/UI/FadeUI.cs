@@ -105,4 +105,34 @@ public class FadeUI : MonoBehaviour
         isFadeOut = false;
         GameManager.Instance.UI_Controller.Monologue.FirstStateMonologue();
     }
+
+    #region Call Return Lobby
+
+    bool lobbyFadeOut = true;
+    public void LoobyFadeOut()
+    {
+        Debug.Log("656565");
+        if (lobbyFadeOut)
+            StartCoroutine(LobbyFadeOutCor());
+    }
+
+    public IEnumerator LobbyFadeOutCor()
+    {
+        Debug.Log("123231");
+        float timer = 0f;
+        isFadeOut = true;
+        while (timer < fadeTimer)
+        {
+            timer += Time.deltaTime;
+            defaultColor.a = Mathf.Lerp(0, 1, timer / fadeTimer);
+            fadeImage.color = defaultColor;
+            yield return null;
+        }
+        defaultColor.a = 1f;
+        fadeImage.color = defaultColor;
+        GameManager.LoadScene_Manager.LoadScene("Lobby");
+        Time.timeScale = 1f;
+        lobbyFadeOut = false;
+    }
+    #endregion
 }

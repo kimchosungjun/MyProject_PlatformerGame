@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Healing : MonoBehaviour
 {
-    [SerializeField] float healValue;
     [SerializeField] float healTime;
     bool isCollidePlayer = false;
     PlayerController controller = null;
     WaitForSeconds healWaitTime;
 
+    float healValue = -2;
     private void Awake()
     {
         healWaitTime = new WaitForSeconds(healTime);
@@ -40,6 +40,9 @@ public class Healing : MonoBehaviour
     {
         if (!isCollidePlayer || controller==null)
             yield break;
+
+        if (healValue <= -1)
+            healValue = (controller.MaxHp - controller.CurHP) / 3;
 
         controller.Heal(healValue);
         yield return healWaitTime;

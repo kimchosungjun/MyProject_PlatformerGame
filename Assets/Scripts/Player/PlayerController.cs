@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
     
     // HP 
     private float curHp;
-    public float CurHP { get { return curHp; } set { curHp = value;  GameManager.Instance.UI_Controller.HP.UpdateCurHpBar(curHp); } }
+    public float CurHP { get { return curHp; } set { curHp = (int)value;  GameManager.Instance.UI_Controller.HP.UpdateCurHpBar(curHp); } }
     private float maxHp;
-    public float MaxHp { get { return maxHp; } set { maxHp = value; GameManager.Instance.UI_Controller.HP.UpdateMaxHPBar(maxHp,curHp); } }
+    public float MaxHp { get { return maxHp; } set { maxHp = (int)value; GameManager.Instance.UI_Controller.HP.UpdateMaxHPBar(maxHp,curHp); } }
     
     // Control & Detect
     public PlayerGroundCheck GroundChecker { get; set; }
@@ -64,6 +64,11 @@ public class PlayerController : MonoBehaviour
     {
         CurHP = PData.curHP;
         MaxHp = PData.maxHP;
+    }
+
+    public void SetInteagerHP(float _hp)
+    {
+        
     }
     #endregion
 

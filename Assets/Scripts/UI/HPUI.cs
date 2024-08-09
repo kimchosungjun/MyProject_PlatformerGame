@@ -26,13 +26,13 @@ public class HPUI : MonoBehaviour
     {
         slider.maxValue = _maxValue;
         slider.value = _curValue;
-        hpText.text = slider.value + "/" + slider.maxValue;
+        hpText.text = (int)slider.value + "/" + (int)slider.maxValue;
     }
     
 
     public void UpdateCurHpBar(float _curValue)
     {
         slider.value = _curValue;
-        hpText.text = slider.value + "/" + slider.maxValue;
+        hpText.text = (int)slider.value + "/" + (int)slider.maxValue;
     }
 }

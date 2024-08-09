@@ -11,6 +11,7 @@ public class PlayerDataManager : MonoBehaviour
     string newDataName = "/playerData.json";
     string useDataName = "/playerUseData.json";
 
+    public string UseDataPath { get { return useDataPath; } }
     // Player Data 
     PlayerData pData;
     public PlayerData PData { get { return pData; } set { pData = value; } }
@@ -60,6 +61,10 @@ public class PlayerDataManager : MonoBehaviour
             if (resourceFile != null)
                 File.WriteAllText(newDataPath, resourceFile.text);
         }
+    }
+
+    public void CreateUseData()
+    {
         if (!CheckDataPath(useDataPath))
         {
             TextAsset resourceFile = Resources.Load<TextAsset>("Data/" + useDataName.TrimStart('/').Replace(".json", ""));
