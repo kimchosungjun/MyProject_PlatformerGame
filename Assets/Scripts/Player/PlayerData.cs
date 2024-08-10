@@ -45,7 +45,7 @@ public class EnhanceValueData
     // Increase Value
     public float[] increaseHpValue = { 15f, 15f, 20f };
     public float[] increaseRollValue = { 1f, 1f, 2f };
-    public float[] increaseAttackValue = { 0.5f, 0.5f, 1f };
+    public float[] increaseAttackValue = { 1f, 1f, 2f };
     public float[] increaseBuffValue = { 0.1f, 0.1f, 0.2f };
     // Cost
     public int[] aumCost = { 3, 4, 5 };

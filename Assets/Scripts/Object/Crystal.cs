@@ -17,7 +17,7 @@ public class Crystal : MonoBehaviour
     private void Awake()
     {
         if (isRandomAum)
-            randomAum = Random.Range(1, 6);
+            randomAum = Random.Range(10, 12);
     }
 
     private void Update()

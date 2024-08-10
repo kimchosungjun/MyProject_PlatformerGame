@@ -20,6 +20,7 @@ public class BattleScene : BaseScene
     {
         GameManager.Instance.CurrentScene = this;
         GameManager.Instance.UI_Controller.Fade.FadeIn();
+        GameManager.Instance.Controller.PData.curHP = GameManager.Instance.Controller.PData.maxHP;
         GameManager.Instance.Controller.LoadHP();
         GameManager.Instance.Sound_Manager.PlayBGM(bgmClip);
     }

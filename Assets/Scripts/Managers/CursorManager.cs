@@ -16,10 +16,5 @@ public class CursorManager : MonoBehaviour
         {
             Cursor.SetCursor(mouseCursor[0], new Vector2(mouseCursor[1].width * 0.5f, mouseCursor[1].height * 0.5f), CursorMode.Auto);
         }
-
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
-        }
     }
 }

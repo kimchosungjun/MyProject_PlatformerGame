@@ -37,7 +37,6 @@ public class UIController : MonoBehaviour
     [SerializeField] InformationUI infoUI;
     public InformationUI Info { get { return infoUI; } set { infoUI = value; } }
 
-    bool isPause = false;
     [SerializeField] PauseUI pauseUI;
     public PauseUI Pause { get { return pauseUI; } set { pauseUI = value; } }
 
@@ -52,6 +51,9 @@ public class UIController : MonoBehaviour
 
     [SerializeField] SoundUI soundUI;
     public SoundUI Sound { get { return soundUI; } set { soundUI = value; } }
+
+    [SerializeField] StatUI statUI;
+    public StatUI Stat { get { return statUI; } set { statUI = value; } }
     #endregion
 
     private void Update()
@@ -59,9 +61,6 @@ public class UIController : MonoBehaviour
         if (!Dialogue.IsStartDialogue && !Monologue.IsMonologue &&Input.GetKeyDown(KeyCode.Escape))
             CloseUI();
         Dialogue.Execute();
-
-        if (Input.GetKeyDown(KeyCode.P))
-            GameManager.Aum_Manager.GetAum(10);
     }
 
     public void CloseUI()
@@ -76,10 +75,6 @@ public class UIController : MonoBehaviour
             }
         }
 
-        if (isPause)
-            pauseUI.TurnOnOffUI(false);
-        else
-            pauseUI.TurnOnOffUI(true);
-        isPause = !isPause;
+         pauseUI.TurnOnOffUI();
     }
 }

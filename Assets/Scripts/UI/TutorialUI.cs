@@ -18,13 +18,17 @@ public class TutorialUI : EscapeUI
         if (_isActive)
             Time.timeScale = 0f;
         else
+        {
+            GameManager.Instance.Video.Stop();
             Time.timeScale = 1f;
+        }
         IsOn = _isActive;
     }
 
     public void Set(string _name, string _info, VideoClip _clip)
     {
         GameManager.Instance.Video.clip = _clip;
+        GameManager.Instance.Video.Play();
         tutorialName.text = _name;
         tutorialInfo.text = _info;
         Invoke("TurnOnDelay", 0.1f);
@@ -37,6 +41,8 @@ public class TutorialUI : EscapeUI
 
     public void ExitBtn()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
+        GameManager.Instance.Video.Stop();
         tutorialObject.SetActive(false);
         IsOn = false;
         Time.timeScale = 1f;

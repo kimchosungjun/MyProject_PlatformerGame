@@ -9,7 +9,7 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] string battleSceneName;
     [SerializeField, Tooltip("0:새로하기,1: 이어하기,  2:나가기")] Button[] lobbyBtns;
     [SerializeField] GameObject decideExitObject;
-
+    [SerializeField] GameObject decideResetObject;
     private void Awake()
     {
         float targetRatio = 9.0f / 16.0f;
@@ -37,10 +37,41 @@ public class LobbyUI : MonoBehaviour
     {
         if (!GameManager.Instance.PlayerData_Manager.CheckDataPath(GameManager.Instance.PlayerData_Manager.UseDataPath))
             lobbyBtns[(int)LobbyUIType.Continue].interactable = false;
+        //Debug.Log(GameManager.Instance.PlayerData_Manager.UseDataPath);
+    }
+
+    public void ActiveResetDecideBtn()
+    {
+        if(lobbyBtns[(int)LobbyUIType.Continue].interactable == false)
+        {
+            ResetBtn();
+        }
+        else
+        {
+            GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
+            int cnt = lobbyBtns.Length;
+            for (int i = 0; i < cnt; i++)
+            {
+                lobbyBtns[i].interactable = false;
+            }
+            decideResetObject.SetActive(true);
+        }
+    }
+
+    public void ExitResetBtn()
+    {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
+        int cnt = lobbyBtns.Length;
+        for (int i = 0; i < cnt; i++)
+        {
+            lobbyBtns[i].interactable = true;
+        }
+        decideResetObject.SetActive(false);
     }
 
     public void ResetBtn()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         GameManager.LoadScene_Manager.LoadScene(nextSceneName); 
         GameManager.Instance.PlayerData_Manager.StartNew();
         GameManager.Instance.TalkData_Manager.StartNew();
@@ -49,6 +80,7 @@ public class LobbyUI : MonoBehaviour
 
     public void ContinueBtn()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         GameManager.LoadScene_Manager.LoadScene(battleSceneName); 
         GameManager.Instance.PlayerData_Manager.StartContinue();
         GameManager.Instance.TalkData_Manager.StartContinue();
@@ -56,6 +88,7 @@ public class LobbyUI : MonoBehaviour
 
     public void ActiveDecideExitBtn()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         decideExitObject.SetActive(true);
         int cnt = lobbyBtns.Length;
         for(int i=0; i<cnt; i++)
@@ -66,11 +99,13 @@ public class LobbyUI : MonoBehaviour
 
     public void ExitGame()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         Application.Quit();
     }
 
     public void CancleExitGame()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         decideExitObject.SetActive(false);
         int cnt = lobbyBtns.Length;
         for (int i = 0; i < cnt; i++)
@@ -78,4 +113,6 @@ public class LobbyUI : MonoBehaviour
             lobbyBtns[i].interactable = true;
         }
     }
+
+
 }

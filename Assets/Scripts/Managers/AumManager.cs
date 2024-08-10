@@ -17,10 +17,7 @@ public class AumManager
     public void UseAum(int _cost)
     {
         if (!CanUseAum(_cost))
-        {
-            Debug.LogError("사용불가!");
             return;
-        }
         haveAum -= _cost;
         GameManager.Instance.UI_Controller.Aum.UpdateAumAmount(haveAum);
         GameManager.Instance.UI_Controller.Enhance.UpdateHaveAumState(haveAum);

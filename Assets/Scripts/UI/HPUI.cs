@@ -18,7 +18,8 @@ public class HPUI : MonoBehaviour
         slider.value = controller.CurHP;
         slider.value = Mathf.Round(controller.CurHP * 10f) / 10f;
         float roundedHP = slider.value;
-        hpText.text = roundedHP.ToString("0.0");
+        //hpText.text = roundedHP.ToString("0.0");
+        hpText.text = roundedHP.ToString("0");
         hpText.text += "/" + slider.maxValue;
     }
 

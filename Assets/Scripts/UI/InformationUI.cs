@@ -24,7 +24,7 @@ public class InformationUI : MonoBehaviour
     {
         PlayerController controller = GameManager.Instance.Controller;
         PlayerData data = controller.Players[(int)controller.CurrentType].PData;
-
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         //Vector3 mousePosition = Input.mousePosition + upVec;
         //RectTransformUtility.ScreenPointToLocalPointInRectangle(
         //    canvas.transform as RectTransform,

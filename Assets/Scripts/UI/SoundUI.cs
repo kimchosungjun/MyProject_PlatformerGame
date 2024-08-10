@@ -123,6 +123,7 @@ public class SoundUI : EscapeUI
 
     public void ClickMasterBtn()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         if (isClickMasterBtn)
         {
             offObject[0].SetActive(false);
@@ -182,6 +183,7 @@ public class SoundUI : EscapeUI
     public override void TurnOnOffUI(bool _isActive)
     {
         IsOn = _isActive;
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         soundUIObject.SetActive(_isActive);
     }
 }

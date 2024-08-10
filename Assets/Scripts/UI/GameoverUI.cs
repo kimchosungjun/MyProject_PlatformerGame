@@ -20,6 +20,7 @@ public class GameoverUI : MonoBehaviour
     {
         gameoverObject.SetActive(false);
         Time.timeScale = 1f;
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         GameManager.Instance.SaveAllData();
         GameManager.LoadScene_Manager.LoadScene("Lobby");
     }

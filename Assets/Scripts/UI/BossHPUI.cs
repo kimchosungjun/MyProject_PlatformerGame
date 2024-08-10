@@ -23,7 +23,7 @@ public class BossHPUI : MonoBehaviour
     {
         slider.value = Mathf.Round(_curValue * 10f) / 10f;
         float roundedHP = slider.value;
-        hpText.text = roundedHP.ToString("0.0");
+        hpText.text = roundedHP.ToString("0");
         hpText.text += "/" + slider.maxValue;
     }
 

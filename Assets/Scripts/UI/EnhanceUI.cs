@@ -15,6 +15,7 @@ public class EnhanceUI : EscapeUI
     [SerializeField] TextMeshProUGUI[] costTexts;
     [SerializeField] TextMeshProUGUI determineWarnText;
     [SerializeField] TextMeshProUGUI buffWarnText;
+    [SerializeField] TextMeshProUGUI enhanceInfoText;
     EnhanceType currentType = EnhanceType.None;
     EnhanceValueData enhanceData;
     PlayerData playerData;
@@ -145,6 +146,9 @@ public class EnhanceUI : EscapeUI
     #region Show Determine UI & Warn UI
     public void ActiveDetermineUI()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
+        if (playerData == null)
+            playerData = GameManager.Instance.Controller.PData;
         int cnt = selectEnhanceBtns.Length;
         for (int idx = 0; idx < cnt; idx++)
         {
@@ -156,15 +160,23 @@ public class EnhanceUI : EscapeUI
         {
             case EnhanceType.HP:
                 determineWarnText.text = "HP를 강화하시겠습니까?";
+                enhanceInfoText.text = "";
+                enhanceInfoText.text += $"최대 체력 : {playerData.maxHP} ▶ {playerData.maxHP + enhanceData.increaseHpValue[playerData.curHpDegree]}";
                 break;
             case EnhanceType.Roll:
                 determineWarnText.text = "구르기를 강화하시겠습니까?";
+                enhanceInfoText.text = "";
+                enhanceInfoText.text += $"구르기 쿨 타임 : {playerData.rollCoolTime} ▶ {playerData.rollCoolTime - enhanceData.increaseRollValue[playerData.curRollDegree]}";
                 break;
             case EnhanceType.Attack:
                 determineWarnText.text = "공격력을 강화하시겠습니까?";
+                enhanceInfoText.text = "";
+                enhanceInfoText.text += $"공격력 : {playerData.damageValue} ▶ {playerData.damageValue + enhanceData.increaseAttackValue[playerData.curAttackDegree]}";
                 break;
             case EnhanceType.Buff:
                 determineWarnText.text = "버프를 강화하시겠습니까?";
+                enhanceInfoText.text = "";
+                enhanceInfoText.text += $"공격력 증가 계수 : {playerData.buffSkillValue} ▶ {playerData.buffSkillValue + enhanceData.increaseBuffValue[playerData.curBuffDegree]}";
                 break;
         }
         determineUI.SetActive(true);
@@ -172,6 +184,7 @@ public class EnhanceUI : EscapeUI
 
     public void ActiveWarnUI()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Warn);
         if (!isShowWarnMessage)
         {
             GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Warn);
@@ -211,6 +224,7 @@ public class EnhanceUI : EscapeUI
     #region Select Enhance
     public void ClickYes()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         switch (currentType)
         {
             case EnhanceType.HP:
@@ -239,6 +253,7 @@ public class EnhanceUI : EscapeUI
 
     public void ClickNo()
     {
+        GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         int cnt = selectEnhanceBtns.Length;
         for (int idx = 0; idx < cnt; idx++)
         {
@@ -309,6 +324,7 @@ public class EnhanceUI : EscapeUI
             onoffObject.SetActive(_isActive);
             Time.timeScale = 1f;
             warnUI.SetActive(false);
+            GameManager.Instance.Sound_Manager.PlayUISFX(UISoundType.Click);
         }
     }
     #endregion
